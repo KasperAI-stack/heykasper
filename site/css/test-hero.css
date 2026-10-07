@@ -1,12 +1,11 @@
 /* Testside: "Hey Kasper" og agent-vælgeren i toppen. Flyttes ind i styles.css, når den er godkendt. */
 
-/* Farven på baggrunden kan glide fra én agent til den næste */
+/* Agentens navn kan glide fra én farve til den næste */
 @property --glow { syntax: "<color>"; inherits: true; initial-value: #4C1D95; }
 
 /* Agenternes toner. Dyb violet er for mørk på mørk baggrund, så to af dem bytter plads i mørkt tema. */
 :root {
   --g3: var(--p-deep); --g5: var(--s2);
-  --wash-a: 30%; --wash-b: 10%;
   --band-bg: #EEECF3;
   --pill-bg: #FFFFFF;
   --pill-shadow: 0 8px 22px rgb(15 14 19 / .14), 0 1px 3px rgb(15 14 19 / .08);
@@ -14,7 +13,6 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --g3: var(--s2); --g5: var(--p-deep);
-    --wash-a: 40%; --wash-b: 14%;
     --band-bg: #1E1C24;
     --pill-bg: #3B3845;
     --pill-shadow: 0 8px 22px rgb(0 0 0 / .45);
@@ -22,7 +20,6 @@
 }
 :root[data-theme="dark"] {
   --g3: var(--s2); --g5: var(--p-deep);
-  --wash-a: 40%; --wash-b: 14%;
   --band-bg: #1E1C24;
   --pill-bg: #3B3845;
   --pill-shadow: 0 8px 22px rgb(0 0 0 / .45);
@@ -33,7 +30,6 @@
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-/* Hele toppen skifter farve efter den valgte agent */
 .hero-pick {
   --glow: var(--g3);
   position: relative; isolation: isolate; overflow: clip;
@@ -46,23 +42,31 @@
 .hero-pick[data-glow="4"] { --glow: var(--s4); }
 .hero-pick[data-glow="5"] { --glow: var(--g5); }
 @media (min-width: 40rem) { .hero-pick { padding-top: 2.75rem; } }
-.hero-wash {
-  position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: radial-gradient(75% 60% at 50% 45%,
-    color-mix(in srgb, var(--glow) var(--wash-a), transparent) 0%,
-    color-mix(in srgb, var(--glow) var(--wash-b), transparent) 55%,
-    transparent 100%);
-}
-.hero-eyebrow { margin: 0 0 .25rem; color: var(--muted); font-size: .95rem; font-weight: 500; }
 
-/* "Hey Kasper" med prikker, der lytter, og som taler, når Kasper svarer */
-.hey {
-  display: inline-flex; align-items: center; gap: .3em; max-width: none; margin: 0;
-  font-size: clamp(2.75rem, 11vw, 4.75rem); font-weight: 600; letter-spacing: -.045em; line-height: 1.05;
+/* Neutralt gitter af tynde linjer bag memojien, i samme streg som sidens øvrige linjer. Det toner ud mod kanterne. */
+.hero-grid {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem; background-position: center center;
+  -webkit-mask: radial-gradient(ellipse 60% 55% at 50% 45%, #000 15%, transparent 80%);
+  mask: radial-gradient(ellipse 60% 55% at 50% 45%, #000 15%, transparent 80%);
 }
-.hey-hey { font-weight: 400; color: var(--muted); }
-.hey-text { animation: hey-in .8s cubic-bezier(.2, .8, .2, 1) both; }
-.hey-voice { display: inline-flex; align-items: center; gap: .09em; height: .5em; animation: hey-in .6s .5s ease both; }
+.hero-eyebrow { margin: 0 0 .35rem; color: var(--muted); font-size: .95rem; font-weight: 500; }
+
+/* "Hey Kasper, byg os lige" med prikker, der lytter, og som taler, når Kasper svarer.
+   To linjer på mobil og én linje på computer. */
+.hey {
+  max-width: none; margin: 0;
+  font-size: clamp(2.5rem, 10.5vw, 4.25rem); font-weight: 600; letter-spacing: -.045em; line-height: 1.04;
+}
+.hey-line { display: block; }
+@media (min-width: 56rem) { .hey-line { display: inline; } }
+.hey-soft { font-weight: 400; color: var(--muted); }
+.hey-text { display: inline-block; animation: hey-in .8s cubic-bezier(.2, .8, .2, 1) both; }
+.hey-voice {
+  display: inline-flex; align-items: center; gap: .09em; height: .5em; margin-left: .22em; vertical-align: -.02em;
+  animation: hey-in .6s .5s ease both;
+}
 .hey-voice i {
   display: block; width: .13em; height: .13em; border-radius: 99px;
   animation: hey-listen 1.8s ease-in-out infinite;
@@ -81,18 +85,9 @@
 
 /* Scenen: memojien, agentens navn og beskrivelse */
 .scene {
-  --fig: min(64vw, 22rem, 34svh);
-  position: relative; width: 100%; max-width: 34rem; margin-top: .5rem;
+  --fig: min(60vw, 21rem, 32svh);
+  position: relative; width: 100%; max-width: 34rem; margin-top: .75rem;
 }
-.scene-rays {
-  position: absolute; z-index: 0; left: 50%; top: calc(var(--fig) / 2);
-  width: calc(var(--fig) * 2.3); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
-  background: repeating-conic-gradient(color-mix(in srgb, var(--glow) 18%, transparent) 0deg 3deg, transparent 3deg 11deg);
-  -webkit-mask: radial-gradient(closest-side, #000 18%, transparent 80%);
-  mask: radial-gradient(closest-side, #000 18%, transparent 80%);
-  animation: rays-turn 90s linear infinite; pointer-events: none;
-}
-@keyframes rays-turn { to { rotate: 1turn; } }
 
 /* Alle agenter ligger oven på hinanden, så højden ikke hopper, når man skifter */
 .scene-items { position: relative; z-index: 1; display: grid; touch-action: pan-y; }
@@ -191,7 +186,7 @@
 .pick:active img { scale: .95; translate: 0; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hey-text, .hey-voice, .hey-voice i, .scene-rays, .scene-fig,
+  .hey-text, .hey-voice, .hey-voice i, .scene-fig,
   .scene-item.is-in *, .scene-item.is-out *, .picker-pill.is-moving { animation: none !important; }
   .scene-item.is-out { visibility: hidden; }
 }

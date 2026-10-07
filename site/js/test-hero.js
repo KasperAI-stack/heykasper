@@ -1,4 +1,4 @@
-// Testside: "Hey Kasper" og agent-vælgeren i toppen. Flyttes ind i main.js, når den er godkendt.
+// Testside: "Hey Kasper, byg os lige" og agent-vælgeren i toppen. Flyttes ind i main.js, når den er godkendt.
 // Uden JavaScript vises den midterste agent, og baren er skjult.
 
 (function () {
@@ -59,7 +59,7 @@
     split(item.querySelector(".scene-text"), false);
   });
 
-  // Prikkerne ved "Hey Kasper" taler, mens svaret kommer frem.
+  // Prikkerne efter "byg os lige" taler, mens svaret kommer frem.
   var talkTimer;
   var talk = function () {
     if (reduce.matches) return;
