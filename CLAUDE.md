@@ -10,9 +10,9 @@ En personlig landingpage for Kasper Schrøder Asmussen, der præsenterer sig som
 
 - Navn: Hey Kasper. Skrives "Hey Kasper" i tekst. Kasper Schrøder Asmussen skriver siden som "jeg".
 - Logo: vektorgrafikken site/assets/logo.svg ("hey" i en tynd serif og "Kasper" i en fed skrift) med gennemsigtig baggrund. Den er mørk i lyst tema og bliver vendt til lys i mørkt tema. Står ved siden af memojiens hoved (favicon) i toppen og i footeren med "v/ Kasper Schrøder Asmussen".
-- Overskrift: Jeres nye AI marketing manager.
+- Overskrift (h1): en lille linje med "Jeres nye AI marketing manager" og under den "Hey Kasper, byg os lige …", hvor fire lilla prikker lytter og taler ligesom "Hey Siri". Den lille linje står inde i h1, så Google kan se, hvad siden handler om.
 - Koncept: En moderne konsulentside i sort, grå og lilla, med lyst og mørkt tema. Ordene er jordnære, og alt, hvad der står, er let at forstå.
-- Figur: Kaspers memoji med gennemsigtig baggrund. Overkroppen (site/assets/kasper-memoji.webp) kigger op over chatvinduet i hero, og hele figuren (site/assets/kasper-memoji-hel.webp) står på tak-siden. Hovedet (site/assets/kasper-hoved.webp) er avatar i chatten, og hovedet på lilla gradient er ikon (favicon.svg og apple-touch-icon.png). I chatvinduet skriver virksomheden: "Hey Kasper, byg os en Landing Page med fokus på [indsæt produkt]", og Kasper er ved at svare. Et rigtigt foto af Kasper bruges i "Om mig".
+- Figur: Kaspers memoji med gennemsigtig baggrund. I toppen står memojien i fem situationer, én for hver agent (site/assets/memoji/), og hovederne fra de samme billeder er knapperne i baren. Hele figuren (site/assets/kasper-memoji-hel.webp) står på tak-siden, og hovedet på lilla gradient er ikon (favicon.svg og apple-touch-icon.png). Et rigtigt foto af Kasper bruges i "Om mig".
 
 ## Sprog og tone
 
@@ -32,16 +32,15 @@ Se docs/tilbud.md. Trin og produkter skal stå præcis som der. Siden viser inge
 
 ## Sidens opbygning
 
-1. Hero: overskrift, én sætning om, hvad Kasper gør, knap til booking og memojien over chatvinduet.
+1. Hero: "Hey Kasper, byg os lige …", memojien og en buet bar med fem agenter (SoMe, mail, annoncer, leads og tekster). Hver agent har et navn og én eller to sætninger. Booking ligger i knappen i toppen.
 2. Problemet
-3. De tre produkter
-4. Sådan foregår det: de fire trin med priser
-5. Om mig
-6. CV: stillinger, resultater og uddannelse fra Kaspers LinkedIn
-7. Værktøjer: de værktøjer, Kasper bygger med
-8. Workshops og oplæring
-9. Book et møde: formularen eller booking
-10. Footer: e-mail (kasper@heyotto.dk), telefon (+45 22 46 38 40) og LinkedIn. CVR tilføjes, når Kasper har et.
+3. Sådan foregår det: de fire trin med priser
+4. Om mig
+5. CV: stillinger, resultater og uddannelse fra Kaspers LinkedIn
+6. Værktøjer: de værktøjer, Kasper bygger med
+7. Workshops og oplæring
+8. Book et møde: formularen eller booking
+9. Footer: e-mail (kasper@heyotto.dk), telefon (+45 22 46 38 40) og LinkedIn. CVR tilføjes, når Kasper har et.
 
 Teksten til hver sektion ligger i docs/copy.md.
 
@@ -69,13 +68,13 @@ Regler:
 
 - Skrift: Geist fra Google Fonts til både overskrifter og brødtekst. Store overskrifter med stram afstand mellem bogstaverne.
 - Grid: Siden står i en ramme af tynde lodrette linjer, og sektionerne er adskilt af vandrette linjer med små plus-mærker, hvor linjerne mødes. De fire trin står i kolonner adskilt af gridlinjer, hver med et lille lysende ikon og en titel, hvor trinnets navn er fedt og prisen dæmpet.
-- Produkterne vises som tre faner over et farvet panel med et app-vindue. Den valgte fane er udfyldt med lilla gradient, og vinduet skifter illustration efter fanen. Illustrationerne er abstrakte, uden tal eller tekst.
-- Sort, grå og hvid bærer siden. Knapper, valgte faner og vælgere er i tekstfarven (sort i lyst tema, lys i mørkt tema) og helt runde i enderne. Lilla er en accent, der kun bruges i rammen om chatvinduet i toppen, i produktpanelet, i ikonerne ved de fire trin, i prikkerne i CV-sektionen og i figuren i værktøjssektionen.
+- Toppen har et neutralt gitter af tynde, grå linjer bag memojien og ingen farvet baggrund. Agenterne vælges i en buet bar, hvor den valgte ligger i en hvid, hævet pude (den eneste vælger, der ikke er i tekstfarven). Agentens navn står stort i sin egen lilla tone.
+- Sort, grå og hvid bærer siden. Knapper, valgte faner og vælgere er i tekstfarven (sort i lyst tema, lys i mørkt tema) og helt runde i enderne. Lilla er en accent, der kun bruges i agentens navn og prikkerne i toppen, i ikonerne ved de fire trin, i prikkerne i CV-sektionen og i figuren i værktøjssektionen.
 - Temakontakten i toppen viser sol og måne side om side, og det aktive tema er markeret.
 - Værktøjssektionen er en prikket flade med en stablet flise i midten (site/assets/stack.svg) og værktøjernes logoer i lyse app-ikoner rundt om. Logoerne ligger i site/assets/tools og kommer fra Iconify Logos og Simple Icons (CC0).
 - Illustrationer er rene vektorgrafikker (SVG). Memojien er den eneste figur. Ingen pixel-art og ingen detaljerede AI-genererede billeder.
 - Mobil først. Kontrast mindst WCAG AA. Synligt fokus på alle knapper og felter.
-- Hold animation på et minimum, og slå den fra ved prefers-reduced-motion.
+- Animation hører til i toppen: memojien svæver, agentens navn og beskrivelse glider ind, prikkerne lytter og taler, og puden i baren glider. Resten af siden holdes rolig. Al animation slås fra ved prefers-reduced-motion.
 
 ## Teknik
 

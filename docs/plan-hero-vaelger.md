@@ -1,10 +1,8 @@
 # Plan: Ny hero med memoji-vælger
 
-Status: fase 1 og 3 er bygget som testside (site/test-hero.html). Den rigtige forside er uændret.
+Status: færdig. Den nye hero er flyttet ind på forsiden (site/index.html), testsiden er slettet, og sektionen "Tre ting, jeg tager ansvar for" er fjernet. De gældende tekster står i docs/copy.md. Planen herunder er gemt som baggrund.
 
-Runde 2 efter Kaspers feedback: H1 er nu "Hey Kasper" med prikker, der lytter og taler. Knappen under memojien er fjernet, baren viser kun hoveder i en bue med en hvid pude og hover-effekt, hele toppen skifter farve, agentens navn og beskrivelse glider ind, og teksterne er skrevet skarpere om agenterne. Teksterne i afsnit 3 herunder er derfor forældede, og de gældende står i site/test-hero.html.
-
-Mangler: billedet til Landingpage (faldskærmen). Indtil det kommer, bruges den almindelige memoji som pladsholder.
+Mangler: billedet til Lead-agenten (faldskærmen). Indtil det kommer, bruges den almindelige memoji som pladsholder.
 
 ## 1. Hvad videoen gør
 
