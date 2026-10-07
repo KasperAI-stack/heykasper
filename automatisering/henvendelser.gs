@@ -171,7 +171,7 @@ function sendBeskedTilMig_(h) {
       'Virksomhed: ' + h.virksomhed + '\n' +
       'E-mail: ' + h.email + '\n' +
       'Telefon: ' + (h.telefon || 'ikke oplyst') + '\n\n' +
-      'Hey Kasper, byg os en Landing Page med fokus på:\n' + (h.besked || '(ikke udfyldt)') + '\n\n' +
+      'Hey Kasper, hjælp os med:\n' + (h.besked || '(ikke udfyldt)') + '\n\n' +
       'Svar direkte på denne mail for at skrive til ' + (h.navn || 'afsenderen') + '.\n' +
       'Alle henvendelser: ' + (ark ? ark.getParent().getUrl() : ''),
   });

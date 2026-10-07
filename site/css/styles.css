@@ -228,6 +228,8 @@ h1 {
 .split { display: grid; gap: 1rem 4rem; }
 .split h2 { margin: 0; }
 .split-text { color: var(--muted); font-size: 1.15rem; margin: 0; max-width: var(--read); }
+.split-text p { margin: 0 0 1rem; }
+.split-text p:last-child { margin-bottom: 0; }
 @media (min-width: 56rem) {
   .split { grid-template-columns: 1fr 1fr; align-items: start; }
   .split-text { margin-top: .5rem; }
