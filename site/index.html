@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hey Kasper | Jeres nye AI marketing manager</title>
-  <meta name="description" content="Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger løsningerne, der tager de marketingopgaver, I i dag løser i hånden hver uge.">
+  <meta name="description" content="Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter, der skriver opslag, mails og tekster og holder øje med annoncer og leads.">
   <link rel="canonical" href="https://hey-kasper.dk/">
   <meta property="og:url" content="https://hey-kasper.dk/">
   <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0F0E13" media="(prefers-color-scheme: dark)">
   <script>try { var t = localStorage.getItem("tema"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
   <meta property="og:title" content="Hey Kasper | Jeres nye AI marketing manager">
-  <meta property="og:description" content="Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger løsningerne, der tager de marketingopgaver, I i dag løser i hånden hver uge.">
+  <meta property="og:description" content="Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter, der skriver opslag, mails og tekster og holder øje med annoncer og leads.">
   <meta property="og:site_name" content="Hey Kasper">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://hey-kasper.dk/assets/og-image.jpg">
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://hey-kasper.dk/assets/og-image.jpg">
   <meta name="twitter:title" content="Hey Kasper | Jeres nye AI marketing manager">
-  <meta name="twitter:description" content="Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger løsningerne, der tager de marketingopgaver, I i dag løser i hånden hver uge.">
+  <meta name="twitter:description" content="Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter, der skriver opslag, mails og tekster og holder øje med annoncer og leads.">
   <meta property="og:locale" content="da_DK">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
@@ -62,7 +62,7 @@
         "@id": "https://hey-kasper.dk/#service",
         "name": "Hey Kasper",
         "url": "https://hey-kasper.dk/",
-        "description": "Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger løsningerne, der tager de marketingopgaver, I i dag løser i hånden hver uge.",
+        "description": "Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter, der skriver opslag, mails og tekster og holder øje med annoncer og leads.",
         "logo": "https://hey-kasper.dk/assets/favicon-512.png",
         "image": "https://hey-kasper.dk/assets/og-image.jpg",
         "email": "mailto:kasper@heyotto.dk",
@@ -71,11 +71,13 @@
         "inLanguage": "da-DK",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
-          "name": "Tre ting, jeg tager ansvar for",
+          "name": "AI-agenter til jeres marketing",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Analyse og rapportering" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landingpages og leadforms" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content-agent" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SoMe-agenten", "description": "Agenten skriver jeres opslag i jeres egen tone, så næste uges indhold ligger klar, før I har tænkt på det." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mail-agenten", "description": "Agenten skriver nyhedsbrevet, sender det og følger op på dem, der klikker." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Annonce-agenten", "description": "Hver uge får I at vide, hvilke Meta-annoncer der tjener penge, og hvilke der brænder dem af." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lead-agenten", "description": "Jeres landingpage får de besøgende til at skrive sig op, og agenten følger op på hvert lead, før det når at blive koldt." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tekst-agenten", "description": "Agenten skriver produkttekster og SEO-indhold i jeres tone og bliver ved, også når resten af huset holder fri." } }
           ]
         }
       }
@@ -102,38 +104,54 @@
   </header>
 
   <main id="indhold">
-    <!-- 1. Hero -->
-    <section class="hero">
-      <h1>Jeres nye AI marketing manager.</h1>
-      <p class="lede">Jeg hedder Kasper og bygger de AI-løsninger, der overtager jeres faste marketingopgaver, fra mandagsrapporten til opfølgningen på nye leads. Så kan I bruge tiden på det, der faktisk flytter noget.</p>
-      <a class="btn" href="#book">Book en snak på 30 minutter</a>
+    <!-- 1. Hero: "Hey Kasper, byg os lige …", og memojien viser den agent, man vælger i baren -->
+    <section class="hero hero-pick" data-glow="3">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <h1 class="hey"><span class="hero-eyebrow">Jeres nye AI marketing manager</span> <span class="hey-text"><span class="hey-line"><span class="hey-soft">Hey</span> Kasper,</span> <span class="hey-line"><span class="hey-soft">byg os lige</span><span class="hey-voice" aria-hidden="true"><i></i><i></i><i></i><i></i></span></span></span></h1>
 
-      <div class="showcase">
-        <img class="mascot" src="/assets/kasper-memoji.webp" srcset="/assets/kasper-memoji-360.webp 360w, /assets/kasper-memoji.webp 480w" sizes="(min-width: 40rem) 240px, 190px" alt="Kasper som memoji i sort t-shirt, smilende" width="240" height="321" fetchpriority="high">
-        <div class="frame frame-hero">
-          <nav class="pills" aria-label="Det kan jeg bygge">
-            <a class="pill" href="#produkter" data-tab="vis-analyse">Analyse og rapportering</a>
-            <a class="pill" href="#produkter" data-tab="vis-leads">Landingpages og leadforms</a>
-            <a class="pill" href="#produkter" data-tab="vis-content">Content-agent</a>
-          </nav>
-          <div class="window">
-            <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="chat">
-              <img class="avatar" src="/assets/jer.svg" alt="" width="44" height="44">
-              <div class="chat-body">
-                <p class="chat-name">Jer</p>
-                <p class="chat-text">Hey Kasper, byg os en landingpage med fokus på <span class="prompt-slot">[indsæt produkt]</span></p>
-              </div>
-            </div>
-            <div class="chat chat-reply">
-              <img class="avatar avatar-memoji" src="/assets/kasper-hoved.webp" alt="" width="44" height="44">
-              <div class="chat-body">
-                <p class="chat-name" translate="no">Kasper</p>
-                <span class="typing" aria-hidden="true"><i></i><i></i><i></i></span>
-              </div>
-            </div>
+      <div class="scene">
+        <div class="scene-items" data-swipe>
+          <div class="scene-item" id="vis-some" hidden>
+            <span class="scene-fig"><img class="scene-img" src="/assets/memoji/some.webp" alt="Kasper som memoji, der tager en selfie med en selfiestang og blinker" width="800" height="800" loading="lazy"></span>
+            <p class="scene-title">SoMe-agenten</p>
+            <p class="scene-text">Agenten skriver jeres opslag i jeres egen tone, så næste uges indhold ligger klar, før I har tænkt på det.</p>
+          </div>
+          <div class="scene-item" id="vis-mail" hidden>
+            <span class="scene-fig"><img class="scene-img" src="/assets/memoji/email.webp" alt="Kasper som memoji med en posttaske, klar til at kaste en lilla papirflyver" width="800" height="800" loading="lazy"></span>
+            <p class="scene-title">Mail-agenten</p>
+            <p class="scene-text">Nyhedsbrevet, der altid bliver skubbet, kommer endelig ud. Agenten skriver det, sender det og følger op på dem, der klikker.</p>
+          </div>
+          <div class="scene-item" id="vis-annoncer">
+            <span class="scene-fig"><img class="scene-img" src="/assets/memoji/annoncer.webp" alt="Kasper som memoji med detektivhat, der kigger gennem en stor lup" width="800" height="800" fetchpriority="high"></span>
+            <p class="scene-title">Annonce-agenten</p>
+            <p class="scene-text">Hver uge får I at vide, hvilke Meta-annoncer der tjener penge, og hvilke der brænder dem af.</p>
+          </div>
+          <div class="scene-item" id="vis-lead" hidden>
+            <span class="scene-fig"><img class="scene-img" src="/assets/memoji/landingpage.webp" alt="Kasper som memoji, der svæver ned i en lilla faldskærm med en bærbar computer i hånden" width="800" height="800" loading="lazy"></span>
+            <p class="scene-title">Lead-agenten</p>
+            <p class="scene-text">Jeres landingpage får de besøgende til at skrive sig op, og agenten følger op på hvert lead, før det når at blive koldt.</p>
+          </div>
+          <div class="scene-item" id="vis-tekst" hidden>
+            <span class="scene-fig"><img class="scene-img" src="/assets/memoji/tekster.webp" alt="Kasper som memoji, der løber på et løbebånd og skriver på en bærbar computer" width="800" height="800" loading="lazy"></span>
+            <p class="scene-title">Tekst-agenten</p>
+            <p class="scene-text">Agenten skriver produkttekster og SEO-indhold i jeres tone og bliver ved, også når resten af huset holder fri.</p>
           </div>
         </div>
+        <p class="visually-hidden" aria-live="polite" data-scene-live></p>
+      </div>
+
+      <p class="picker-hint" data-picker-hint hidden>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10"/><path d="M12 9.5a1.5 1.5 0 0 1 3 0V11"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1a5 5 0 0 1-4.2-2.3L4.5 15a1.5 1.5 0 0 1 2.4-1.8L9 15"/><path d="M4 4.5l2 1M3.5 8h2"/></svg>
+        <span class="hint-touch">Stryg for at vælge en agent</span><span class="hint-mouse">Vælg en agent herunder</span>
+      </p>
+      <div class="picker" role="group" aria-label="Vælg en agent" data-picker hidden>
+        <span class="picker-band" aria-hidden="true"></span>
+        <span class="picker-pill" aria-hidden="true"></span>
+        <button class="pick" type="button" data-show="vis-some" data-glow="1" aria-label="SoMe-agenten" aria-pressed="false"><img src="/assets/memoji/some-hoved.webp" alt="" width="56" height="56"></button>
+        <button class="pick" type="button" data-show="vis-mail" data-glow="2" aria-label="Mail-agenten" aria-pressed="false"><img src="/assets/memoji/email-hoved.webp" alt="" width="56" height="56"></button>
+        <button class="pick" type="button" data-show="vis-annoncer" data-glow="3" aria-label="Annonce-agenten" aria-pressed="true"><img src="/assets/memoji/annoncer-hoved.webp" alt="" width="56" height="56"></button>
+        <button class="pick" type="button" data-show="vis-lead" data-glow="4" aria-label="Lead-agenten" aria-pressed="false"><img src="/assets/memoji/landingpage-hoved.webp" alt="" width="56" height="56"></button>
+        <button class="pick" type="button" data-show="vis-tekst" data-glow="5" aria-label="Tekst-agenten" aria-pressed="false"><img src="/assets/memoji/tekster-hoved.webp" alt="" width="56" height="56"></button>
       </div>
     </section>
 
@@ -146,90 +164,7 @@
       </div>
     </section>
 
-    <!-- 3. Produkterne -->
-    <section class="section" id="produkter" aria-labelledby="produkter-titel">
-      <h2 class="center" id="produkter-titel">Tre ting, jeg tager ansvar for</h2>
-
-      <div class="tabs">
-        <button class="tab" type="button" data-show="vis-analyse" aria-pressed="true">
-          <span class="tab-head">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20h16M7 16v-4M12 16V8M17 16v-7"/></svg>
-            Analyse og rapportering
-          </span>
-          <span class="tab-text">En agent, der samler jeres data og fortæller jer, hvad der virker, hvad der ikke gør, og hvor I skal sætte ind. Så kan mandagsmødet bruges på at beslutte, hvad I gør, i stedet for at samle tallene.</span>
-        </button>
-        <button class="tab" type="button" data-show="vis-leads" aria-pressed="false">
-          <span class="tab-head">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h4"/></svg>
-            Landingpages og leadforms
-          </span>
-          <span class="tab-text">En side bygget til at konvertere, med automatisering bagved, så leads bliver sorteret og fulgt op uden manuelt arbejde. Så bliver ingen henvendelse kold i en indbakke, mens I sidder til møde.</span>
-        </button>
-        <button class="tab" type="button" data-show="vis-content" aria-pressed="false">
-          <span class="tab-head">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg>
-            Content-agent
-          </span>
-          <span class="tab-text">Produkttekster, SEO-indhold og opslag skrevet i jeres tone, så I kan producere mere uden at ansætte flere. I får et udkast, der lyder som jer, så ingen skal starte på en tom side.</span>
-        </button>
-      </div>
-
-      <div class="stage" aria-hidden="true">
-        <!-- Analyse: rapport med graf og nøglekort -->
-        <div class="app" id="vis-analyse">
-          <div class="app-bar"><span></span><span></span><span></span><i></i></div>
-          <div class="app-body">
-            <div class="app-side"><b class="on"></b><b></b><b></b><em></em><b></b><b></b></div>
-            <div class="app-main">
-              <div class="sk-title"></div>
-              <div class="kpis"><div></div><div></div><div></div></div>
-              <div class="bars">
-                <span style="--h: 35%"></span><span style="--h: 52%"></span><span style="--h: 44%"></span><span style="--h: 63%"></span>
-                <span style="--h: 58%"></span><span style="--h: 76%"></span><span style="--h: 70%"></span><span style="--h: 88%"></span>
-              </div>
-            </div>
-          </div>
-          <div class="toast"><span class="dot"></span><span class="sk"></span></div>
-        </div>
-        <!-- Landingpages: side med formular og liste over leads -->
-        <div class="app" id="vis-leads" hidden>
-          <div class="app-bar"><span></span><span></span><span></span><i></i></div>
-          <div class="app-body">
-            <div class="app-side"><b></b><b class="on"></b><b></b><em></em><b></b></div>
-            <div class="app-main">
-              <div class="sk-title"></div>
-              <div class="leads">
-                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c1"></span></div>
-                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c2"></span></div>
-                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c1"></span></div>
-                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c3"></span></div>
-                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c2"></span></div>
-              </div>
-            </div>
-          </div>
-          <div class="toast"><span class="dot"></span><span class="sk"></span></div>
-        </div>
-        <!-- Content: tekst under udarbejdelse -->
-        <div class="app" id="vis-content" hidden>
-          <div class="app-bar"><span></span><span></span><span></span><i></i></div>
-          <div class="app-body">
-            <div class="app-side"><b></b><b></b><b class="on"></b><em></em><b></b><b></b></div>
-            <div class="app-main">
-              <div class="sk-title"></div>
-              <div class="doc">
-                <span class="w100"></span><span class="w90"></span><span class="w95"></span><span class="hl w70"></span>
-                <span class="w100"></span><span class="w80"></span><span class="w60 cursor"></span>
-              </div>
-            </div>
-          </div>
-          <div class="toast"><span class="dot"></span><span class="sk"></span></div>
-        </div>
-      </div>
-
-      <p class="center muted after-stage">Ved I ikke, hvor jeg skal starte? Det finder vi ud af sammen på det første møde.</p>
-    </section>
-
-    <!-- 4. Sådan foregår det -->
+    <!-- 3. Sådan foregår det -->
     <section class="section process" aria-labelledby="proces-titel">
       <h2 id="proces-titel">Sådan foregår det</h2>
       <ol class="steps">
@@ -257,7 +192,7 @@
       <p class="muted small process-note">Samarbejdsformen aftaler vi på det første møde. Værktøjerne oprettes på jeres egne konti, så I ejer det hele.</p>
     </section>
 
-    <!-- 5. Om mig -->
+    <!-- 4. Om mig -->
     <section class="section about" aria-labelledby="om-titel">
       <div class="about-figure">
         <img class="memoji-about" src="/assets/kasper-peger.svg" alt="Kasper som memoji i sort t-shirt og lyse jeans, der blinker og peger på jer" width="459" height="1000" loading="lazy" decoding="async">
@@ -269,7 +204,7 @@
       </div>
     </section>
 
-    <!-- 6. CV -->
+    <!-- 5. CV -->
     <section class="section cv" id="cv" aria-labelledby="cv-titel">
       <div class="cv-head">
         <h2 id="cv-titel">Mit CV</h2>

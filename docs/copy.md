@@ -4,36 +4,32 @@ Tekst i firkantede parenteser er pladsholdere.
 
 ## Hero
 
-Overskrift: Jeres nye AI marketing manager.
-Undertekst: Jeg hedder Kasper og bygger de AI-løsninger, der overtager jeres faste marketingopgaver, fra mandagsrapporten til opfølgningen på nye leads. Så kan I bruge tiden på det, der faktisk flytter noget.
-Knap: Book en snak på 30 minutter
+Lille linje (står inde i h1): Jeres nye AI marketing manager
+Overskrift (h1): Hey Kasper, byg os lige … (prikkerne er animerede)
+Hjælpetekst over baren: Stryg for at vælge en agent (mobil) / Vælg en agent herunder (computer)
 
-## Chatvinduet i hero
+Agenterne i baren, fra venstre. Den midterste er valgt, når siden åbner.
 
-Afsender: Jer (neutral avatar)
-Besked: Hey Kasper, byg os en landingpage med fokus på [indsæt produkt]
-Svar: Kasper (med memojiens hoved) er ved at skrive, vist som tre prikker.
+SoMe-agenten
+Agenten skriver jeres opslag i jeres egen tone, så næste uges indhold ligger klar, før I har tænkt på det.
+
+Mail-agenten
+Nyhedsbrevet, der altid bliver skubbet, kommer endelig ud. Agenten skriver det, sender det og følger op på dem, der klikker.
+
+Annonce-agenten
+Hver uge får I at vide, hvilke Meta-annoncer der tjener penge, og hvilke der brænder dem af.
+
+Lead-agenten
+Jeres landingpage får de besøgende til at skrive sig op, og agenten følger op på hvert lead, før det når at blive koldt.
+
+Tekst-agenten
+Agenten skriver produkttekster og SEO-indhold i jeres tone og bliver ved, også når resten af huset holder fri.
 
 ## Problemet
 
 Overskrift: I ved godt, at AI kan klare mere af jeres marketing
 Tekst: Men der sidder ingen i huset, som både kender marketingen og kan bygge løsningerne. Så tallene til mandagsrapporten bliver stadig samlet i hånden, og henvendelsen fra hjemmesiden ligger og venter, til nogen får tid.
 Tekst: Den rolle vil jeg gerne tage hos jer.
-
-## Produkterne
-
-Overskrift: Tre ting, jeg tager ansvar for
-
-Analyse og rapportering
-En agent, der samler jeres data og fortæller jer, hvad der virker, hvad der ikke gør, og hvor I skal sætte ind. Så kan mandagsmødet bruges på at beslutte, hvad I gør, i stedet for at samle tallene.
-
-Landingpages og leadforms
-En side bygget til at konvertere, med automatisering bagved, så leads bliver sorteret og fulgt op uden manuelt arbejde. Så bliver ingen henvendelse kold i en indbakke, mens I sidder til møde.
-
-Content-agent
-Produkttekster, SEO-indhold og opslag skrevet i jeres tone, så I kan producere mere uden at ansætte flere. I får et udkast, der lyder som jer, så ingen skal starte på en tom side.
-
-Afslutning: Ved I ikke, hvor jeg skal starte? Det finder vi ud af sammen på det første møde.
 
 ## Sådan foregår det
 
@@ -124,6 +120,6 @@ Hey Kasper v/ Kasper Schrøder Asmussen, kasper@heyotto.dk, +45 22 46 38 40, Lin
 ## Meta (vises i Google og ved deling)
 
 Forside, titel: Hey Kasper | Jeres nye AI marketing manager
-Forside, beskrivelse: Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger løsningerne, der tager de marketingopgaver, I i dag løser i hånden hver uge.
+Forside, beskrivelse: Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter, der skriver opslag, mails og tekster og holder øje med annoncer og leads.
 Tak-siden, titel: Tak for jeres besked | Hey Kasper
 Tak-siden, beskrivelse: Tak for jeres besked til Kasper. Jeg vender tilbage inden for en arbejdsdag, så vi kan finde et tidspunkt, der passer jer.
