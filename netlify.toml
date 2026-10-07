@@ -1,12 +1,23 @@
 [build]
   publish = "site"
 
+# Én redirect fra http://www i stedet for to (http -> https -> uden www)
+[[redirects]]
+  from = "http://www.hey-kasper.dk/*"
+  to = "https://hey-kasper.dk/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Kun rapportering indtil videre (se konsollen i browseren). Skift til Content-Security-Policy, når den er testet live.
+    # Hashen er det lille tema-script i <head>. Ændres scriptet, skal hashen beregnes igen.
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'sha256-WaAKXHuIv9tyz+vMQ0g7WJ9OlUaXnYbd86B8r3s8AU4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
 
 [[headers]]
   for = "/assets/*"
