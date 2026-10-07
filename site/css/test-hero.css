@@ -1,119 +1,197 @@
-/* Testside: ny hero med memoji-vælger. Flyttes ind i styles.css, når den er godkendt. */
+/* Testside: "Hey Kasper" og agent-vælgeren i toppen. Flyttes ind i styles.css, når den er godkendt. */
 
-/* Farven på lysskæret kan glide fra én lilla tone til den næste */
+/* Farven på baggrunden kan glide fra én agent til den næste */
 @property --glow { syntax: "<color>"; inherits: true; initial-value: #4C1D95; }
 
-/* Lysskærets toner. Dyb violet er for mørk på mørk baggrund, så to af dem bytter plads i mørkt tema. */
-:root { --g3: var(--p-deep); --g5: var(--s2); --glow-mix: 30%; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --g3: var(--s2); --g5: var(--p-deep); --glow-mix: 42%; }
+/* Agenternes toner. Dyb violet er for mørk på mørk baggrund, så to af dem bytter plads i mørkt tema. */
+:root {
+  --g3: var(--p-deep); --g5: var(--s2);
+  --wash-a: 30%; --wash-b: 10%;
+  --band-bg: #EEECF3;
+  --pill-bg: #FFFFFF;
+  --pill-shadow: 0 8px 22px rgb(15 14 19 / .14), 0 1px 3px rgb(15 14 19 / .08);
 }
-:root[data-theme="dark"] { --g3: var(--s2); --g5: var(--p-deep); --glow-mix: 42%; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --g3: var(--s2); --g5: var(--p-deep);
+    --wash-a: 40%; --wash-b: 14%;
+    --band-bg: #1E1C24;
+    --pill-bg: #3B3845;
+    --pill-shadow: 0 8px 22px rgb(0 0 0 / .45);
+  }
+}
+:root[data-theme="dark"] {
+  --g3: var(--s2); --g5: var(--p-deep);
+  --wash-a: 40%; --wash-b: 14%;
+  --band-bg: #1E1C24;
+  --pill-bg: #3B3845;
+  --pill-shadow: 0 8px 22px rgb(0 0 0 / .45);
+}
 
 .visually-hidden {
   position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-.hero-pick { padding-top: 1.75rem; padding-bottom: 3.5rem; }
-@media (min-width: 40rem) { .hero-pick { padding-top: 2.75rem; } }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 .75rem;
-  color: var(--muted); font-size: .95rem; font-weight: 500;
-}
-.hero-eyebrow img { border-radius: 7px; }
-.hero-pick h1 { font-size: clamp(2.3rem, 7.5vw, 4.5rem); max-width: 12ch; margin-bottom: .75rem; }
-@media (min-width: 56rem) { .hero-pick h1 { max-width: none; } }
-
-/* Scenen: memojien, titel, sætning og knap */
-.scene {
-  --fig: min(62vw, 23rem, 38svh);
+/* Hele toppen skifter farve efter den valgte agent */
+.hero-pick {
   --glow: var(--g3);
-  position: relative; width: 100%; max-width: 34rem;
-  display: flex; flex-direction: column; align-items: center;
-  transition: --glow .5s ease;
+  position: relative; isolation: isolate; overflow: clip;
+  padding-top: 1.75rem; padding-bottom: 1.5rem;
+  transition: --glow .6s ease;
 }
-.scene[data-glow="1"] { --glow: var(--s3); }
-.scene[data-glow="2"] { --glow: var(--s1); }
-.scene[data-glow="3"] { --glow: var(--g3); }
-.scene[data-glow="4"] { --glow: var(--s4); }
-.scene[data-glow="5"] { --glow: var(--g5); }
+.hero-pick[data-glow="1"] { --glow: var(--s3); }
+.hero-pick[data-glow="2"] { --glow: var(--s1); }
+.hero-pick[data-glow="3"] { --glow: var(--g3); }
+.hero-pick[data-glow="4"] { --glow: var(--s4); }
+.hero-pick[data-glow="5"] { --glow: var(--g5); }
+@media (min-width: 40rem) { .hero-pick { padding-top: 2.75rem; } }
+.hero-wash {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(75% 60% at 50% 45%,
+    color-mix(in srgb, var(--glow) var(--wash-a), transparent) 0%,
+    color-mix(in srgb, var(--glow) var(--wash-b), transparent) 55%,
+    transparent 100%);
+}
+.hero-eyebrow { margin: 0 0 .25rem; color: var(--muted); font-size: .95rem; font-weight: 500; }
 
-/* Lilla lysskær med svage stråler bag memojien */
-.scene-glow {
+/* "Hey Kasper" med prikker, der lytter, og som taler, når Kasper svarer */
+.hey {
+  display: inline-flex; align-items: center; gap: .3em; max-width: none; margin: 0;
+  font-size: clamp(2.75rem, 11vw, 4.75rem); font-weight: 600; letter-spacing: -.045em; line-height: 1.05;
+}
+.hey-hey { font-weight: 400; color: var(--muted); }
+.hey-text { animation: hey-in .8s cubic-bezier(.2, .8, .2, 1) both; }
+.hey-voice { display: inline-flex; align-items: center; gap: .09em; height: .5em; animation: hey-in .6s .5s ease both; }
+.hey-voice i {
+  display: block; width: .13em; height: .13em; border-radius: 99px;
+  animation: hey-listen 1.8s ease-in-out infinite;
+}
+.hey-voice i:nth-child(1) { background: var(--s1); animation-delay: 0s; }
+.hey-voice i:nth-child(2) { background: var(--s2); animation-delay: .14s; }
+.hey-voice i:nth-child(3) { background: var(--s3); animation-delay: .28s; }
+.hey-voice i:nth-child(4) { background: var(--s4); animation-delay: .42s; }
+.hey.is-talking .hey-voice i { animation: hey-talk .32s ease-in-out infinite alternate; }
+.hey.is-talking .hey-voice i:nth-child(2) { animation-delay: -.12s; }
+.hey.is-talking .hey-voice i:nth-child(3) { animation-delay: -.24s; }
+.hey.is-talking .hey-voice i:nth-child(4) { animation-delay: -.06s; }
+@keyframes hey-in { from { opacity: 0; filter: blur(10px); transform: translateY(.15em); } to { opacity: 1; filter: none; transform: none; } }
+@keyframes hey-listen { 0%, 55%, 100% { transform: translateY(0); } 25% { transform: translateY(-.14em); } }
+@keyframes hey-talk { from { height: .13em; } to { height: .46em; } }
+
+/* Scenen: memojien, agentens navn og beskrivelse */
+.scene {
+  --fig: min(64vw, 22rem, 34svh);
+  position: relative; width: 100%; max-width: 34rem; margin-top: .5rem;
+}
+.scene-rays {
   position: absolute; z-index: 0; left: 50%; top: calc(var(--fig) / 2);
-  width: calc(var(--fig) * 1.7); aspect-ratio: 1; translate: -50% -50%;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--glow) var(--glow-mix), transparent) 0%, transparent 100%);
-  pointer-events: none;
+  width: calc(var(--fig) * 2.3); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
+  background: repeating-conic-gradient(color-mix(in srgb, var(--glow) 18%, transparent) 0deg 3deg, transparent 3deg 11deg);
+  -webkit-mask: radial-gradient(closest-side, #000 18%, transparent 80%);
+  mask: radial-gradient(closest-side, #000 18%, transparent 80%);
+  animation: rays-turn 90s linear infinite; pointer-events: none;
 }
-.scene-glow::before {
-  content: ""; position: absolute; inset: 0; border-radius: 50%;
-  background: repeating-conic-gradient(color-mix(in srgb, var(--glow) 12%, transparent) 0deg 4deg, transparent 4deg 14deg);
-  -webkit-mask: radial-gradient(closest-side, #000 25%, transparent 90%);
-  mask: radial-gradient(closest-side, #000 25%, transparent 90%);
-}
+@keyframes rays-turn { to { rotate: 1turn; } }
 
-/* Alle muligheder ligger oven på hinanden, så højden ikke hopper, når man skifter */
-.scene-items { position: relative; z-index: 1; display: grid; width: 100%; touch-action: pan-y; }
+/* Alle agenter ligger oven på hinanden, så højden ikke hopper, når man skifter */
+.scene-items { position: relative; z-index: 1; display: grid; touch-action: pan-y; }
 .scene-item { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; }
 .scene-item.is-off { visibility: hidden; }
 .scene-item.is-out { pointer-events: none; }
+.scene-fig { display: block; animation: fig-float 3.6s ease-in-out infinite; }
 .scene-img {
-  width: var(--fig); height: var(--fig); object-fit: contain;
+  display: block; width: var(--fig); height: var(--fig); object-fit: contain;
   -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
 }
-.scene-title {
-  margin: .25rem 0 .35rem; font-size: clamp(1.45rem, 5vw, 2rem); font-weight: 600;
-  line-height: 1.1; letter-spacing: -.03em; max-width: 18ch;
-}
-.scene-text { margin: 0; max-width: 28rem; color: var(--muted); font-size: 1rem; line-height: 1.5; }
-@media (min-width: 40rem) { .scene-title { max-width: none; } .scene-text { font-size: 1.05rem; } }
-.scene .btn { position: relative; z-index: 1; margin-top: 1.25rem; }
+@keyframes fig-float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-9px) rotate(-1deg); } }
 
-/* Skiftet: den nye memoji popper ind, og den gamle toner ud */
-.scene-item.is-in .scene-img { animation: scene-pop .5s cubic-bezier(.34, 1.56, .64, 1) both; }
-.scene-item.is-in .scene-title,
-.scene-item.is-in .scene-text { animation: scene-fade-in .35s ease both; }
+.scene-title {
+  --tint: color-mix(in srgb, var(--glow) 78%, var(--ink));
+  margin: .35rem 0 .35rem; color: var(--tint);
+  font-size: clamp(2.1rem, 9vw, 3.4rem); font-weight: 700; line-height: 1.05; letter-spacing: -.045em;
+}
+.scene-text { margin: 0 auto; max-width: 25rem; color: var(--muted); font-size: 1rem; line-height: 1.5; }
+@media (min-width: 40rem) { .scene-text { font-size: 1.1rem; max-width: 29rem; } }
+.scene-title .wd, .scene-text .wd { display: inline-block; }
+.scene-title .wd { white-space: nowrap; }
+.scene-title .ch { display: inline-block; }
+
+/* Skiftet: memojien popper ind, navnet glider ind bogstav for bogstav, og beskrivelsen kommer ord for ord */
+.scene-item.is-in .scene-img { animation: scene-pop .55s cubic-bezier(.34, 1.56, .64, 1) both; }
+.scene-item.is-in .ch { animation: ch-in .5s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--d) * 28ms + 80ms); }
+.scene-item.is-in .scene-text .wd { animation: wd-in .45s ease both; animation-delay: calc(var(--d) * 32ms + 320ms); }
 .scene-item.is-out .scene-img,
 .scene-item.is-out .scene-title,
-.scene-item.is-out .scene-text { animation: scene-fade-out .2s ease both; }
+.scene-item.is-out .scene-text { animation: scene-out .22s ease both; }
 @keyframes scene-pop {
-  from { opacity: 0; transform: scale(.82) translateY(12px); filter: blur(6px); }
+  from { opacity: 0; transform: scale(.8) translateY(14px); filter: blur(8px); }
   to { opacity: 1; transform: none; filter: none; }
 }
-@keyframes scene-fade-in { from { opacity: 0; filter: blur(4px); } to { opacity: 1; filter: none; } }
-@keyframes scene-fade-out { to { opacity: 0; transform: scale(.94); filter: blur(4px); } }
+@keyframes ch-in { from { opacity: 0; transform: translateY(.4em) scale(.9); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes wd-in { from { opacity: 0; transform: translateY(5px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes scene-out { to { opacity: 0; transform: scale(.94); filter: blur(6px); } }
 
-/* Baren med mulighederne. Knapperne yderst ligger lidt lavere, så baren ser buet ud. */
+/* Hjælpetekst over baren. Mobil viser "stryg", computer viser "vælg". */
+.picker-hint {
+  display: inline-flex; align-items: center; gap: .4rem; margin: 1.25rem 0 0;
+  color: var(--muted); font-size: .9rem;
+}
+.hint-mouse { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .hint-touch { display: none; }
+  .hint-mouse { display: inline; }
+}
+
+/* Den buede bar. Knapperne følger buen (JavaScript regner deres plads ud), og den hvide pude glider hen til den valgte. */
 .picker {
-  position: relative; display: flex; width: 100%; max-width: 34rem; margin-top: 1.75rem; padding: .4rem .4rem .7rem;
-  background: var(--soft); border: 1px solid var(--line); border-radius: 1.75rem;
+  --bw: 3.9rem; --bh: 3.15rem; --gap: .3rem; --band: 70px; --ro: 470px;
+  position: relative; display: flex; justify-content: center; gap: var(--gap);
+  width: calc(100% + 2 * var(--gutter)); margin: .4rem calc(var(--gutter) * -1) 0;
+  height: calc(var(--band) + 3rem); padding-top: calc((var(--band) - var(--bh)) / 2);
+  touch-action: pan-y;
 }
+@media (min-width: 40rem) { .picker { --bw: 5rem; --bh: 3.6rem; --gap: .6rem; --band: 84px; --ro: 640px; } }
+.picker-band {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle var(--ro) at 50% var(--ro),
+    transparent calc(var(--ro) - var(--band) - 1px), var(--band-bg) calc(var(--ro) - var(--band)),
+    var(--band-bg) calc(var(--ro) - 1px), transparent var(--ro));
+  /* Buen toner ud mod siderne og i bunden, så den aldrig bliver skåret skarpt af */
+  -webkit-mask: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent), linear-gradient(#000 55%, transparent);
+  -webkit-mask-composite: source-in;
+  mask: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent) intersect, linear-gradient(#000 55%, transparent);
+}
+@media (min-width: 40rem) { .picker-band { left: 50%; right: auto; width: min(100%, 46rem); translate: -50% 0; } }
 .picker-pill {
-  position: absolute; z-index: 0; left: 0; top: 0;
-  width: var(--pw, 0); height: var(--ph, 0); transform: translate(var(--px, 0), var(--py, 0));
-  background: var(--ink); border-radius: 1.35rem; box-shadow: 0 6px 18px rgb(15 14 19 / .18);
-  transition: transform .4s cubic-bezier(.34, 1.3, .64, 1), width .4s ease, height .4s ease;
+  position: absolute; z-index: 0; left: 0; top: 0; width: var(--bw); height: var(--bh);
+  transform: translate(var(--px, 0), var(--py, 0)) rotate(var(--prot, 0deg));
+  background: var(--pill-bg); border-radius: 1.5rem; box-shadow: var(--pill-shadow);
+  transition: transform .45s cubic-bezier(.34, 1.25, .64, 1);
 }
+.picker-pill.is-moving { animation: pill-stretch .45s ease; }
+@keyframes pill-stretch { 0% { scale: 1 1; } 35% { scale: 1.4 .86; } 70% { scale: .96 1.05; } 100% { scale: 1 1; } }
+
 .pick {
-  position: relative; z-index: 1; flex: 1 1 0; min-width: 0;
-  display: flex; flex-direction: column; align-items: center; gap: .35rem;
-  padding: .55rem .15rem .6rem; border: 0; border-radius: 1.35rem; background: none;
-  font: inherit; font-size: .75rem; font-weight: 500; line-height: 1.15; color: var(--muted);
-  hyphens: manual; cursor: pointer; transition: color .25s;
+  position: relative; z-index: 1; flex: none; width: var(--bw); height: var(--bh);
+  display: grid; place-items: center; padding: 0; border: 0; border-radius: 1.5rem; background: none; cursor: pointer;
+  transform: translateY(var(--dy, 0)) rotate(var(--rot, 0deg));
 }
-.pick:nth-of-type(1), .pick:nth-of-type(5) { translate: 0 .4rem; }
-.pick:nth-of-type(2), .pick:nth-of-type(4) { translate: 0 .1rem; }
 .pick img {
-  width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--tile); object-fit: cover;
-  transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+  width: calc(var(--bh) - .5rem); height: calc(var(--bh) - .5rem);
+  opacity: .62; filter: saturate(.4); scale: .9;
+  transition: opacity .3s, filter .3s, scale .4s cubic-bezier(.34, 1.56, .64, 1), translate .4s cubic-bezier(.34, 1.56, .64, 1), rotate .4s cubic-bezier(.34, 1.56, .64, 1);
 }
-.pick:hover { color: var(--ink); }
-.pick[aria-pressed="true"] { color: var(--bg); }
-.pick[aria-pressed="true"] img { transform: scale(1.12); }
-@media (min-width: 40rem) { .pick { font-size: .8rem; } .pick img { width: 3rem; height: 3rem; } }
+.pick[aria-pressed="true"] img { opacity: 1; filter: none; scale: 1.06; }
+/* Hover: hovedet hopper op, vipper og får farve */
+@media (hover: hover) {
+  .pick:hover img { opacity: 1; filter: none; scale: 1.22; translate: 0 -7px; rotate: -7deg; }
+  .pick[aria-pressed="true"]:hover img { scale: 1.16; translate: 0 -4px; rotate: 5deg; }
+}
+.pick:active img { scale: .95; translate: 0; }
 
 @media (prefers-reduced-motion: reduce) {
-  .scene-item.is-in *, .scene-item.is-out * { animation: none !important; }
+  .hey-text, .hey-voice, .hey-voice i, .scene-rays, .scene-fig,
+  .scene-item.is-in *, .scene-item.is-out *, .picker-pill.is-moving { animation: none !important; }
   .scene-item.is-out { visibility: hidden; }
 }
