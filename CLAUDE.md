@@ -12,7 +12,7 @@ En personlig landingpage for Kasper Schrøder Asmussen, der præsenterer sig som
 - Logo: vektorgrafikken site/assets/logo.svg ("hey" i en tynd serif og "Kasper" i en fed skrift) med gennemsigtig baggrund. Den er mørk i lyst tema og bliver vendt til lys i mørkt tema. Står ved siden af memojiens hoved (favicon) i toppen og i footeren med "v/ Kasper Schrøder Asmussen".
 - Overskrift (h1): en lille linje med "Jeres nye AI marketing manager" og under den "Hey Kasper, byg os lige …", hvor fire lilla prikker lytter og taler ligesom "Hey Siri". Den lille linje står inde i h1, så Google kan se, hvad siden handler om.
 - Koncept: En moderne konsulentside i sort, grå og lilla, med lyst og mørkt tema. Ordene er jordnære, og alt, hvad der står, er let at forstå.
-- Figur: Kaspers memoji med gennemsigtig baggrund. I toppen står memojien i fem situationer, én for hver agent (site/assets/memoji/), og hovederne fra de samme billeder er knapperne i baren. Hele figuren (site/assets/kasper-memoji-hel.webp) står på tak-siden, og hovedet på lilla gradient er ikon (favicon.svg og apple-touch-icon.png). Et rigtigt foto af Kasper bruges i "Om mig".
+- Figur: Kaspers memoji med gennemsigtig baggrund. Kasper optræder kun som memoji, aldrig på rigtige fotos. I toppen står memojien i fem situationer, én for hver agent (site/assets/memoji/), og hovederne fra de samme billeder er knapperne i baren. Hele figuren (site/assets/kasper-memoji-hel.webp) står på tak-siden og 404-siden, og hovedet på lilla gradient er ikon (favicon.svg og apple-touch-icon.png). I "Hvem bygger det?" står den pegende og blinkende memoji (site/assets/kasper-peger.svg) på en rolig flade, og i bookingsektionen ("Hvilke opgaver skal I slippe for først?") sidder den mediterende memoji (site/assets/kasper-meditation.svg). Begge er SVG med gennemsigtig baggrund.
 
 ## Sprog og tone
 
@@ -35,7 +35,7 @@ Se docs/tilbud.md. Trin og produkter skal stå præcis som der. Siden viser inge
 1. Hero: "Hey Kasper, byg os lige …", memojien og en buet bar med fem agenter (SoMe, mail, annoncer, leads og tekster). Hver agent har et navn og én eller to sætninger. Booking ligger i knappen i toppen.
 2. Problemet
 3. Sådan foregår det: de fire trin med priser
-4. Om mig
+4. Hvem bygger det? (om Kasper)
 5. CV: stillinger, resultater og uddannelse fra Kaspers LinkedIn
 6. Værktøjer: de værktøjer, Kasper bygger med
 7. Workshops og oplæring
@@ -66,7 +66,7 @@ Lilla accenter:
 
 Regler:
 
-- Skrift: Geist fra Google Fonts til både overskrifter og brødtekst. Store overskrifter med stram afstand mellem bogstaverne.
+- Skrift: Geist til både overskrifter og brødtekst. Skriften ligger selv på siden (site/fonts/geist-latin.woff2, SIL Open Font License), så der ikke hentes noget fra Google Fonts. Store overskrifter med stram afstand mellem bogstaverne.
 - Grid: Siden står i en ramme af tynde lodrette linjer, og sektionerne er adskilt af vandrette linjer med små plus-mærker, hvor linjerne mødes. De fire trin står i kolonner adskilt af gridlinjer, hver med et lille lysende ikon og en titel, hvor trinnets navn er fedt og prisen dæmpet.
 - Toppen har et neutralt gitter af tynde, grå linjer bag memojien og ingen farvet baggrund. Agenterne vælges i en buet bar, hvor den valgte ligger i en hvid, hævet pude (den eneste vælger, der ikke er i tekstfarven). Agentens navn står stort i sin egen lilla tone.
 - Sort, grå og hvid bærer siden. Knapper, valgte faner og vælgere er i tekstfarven (sort i lyst tema, lys i mørkt tema) og helt runde i enderne. Lilla er en accent, der kun bruges i agentens navn og prikkerne i toppen, i ikonerne ved de fire trin, i prikkerne i CV-sektionen og i figuren i værktøjssektionen.
@@ -84,7 +84,9 @@ Regler:
 - Kontaktsektionen har en knap, der skifter mellem "Send en forespørgsel" (formularen) og "Book en tid" (link til Kaspers gratis bookingside i Google Kalender). Bookingsiden linkes og indlejres ikke, så Google ikke sætter cookies på siden.
 - Automatisering: Netlify sender hver formular videre til et Google Apps Script (automatisering/henvendelser.gs), som gemmer den i et Google Sheet, mailer Kasper, sender et automatisk svar og sender en daglig påmindelse om ubesvarede henvendelser. Opsætningen står i docs/automatisering.md. Mappen automatisering/ kommer ikke online.
 - Ingen tracking eller cookies uden samtykke. Hvis der skal måles trafik, brug en cookiefri løsning og spørg Kasper først.
-- Billeder komprimeres og får altid en alt-tekst.
+- Billeder komprimeres og får altid en alt-tekst. Billeder under folden får loading="lazy".
+- Delingsbillede: site/assets/og-image.jpg (1200x630). Strukturerede data (JSON-LD) står i <head> på forsiden og må kun indeholde oplysninger, der også står på siden.
+- Domænet er https://hey-kasper.dk/ (med bindestreg). heykasper.dk uden bindestreg er et andet site, så canonical, og:url, robots.txt og sitemap skal altid pege på hey-kasper.dk.
 
 ## Arbejdsgang
 

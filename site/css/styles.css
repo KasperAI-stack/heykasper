@@ -1,4 +1,15 @@
 /* Roligt konsulentdesign i sort, grå og lilla, med lyst og mørkt tema. */
+
+/* Geist ligger selv på siden (variabel skrift, vægt 400 til 700, latinske tegn inkl. æøå).
+   Licens: SIL Open Font License, se /fonts/OFL.txt. */
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/geist-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 :root {
   /* Neutrale: Onyx, Grafit, Skifer, Sølvgrå og Tåge. Lyst tema er standard. */
   --bg: #FFFFFF;
@@ -14,6 +25,8 @@
   --tile: #FFFFFF;
   --logo-filter: none;
   --accent: #7C3AED;
+  --figure-glow: #FFFFFF;
+  --figure-shadow: none;
   --s1: #7C3AED; --s2: #9333EA; --s3: #C026D3; --s4: #DB2777;
   /* Hero: agenternes toner, buen og puden i baren */
   --g3: var(--p-deep); --g5: var(--s2);
@@ -53,6 +66,8 @@
   --tile: #F4F2F8;
   --logo-filter: invert(1);
   --accent: #F472B6;
+  --figure-glow: #4A4656;
+  --figure-shadow: drop-shadow(0 0 1.25rem rgb(167 163 178 / .28));
   --s1: #8B5CF6; --s2: #A855F7; --s3: #D946EF; --s4: #F472B6;
   --g3: var(--s2); --g5: var(--p-deep);
   --band-bg: #1E1C24;
@@ -75,6 +90,8 @@
   --tile: #F4F2F8;
   --logo-filter: invert(1);
   --accent: #F472B6;
+  --figure-glow: #4A4656;
+  --figure-shadow: drop-shadow(0 0 1.25rem rgb(167 163 178 / .28));
   --s1: #8B5CF6; --s2: #A855F7; --s3: #D946EF; --s4: #F472B6;
   --g3: var(--s2); --g5: var(--p-deep);
   --band-bg: #1E1C24;
@@ -96,6 +113,8 @@ body {
   overflow-x: clip;
 }
 img { max-width: 100%; }
+a, button, input, textarea, label { touch-action: manipulation; }
+html { -webkit-tap-highlight-color: rgb(124 58 237 / .15); }
 a { color: inherit; text-underline-offset: 3px; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 p { margin: 0 0 1rem; }
@@ -129,7 +148,7 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
   position: absolute; left: var(--gutter); top: -4rem; z-index: 10;
   background: var(--ink); color: var(--bg); padding: .6rem 1rem; border-radius: 999px; text-decoration: none;
 }
-.skip:focus { top: 1rem; }
+.skip:focus-visible { top: 1rem; }
 
 /* Top */
 .topbar {
@@ -154,6 +173,11 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
 .btn:disabled { opacity: .6; cursor: progress; transform: none; }
 .btn-small { font-size: .9rem; padding: .6rem 1.1rem; white-space: nowrap; }
 .top-actions { display: flex; align-items: center; gap: .5rem; flex: none; }
+/* Små knapper i toppen får et usynligt trykområde på mindst 44 px på mobil */
+.theme-toggle, .btn-small { position: relative; }
+@media (pointer: coarse) {
+  .theme-toggle::after, .btn-small::after { content: ""; position: absolute; inset: -6px; }
+}
 @media (max-width: 26rem) {
   .brand .logo { height: 1.1rem; }
   .brand { gap: .45rem; }
@@ -367,6 +391,8 @@ h1 {
 .split { display: grid; gap: 1rem 4rem; }
 .split h2 { margin: 0; }
 .split-text { color: var(--muted); font-size: 1.15rem; margin: 0; max-width: var(--read); }
+.split-text p { margin: 0 0 1rem; }
+.split-text p:last-child { margin-bottom: 0; }
 @media (min-width: 56rem) {
   .split { grid-template-columns: 1fr 1fr; align-items: start; }
   .split-text { margin-top: .5rem; }
@@ -406,8 +432,14 @@ h1 {
 
 /* Om */
 .about { display: grid; gap: 2.5rem; align-items: center; }
-.frame-photo { width: min(100%, 22rem); padding: .6rem; background: var(--soft); border: 1px solid var(--line); }
-.photo { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 16px; }
+/* Den pegende memoji står på en rolig flade med en blød lysning bag figuren, så den står frem i begge temaer */
+.about-figure {
+  width: min(100%, 18rem); margin-inline: auto; padding: 2rem 1.5rem 1.5rem;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: radial-gradient(circle at 50% 42%, var(--figure-glow) 0%, var(--soft) 68%);
+}
+.memoji-about { display: block; width: auto; height: 20rem; margin-inline: auto; }
+@media (min-width: 52rem) { .about-figure { width: 22rem; margin-inline: 0; } }
 .about-text { max-width: var(--read); min-width: 0; }
 .about-text p { color: var(--muted); }
 @media (min-width: 52rem) {
@@ -491,7 +523,7 @@ h1 {
 @media (min-width: 36rem) { .form-row { grid-template-columns: 1fr 1fr; } }
 .form label { display: grid; gap: .4rem; font-weight: 500; font-size: .95rem; }
 .form input, .form textarea {
-  font: inherit; color: var(--ink); background: var(--soft); width: 100%;
+  font: inherit; font-size: 1rem; color: var(--ink); background: var(--soft); width: 100%;
   border: 1.5px solid var(--rail); border-radius: 10px; padding: .75rem .9rem;
   transition: border-color .15s;
 }
@@ -512,6 +544,12 @@ h1 {
 }
 .switch-btn:hover { color: var(--ink); }
 .switch-btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+/* Den mediterende memoji: over overskriften på smalle skærme, ved siden af formularen på brede */
+.contact { position: relative; }
+.memoji-contact { display: block; width: 9rem; height: auto; margin: 0 auto 1.25rem; filter: var(--figure-shadow); }
+@media (min-width: 90rem) {
+  .memoji-contact { position: absolute; right: var(--gutter); bottom: 5rem; width: 12rem; margin: 0; }
+}
 .contact-mode + .contact-mode { margin-top: 3rem; }
 .js-switch .contact-mode + .contact-mode { margin-top: 0; }
 
@@ -541,6 +579,9 @@ h1 {
 /* Tak-siden */
 .thanks { min-height: 75vh; justify-content: center; padding-bottom: 5rem; }
 .thanks .mascot { width: 140px; height: auto; margin: 0 0 1.5rem; }
+.actions-404 { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--rail); }
+.btn-ghost:hover { color: var(--ink); background: var(--hover); }
 .thanks h1 { font-size: clamp(2.25rem, 6vw, 4rem); }
 
 @media (prefers-reduced-motion: reduce) {

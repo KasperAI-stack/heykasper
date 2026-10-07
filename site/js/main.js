@@ -1,13 +1,18 @@
 // Siden virker uden JavaScript. Dette er kun små forbedringer.
 
-// Forhindrer dobbelt afsendelse af formularen.
-document.querySelectorAll("form[data-netlify]").forEach(function (form) {
+// Forhindrer dobbelt afsendelse af formularen. Netlify fjerner data-netlify ved deploy, så formularen findes på navnet.
+document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
+  var button = form.querySelector('button[type="submit"]');
+  if (!button) return;
+  var label = button.textContent;
   form.addEventListener("submit", function () {
-    var button = form.querySelector('button[type="submit"]');
-    if (button) {
-      button.disabled = true;
-      button.textContent = "Sender";
-    }
+    button.disabled = true;
+    button.textContent = "Sender…";
+  });
+  // Går man tilbage til siden (fx fra en fejl), skal knappen kunne bruges igen.
+  window.addEventListener("pageshow", function () {
+    button.disabled = false;
+    button.textContent = label;
   });
 });
 
@@ -201,6 +206,10 @@ if (toggle) {
     var dark = current() === "dark";
     toggle.setAttribute("data-active", dark ? "dark" : "light");
     toggle.setAttribute("aria-label", dark ? "Skift til lyst tema" : "Skift til mørkt tema");
+    // Browserens farve (adresselinjen på mobil) følger det valgte tema.
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+      meta.setAttribute("content", dark ? "#0F0E13" : "#FFFFFF");
+    });
   };
   toggle.hidden = false;
   render();
