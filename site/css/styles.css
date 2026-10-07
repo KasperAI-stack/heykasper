@@ -25,6 +25,8 @@
   --tile: #FFFFFF;
   --logo-filter: none;
   --accent: #7C3AED;
+  --figure-glow: #FFFFFF;
+  --figure-shadow: none;
   --s1: #7C3AED; --s2: #9333EA; --s3: #C026D3; --s4: #DB2777;
   color-scheme: light;
   --rail-inset: clamp(.75rem, 3vw, 2.5rem);
@@ -59,6 +61,8 @@
   --tile: #F4F2F8;
   --logo-filter: invert(1);
   --accent: #F472B6;
+  --figure-glow: #4A4656;
+  --figure-shadow: drop-shadow(0 0 1.25rem rgb(167 163 178 / .28));
   --s1: #8B5CF6; --s2: #A855F7; --s3: #D946EF; --s4: #F472B6;
   color-scheme: dark;
   }
@@ -77,6 +81,8 @@
   --tile: #F4F2F8;
   --logo-filter: invert(1);
   --accent: #F472B6;
+  --figure-glow: #4A4656;
+  --figure-shadow: drop-shadow(0 0 1.25rem rgb(167 163 178 / .28));
   --s1: #8B5CF6; --s2: #A855F7; --s3: #D946EF; --s4: #F472B6;
   color-scheme: dark;
 }
@@ -364,8 +370,14 @@ h1 {
 
 /* Om */
 .about { display: grid; gap: 2.5rem; align-items: center; }
-.frame-photo { width: min(100%, 22rem); padding: .6rem; background: var(--soft); border: 1px solid var(--line); }
-.photo { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 16px; }
+/* Den mediterende memoji sidder på en rolig flade med en blød lysning bag figuren, så den står frem i begge temaer */
+.about-figure {
+  width: min(100%, 18rem); margin-inline: auto; padding: 2rem 1.5rem 1.5rem;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: radial-gradient(circle at 50% 42%, var(--figure-glow) 0%, var(--soft) 68%);
+}
+.memoji-meditation { display: block; width: 100%; height: auto; }
+@media (min-width: 52rem) { .about-figure { width: 22rem; margin-inline: 0; } }
 .about-text { max-width: var(--read); min-width: 0; }
 .about-text p { color: var(--muted); }
 @media (min-width: 52rem) {
@@ -470,6 +482,12 @@ h1 {
 }
 .switch-btn:hover { color: var(--ink); }
 .switch-btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+/* Den pegende memoji: over overskriften på smalle skærme, ved siden af formularen på brede */
+.contact { position: relative; }
+.memoji-peger { display: block; width: 6.5rem; height: auto; margin: 0 auto 1.25rem; filter: var(--figure-shadow); }
+@media (min-width: 80rem) {
+  .memoji-peger { position: absolute; right: var(--gutter); bottom: 5rem; width: 10.5rem; margin: 0; }
+}
 .contact-mode + .contact-mode { margin-top: 3rem; }
 .js-switch .contact-mode + .contact-mode { margin-top: 0; }
 
