@@ -1,6 +1,8 @@
 # Plan: Ny hero med memoji-vælger
 
-Status: forslag. Intet er bygget endnu, og den nuværende hero på siden er uændret.
+Status: fase 1 og 3 er bygget som testside (site/test-hero.html). Den rigtige forside er uændret.
+
+Mangler: billedet til Landingpage (faldskærmen). Indtil det kommer, bruges den almindelige memoji som pladsholder.
 
 ## 1. Hvad videoen gør
 

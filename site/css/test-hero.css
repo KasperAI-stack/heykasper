@@ -1,0 +1,119 @@
+/* Testside: ny hero med memoji-vælger. Flyttes ind i styles.css, når den er godkendt. */
+
+/* Farven på lysskæret kan glide fra én lilla tone til den næste */
+@property --glow { syntax: "<color>"; inherits: true; initial-value: #4C1D95; }
+
+/* Lysskærets toner. Dyb violet er for mørk på mørk baggrund, så to af dem bytter plads i mørkt tema. */
+:root { --g3: var(--p-deep); --g5: var(--s2); --glow-mix: 30%; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --g3: var(--s2); --g5: var(--p-deep); --glow-mix: 42%; }
+}
+:root[data-theme="dark"] { --g3: var(--s2); --g5: var(--p-deep); --glow-mix: 42%; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.hero-pick { padding-top: 1.75rem; padding-bottom: 3.5rem; }
+@media (min-width: 40rem) { .hero-pick { padding-top: 2.75rem; } }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 .75rem;
+  color: var(--muted); font-size: .95rem; font-weight: 500;
+}
+.hero-eyebrow img { border-radius: 7px; }
+.hero-pick h1 { font-size: clamp(2.3rem, 7.5vw, 4.5rem); max-width: 12ch; margin-bottom: .75rem; }
+@media (min-width: 56rem) { .hero-pick h1 { max-width: none; } }
+
+/* Scenen: memojien, titel, sætning og knap */
+.scene {
+  --fig: min(62vw, 23rem, 38svh);
+  --glow: var(--g3);
+  position: relative; width: 100%; max-width: 34rem;
+  display: flex; flex-direction: column; align-items: center;
+  transition: --glow .5s ease;
+}
+.scene[data-glow="1"] { --glow: var(--s3); }
+.scene[data-glow="2"] { --glow: var(--s1); }
+.scene[data-glow="3"] { --glow: var(--g3); }
+.scene[data-glow="4"] { --glow: var(--s4); }
+.scene[data-glow="5"] { --glow: var(--g5); }
+
+/* Lilla lysskær med svage stråler bag memojien */
+.scene-glow {
+  position: absolute; z-index: 0; left: 50%; top: calc(var(--fig) / 2);
+  width: calc(var(--fig) * 1.7); aspect-ratio: 1; translate: -50% -50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--glow) var(--glow-mix), transparent) 0%, transparent 100%);
+  pointer-events: none;
+}
+.scene-glow::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: repeating-conic-gradient(color-mix(in srgb, var(--glow) 12%, transparent) 0deg 4deg, transparent 4deg 14deg);
+  -webkit-mask: radial-gradient(closest-side, #000 25%, transparent 90%);
+  mask: radial-gradient(closest-side, #000 25%, transparent 90%);
+}
+
+/* Alle muligheder ligger oven på hinanden, så højden ikke hopper, når man skifter */
+.scene-items { position: relative; z-index: 1; display: grid; width: 100%; touch-action: pan-y; }
+.scene-item { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; }
+.scene-item.is-off { visibility: hidden; }
+.scene-item.is-out { pointer-events: none; }
+.scene-img {
+  width: var(--fig); height: var(--fig); object-fit: contain;
+  -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+}
+.scene-title {
+  margin: .25rem 0 .35rem; font-size: clamp(1.45rem, 5vw, 2rem); font-weight: 600;
+  line-height: 1.1; letter-spacing: -.03em; max-width: 18ch;
+}
+.scene-text { margin: 0; max-width: 28rem; color: var(--muted); font-size: 1rem; line-height: 1.5; }
+@media (min-width: 40rem) { .scene-title { max-width: none; } .scene-text { font-size: 1.05rem; } }
+.scene .btn { position: relative; z-index: 1; margin-top: 1.25rem; }
+
+/* Skiftet: den nye memoji popper ind, og den gamle toner ud */
+.scene-item.is-in .scene-img { animation: scene-pop .5s cubic-bezier(.34, 1.56, .64, 1) both; }
+.scene-item.is-in .scene-title,
+.scene-item.is-in .scene-text { animation: scene-fade-in .35s ease both; }
+.scene-item.is-out .scene-img,
+.scene-item.is-out .scene-title,
+.scene-item.is-out .scene-text { animation: scene-fade-out .2s ease both; }
+@keyframes scene-pop {
+  from { opacity: 0; transform: scale(.82) translateY(12px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes scene-fade-in { from { opacity: 0; filter: blur(4px); } to { opacity: 1; filter: none; } }
+@keyframes scene-fade-out { to { opacity: 0; transform: scale(.94); filter: blur(4px); } }
+
+/* Baren med mulighederne. Knapperne yderst ligger lidt lavere, så baren ser buet ud. */
+.picker {
+  position: relative; display: flex; width: 100%; max-width: 34rem; margin-top: 1.75rem; padding: .4rem .4rem .7rem;
+  background: var(--soft); border: 1px solid var(--line); border-radius: 1.75rem;
+}
+.picker-pill {
+  position: absolute; z-index: 0; left: 0; top: 0;
+  width: var(--pw, 0); height: var(--ph, 0); transform: translate(var(--px, 0), var(--py, 0));
+  background: var(--ink); border-radius: 1.35rem; box-shadow: 0 6px 18px rgb(15 14 19 / .18);
+  transition: transform .4s cubic-bezier(.34, 1.3, .64, 1), width .4s ease, height .4s ease;
+}
+.pick {
+  position: relative; z-index: 1; flex: 1 1 0; min-width: 0;
+  display: flex; flex-direction: column; align-items: center; gap: .35rem;
+  padding: .55rem .15rem .6rem; border: 0; border-radius: 1.35rem; background: none;
+  font: inherit; font-size: .75rem; font-weight: 500; line-height: 1.15; color: var(--muted);
+  hyphens: manual; cursor: pointer; transition: color .25s;
+}
+.pick:nth-of-type(1), .pick:nth-of-type(5) { translate: 0 .4rem; }
+.pick:nth-of-type(2), .pick:nth-of-type(4) { translate: 0 .1rem; }
+.pick img {
+  width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--tile); object-fit: cover;
+  transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+.pick:hover { color: var(--ink); }
+.pick[aria-pressed="true"] { color: var(--bg); }
+.pick[aria-pressed="true"] img { transform: scale(1.12); }
+@media (min-width: 40rem) { .pick { font-size: .8rem; } .pick img { width: 3rem; height: 3rem; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-item.is-in *, .scene-item.is-out * { animation: none !important; }
+  .scene-item.is-out { visibility: hidden; }
+}

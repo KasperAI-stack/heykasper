@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Testside til den nye hero. Den skal ikke findes af Google, og den slettes, når heroen flyttes ind i index.html. -->
+  <meta name="robots" content="noindex">
+  <title>Hey Kasper | Jeres nye AI marketing manager</title>
+  <meta name="description" content="Jeg hedder Kasper og er jeres nye AI marketing manager. Jeg kombinerer marketing og AI, så jeres opgaver bliver løst hurtigere og bedre.">
+  <meta property="og:url" content="https://heykasper.dk/">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F0E13" media="(prefers-color-scheme: dark)">
+  <script>try { var t = localStorage.getItem("tema"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
+  <meta property="og:title" content="Hey Kasper | Jeres nye AI marketing manager">
+  <meta property="og:description" content="Jeg hedder Kasper og er jeres nye AI marketing manager. Jeg kombinerer marketing og AI, så jeres opgaver bliver løst hurtigere og bedre.">
+  <meta property="og:site_name" content="Hey Kasper">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hey Kasper | Jeres nye AI marketing manager">
+  <meta name="twitter:description" content="Jeg hedder Kasper og er jeres nye AI marketing manager. Jeg kombinerer marketing og AI, så jeres opgaver bliver løst hurtigere og bedre.">
+  <meta property="og:locale" content="da_DK">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/assets/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/test-hero.css">
+</head>
+<body>
+  <a class="skip" href="#indhold">Gå til indholdet</a>
+
+  <div class="page">
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Hey Kasper, til forsiden">
+      <img class="brand-mark" src="/assets/favicon.svg" alt="" width="28" height="28">
+      <img class="logo" src="/assets/logo.svg" alt="" width="404" height="85">
+    </a>
+    <div class="top-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle hidden aria-label="Skift tema">
+        <span class="t-opt t-sun"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></span>
+        <span class="t-opt t-moon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span>
+      </button>
+      <a class="btn btn-small" href="#book">Book en snak</a>
+    </div>
+  </header>
+
+  <main id="indhold">
+    <!-- 1. Hero: vælg en opgave, og memojien viser, hvad Kasper kan bygge -->
+    <section class="hero hero-pick">
+      <p class="hero-eyebrow"><img src="/assets/favicon.svg" alt="" width="22" height="22"> Jeres nye AI marketing manager</p>
+      <h1>Hvad vil I bygge i dag?</h1>
+
+      <div class="scene" data-glow="3">
+        <div class="scene-glow" aria-hidden="true"></div>
+        <div class="scene-items" data-swipe>
+          <div class="scene-item" id="vis-some" hidden>
+            <img class="scene-img" src="/assets/memoji/some.webp" alt="Kasper som memoji, der tager en selfie med en selfiestang og blinker" width="800" height="800" loading="lazy">
+            <p class="scene-title">En SoMe-agent</p>
+            <p class="scene-text">Jeg bygger en agent, der skriver opslag i jeres tone, så I altid har noget klar til næste uge.</p>
+          </div>
+          <div class="scene-item" id="vis-email" hidden>
+            <img class="scene-img" src="/assets/memoji/email.webp" alt="Kasper som memoji med en posttaske, klar til at kaste en lilla papirflyver" width="800" height="800" loading="lazy">
+            <p class="scene-title">En e-mailkampagne</p>
+            <p class="scene-text">Jeg skriver kampagnen og sætter den op, så den når de rigtige modtagere og følger op af sig selv.</p>
+          </div>
+          <div class="scene-item" id="vis-annoncer">
+            <img class="scene-img" src="/assets/memoji/annoncer.webp" alt="Kasper som memoji med detektivhat, der kigger gennem en stor lup" width="800" height="800" fetchpriority="high">
+            <p class="scene-title">Analyse af ugens Meta-annoncer</p>
+            <p class="scene-text">I får et overblik over, hvad der virkede, hvad der ikke gjorde, og hvor I skal sætte ind.</p>
+          </div>
+          <div class="scene-item" id="vis-landingpage" hidden>
+            <img class="scene-img" src="/assets/memoji/landingpage.webp" alt="Kasper som memoji i sort t-shirt, smilende" width="800" height="800" loading="lazy">
+            <p class="scene-title">En landingpage med leadform</p>
+            <p class="scene-text">En side bygget til at konvertere, hvor leads bliver sorteret og fulgt op uden manuelt arbejde.</p>
+          </div>
+          <div class="scene-item" id="vis-tekster" hidden>
+            <img class="scene-img" src="/assets/memoji/tekster.webp" alt="Kasper som memoji, der løber på et løbebånd og skriver på en bærbar computer" width="800" height="800" loading="lazy">
+            <p class="scene-title">Produkttekster og SEO</p>
+            <p class="scene-text">Jeg skriver tekster i jeres tone, så I kan producere mere uden at ansætte flere.</p>
+          </div>
+        </div>
+        <p class="visually-hidden" aria-live="polite" data-scene-live></p>
+        <a class="btn" href="#book" data-focus="besked" data-scene-cta>Book en snak om det</a>
+      </div>
+
+      <div class="picker" role="group" aria-label="Vælg en opgave" data-picker hidden>
+        <span class="picker-pill" aria-hidden="true"></span>
+        <button class="pick" type="button" data-show="vis-some" data-glow="1" data-lead="Hey Kasper, byg os en SoMe-agent med fokus på …" aria-pressed="false">
+          <img src="/assets/memoji/some-hoved.webp" alt="" width="56" height="56">
+          <span>SoMe-agent</span>
+        </button>
+        <button class="pick" type="button" data-show="vis-email" data-glow="2" data-lead="Hey Kasper, byg os en e-mailkampagne med fokus på …" aria-pressed="false">
+          <img src="/assets/memoji/email-hoved.webp" alt="" width="56" height="56">
+          <span>E-mail</span>
+        </button>
+        <button class="pick" type="button" data-show="vis-annoncer" data-glow="3" data-lead="Hey Kasper, analysér vores Meta-annoncer med fokus på …" aria-pressed="true">
+          <img src="/assets/memoji/annoncer-hoved.webp" alt="" width="56" height="56">
+          <span>Meta-annoncer</span>
+        </button>
+        <button class="pick" type="button" data-show="vis-landingpage" data-glow="4" data-lead="Hey Kasper, byg os en Landing Page med fokus på …" aria-pressed="false">
+          <img src="/assets/memoji/landingpage-hoved.webp" alt="" width="56" height="56">
+          <span>Landing&shy;page</span>
+        </button>
+        <button class="pick" type="button" data-show="vis-tekster" data-glow="5" data-lead="Hey Kasper, skriv vores produkttekster med fokus på …" aria-pressed="false">
+          <img src="/assets/memoji/tekster-hoved.webp" alt="" width="56" height="56">
+          <span>Produkt&shy;tekster</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. Problemet -->
+    <section class="section split" aria-labelledby="problem-titel">
+      <h2 id="problem-titel">I ved godt, at AI kan løfte jeres marketing</h2>
+      <p class="split-text">Men I har ikke nogen i huset, der både forstår marketing og kan bygge løsningerne. Derfor bliver de samme opgaver ved med at blive løst i hånden, uge efter uge. Det er netop den rolle, jeg gerne vil tage hos jer.</p>
+    </section>
+
+    <!-- 3. Produkterne -->
+    <section class="section" id="produkter" aria-labelledby="produkter-titel">
+      <h2 class="center" id="produkter-titel">Tre ting, jeg tager ansvar for</h2>
+
+      <div class="tabs">
+        <button class="tab" type="button" data-show="vis-analyse" aria-pressed="true">
+          <span class="tab-head">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 20h16M7 16v-4M12 16V8M17 16v-7"/></svg>
+            Analyse og rapportering
+          </span>
+          <span class="tab-text">En agent, der samler jeres data og fortæller jer, hvad der virker, hvad der ikke gør, og hvor I skal sætte ind.</span>
+        </button>
+        <button class="tab" type="button" data-show="vis-leads" aria-pressed="false">
+          <span class="tab-head">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h4"/></svg>
+            Landingpages og leadforms
+          </span>
+          <span class="tab-text">En side bygget til at konvertere, med automatisering bagved, så leads bliver sorteret og fulgt op uden manuelt arbejde.</span>
+        </button>
+        <button class="tab" type="button" data-show="vis-content" aria-pressed="false">
+          <span class="tab-head">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13 7l4 4"/></svg>
+            Content-agent
+          </span>
+          <span class="tab-text">Produkttekster, SEO-indhold og opslag skrevet i jeres tone, så I kan producere mere uden at ansætte flere.</span>
+        </button>
+      </div>
+
+      <div class="stage" aria-hidden="true">
+        <!-- Analyse: rapport med graf og nøglekort -->
+        <div class="app" id="vis-analyse">
+          <div class="app-bar"><span></span><span></span><span></span><i></i></div>
+          <div class="app-body">
+            <div class="app-side"><b class="on"></b><b></b><b></b><em></em><b></b><b></b></div>
+            <div class="app-main">
+              <div class="sk-title"></div>
+              <div class="kpis"><div></div><div></div><div></div></div>
+              <div class="bars">
+                <span style="--h: 35%"></span><span style="--h: 52%"></span><span style="--h: 44%"></span><span style="--h: 63%"></span>
+                <span style="--h: 58%"></span><span style="--h: 76%"></span><span style="--h: 70%"></span><span style="--h: 88%"></span>
+              </div>
+            </div>
+          </div>
+          <div class="toast"><span class="dot"></span><span class="sk"></span></div>
+        </div>
+        <!-- Landingpages: side med formular og liste over leads -->
+        <div class="app" id="vis-leads" hidden>
+          <div class="app-bar"><span></span><span></span><span></span><i></i></div>
+          <div class="app-body">
+            <div class="app-side"><b></b><b class="on"></b><b></b><em></em><b></b></div>
+            <div class="app-main">
+              <div class="sk-title"></div>
+              <div class="leads">
+                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c1"></span></div>
+                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c2"></span></div>
+                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c1"></span></div>
+                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c3"></span></div>
+                <div class="lead"><span class="av"></span><span class="sk"></span><span class="chip c2"></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="toast"><span class="dot"></span><span class="sk"></span></div>
+        </div>
+        <!-- Content: tekst under udarbejdelse -->
+        <div class="app" id="vis-content" hidden>
+          <div class="app-bar"><span></span><span></span><span></span><i></i></div>
+          <div class="app-body">
+            <div class="app-side"><b></b><b></b><b class="on"></b><em></em><b></b><b></b></div>
+            <div class="app-main">
+              <div class="sk-title"></div>
+              <div class="doc">
+                <span class="w100"></span><span class="w90"></span><span class="w95"></span><span class="hl w70"></span>
+                <span class="w100"></span><span class="w80"></span><span class="w60 cursor"></span>
+              </div>
+            </div>
+          </div>
+          <div class="toast"><span class="dot"></span><span class="sk"></span></div>
+        </div>
+      </div>
+
+      <p class="center muted after-stage">Ved I ikke, hvor jeg skal starte? Det finder vi ud af sammen på det første møde.</p>
+    </section>
+
+    <!-- 4. Sådan foregår det -->
+    <section class="section process" aria-labelledby="proces-titel">
+      <h2 id="proces-titel">Sådan foregår det</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4.5 3.5V16H4z"/><path d="M8.5 10.5h7"/></svg></span>
+          <h3 class="step-title"><strong>Afklaring</strong>, 30 minutter.</h3>
+          <p class="step-text">Vi tager en snak og finder den opgave i jeres marketing, hvor AI gør størst forskel.</p>
+        </li>
+        <li>
+          <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5l1.9 4.6 4.6 1.9-4.6 1.9L11 16.5l-1.9-4.6L4.5 10l4.6-1.9z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
+          <h3 class="step-title"><strong>Prøveopgave</strong>, gratis.</h3>
+          <p class="step-text">Jeg bygger en fungerende løsning på en lille del af jeres egne data, så I kan se, hvordan jeg arbejder.</p>
+        </li>
+        <li>
+          <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+          <h3 class="step-title"><strong>Opstart</strong>, de første uger.</h3>
+          <p class="step-text">Jeg bygger løsningen færdig, kobler den på jeres systemer og lærer jeres team at bruge den.</p>
+        </li>
+        <li>
+          <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg></span>
+          <h3 class="step-title"><strong>Hverdag</strong>, løbende.</h3>
+          <p class="step-text">Jeg holder løsningerne kørende, forbedrer dem og finder hele tiden den næste opgave, AI kan løse for jer.</p>
+        </li>
+      </ol>
+      <p class="muted small process-note">Hvordan vi samarbejder, finder vi ud af sammen. Værktøjerne oprettes på jeres egne konti, så I ejer det hele.</p>
+    </section>
+
+    <!-- 5. Om mig -->
+    <section class="section about" aria-labelledby="om-titel">
+      <div class="frame frame-photo">
+        <img class="photo" src="/assets/kasper.jpg" alt="Kasper Schrøder Asmussen" width="320" height="320" onerror="this.closest('.frame').remove()">
+      </div>
+      <div class="about-text">
+        <h2 id="om-titel">Hvem er jeg?</h2>
+        <p>Jeg hedder Kasper Schrøder Asmussen og har en kandidat i Marketing &amp; Brand Management. Jeg har arbejdet med marketing i både B2B og B2C, og i dag bygger jeg AI-drevne marketingsystemer, SEO og automatiseringer.</p>
+        <p>Jeg tror på, at AI skal gøre hverdagen lettere og ikke mere kompliceret. Derfor starter jeg altid med noget lille, som I kan se virke, og bygger videre derfra.</p>
+      </div>
+    </section>
+
+    <!-- 6. CV -->
+    <section class="section cv" id="cv" aria-labelledby="cv-titel">
+      <div class="cv-head">
+        <h2 id="cv-titel">Mit CV</h2>
+        <p class="muted">Her er de steder, jeg har arbejdet med marketing, og hvad jeg fik ud af det. Hele profilen ligger på <a href="https://www.linkedin.com/in/kasperasmussen/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      </div>
+      <ol class="cv-list">
+        <li class="cv-item">
+          <p class="cv-when">Aug. 2026 til nu</p>
+          <div class="cv-body">
+            <h3 class="cv-role"><strong>AI Marketing Manager</strong>, Africa Tours ApS</h3>
+            <p class="cv-type">Fuldtid</p>
+          </div>
+        </li>
+        <li class="cv-item">
+          <p class="cv-when">Aug. 2024 til aug. 2026</p>
+          <div class="cv-body">
+            <h3 class="cv-role"><strong>Marketing Koordinator</strong>, VoiceArchive</h3>
+            <p class="cv-type">Fuldtid</p>
+            <ul class="cv-points">
+              <li>Fik fokus flyttet fra alle kunder til de få, der passer bedst (ICP).</li>
+              <li>Account Based Marketing med 12 gange ROI.</li>
+              <li>LinkedIn Ads til thought leadership og leadgenerering.</li>
+              <li>Google Ads, hvor søgevisningsandelen steg fra 17 til 40 %.</li>
+              <li>Et AI-drevet SEO-flow, der flyttede den gennemsnitlige placering fra 30 til 10.</li>
+              <li>320 landingpages produceret automatisk med n8n og programmatisk SEO.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="cv-item">
+          <p class="cv-when">Nov. 2023 til aug. 2024</p>
+          <div class="cv-body">
+            <h3 class="cv-role"><strong>Marketing Koordinator</strong>, Poetype</h3>
+            <p class="cv-type">Fuldtid</p>
+            <ul class="cv-points">
+              <li>5 fysiske events med 260 deltagere i alt.</li>
+              <li>5 webinarer med 600 deltagere.</li>
+              <li>12 podcastepisoder, der nåede top 2 på marketinghitlisten.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="cv-item">
+          <p class="cv-when">Maj 2021 til jul. 2023</p>
+          <div class="cv-body">
+            <h3 class="cv-role"><strong>Konsulent</strong>, Cand</h3>
+            <p class="cv-type">Deltid</p>
+            <ul class="cv-points">
+              <li>Hjalp virksomheder på projektbasis med brandstrategi og udvikling af webshops.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="cv-item">
+          <p class="cv-when">Uddannelse</p>
+          <div class="cv-body">
+            <h3 class="cv-role"><strong>Kandidat</strong> i Marketing &amp; Brand Management</h3>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Værktøjer -->
+    <section class="section tools" aria-labelledby="tools-titel">
+      <h2 class="center" id="tools-titel">De værktøjer, jeg bygger med</h2>
+      <p class="center lede-small">Jeg vælger værktøjerne efter opgaven, og løsningerne bliver oprettet på jeres egne konti, så I ejer det hele.</p>
+      <div class="tools-stage">
+        <img class="tools-stack" src="/assets/stack.svg" alt="" width="320" height="300">
+        <ul class="tool-list">
+          <li class="tool t1"><span class="tool-tile"><img src="/assets/tools/claude.svg" alt="" width="34" height="34"></span><span class="tool-name">Claude</span></li>
+          <li class="tool t2"><span class="tool-tile"><img src="/assets/tools/n8n.svg" alt="" width="34" height="34"></span><span class="tool-name">n8n</span></li>
+          <li class="tool t3"><span class="tool-tile"><img src="/assets/tools/vscode.svg" alt="" width="34" height="34"></span><span class="tool-name">VS Code</span></li>
+          <li class="tool t4"><span class="tool-tile"><img src="/assets/tools/lovable.svg" alt="" width="34" height="34"></span><span class="tool-name">Lovable</span></li>
+          <li class="tool t5"><span class="tool-tile"><img src="/assets/tools/google-cloud.svg" alt="" width="34" height="34"></span><span class="tool-name">Google Cloud</span></li>
+          <li class="tool t6"><span class="tool-tile"><img src="/assets/tools/github.svg" alt="" width="34" height="34"></span><span class="tool-name">GitHub</span></li>
+          <li class="tool t7"><span class="tool-tile"><img src="/assets/tools/netlify.svg" alt="" width="34" height="34"></span><span class="tool-name">Netlify</span></li>
+          <li class="tool t8"><span class="tool-tile"><img src="/assets/tools/google-sheets.svg" alt="" width="34" height="34"></span><span class="tool-name">Google Sheets</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Workshops og oplæring -->
+    <section class="section" aria-labelledby="workshop-titel">
+      <div class="panel">
+        <h2 id="workshop-titel">Skal resten af teamet også med?</h2>
+        <p>Ud over at bygge løsningerne holder jeg workshops for teams og giver individuel oplæring, så hele marketingafdelingen kan bruge AI i sin egen hverdag.</p>
+      </div>
+    </section>
+
+    <!-- Book et møde -->
+    <section class="section contact" id="book" aria-labelledby="book-titel">
+      <h2 class="center big" id="book-titel">Lad os tage en snak</h2>
+
+      <div class="switch" data-contact-switch hidden>
+        <button type="button" class="switch-btn" data-mode="forespoergsel" aria-pressed="true">Send en forespørgsel</button>
+        <button type="button" class="switch-btn" data-mode="booking" aria-pressed="false">Book en tid</button>
+      </div>
+
+      <div class="contact-mode" data-panel="forespoergsel">
+        <p class="center lede-small">Skriv lidt om jer, så vender jeg tilbage inden for en arbejdsdag.</p>
+        <div class="frame frame-form">
+        <form class="form" name="kontakt" method="POST" action="/tak.html" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="kontakt">
+          <p class="hidden"><label>Udfyld ikke dette felt <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="form-row">
+            <label for="navn">Navn<input id="navn" type="text" name="navn" autocomplete="name" required></label>
+            <label for="virksomhed">Virksomhed<input id="virksomhed" type="text" name="virksomhed" autocomplete="organization" required></label>
+          </div>
+          <div class="form-row">
+            <label for="email">E-mail<input id="email" type="email" name="email" autocomplete="email" required></label>
+            <label for="telefon">Telefon (valgfrit)<input id="telefon" type="tel" name="telefon" autocomplete="tel"></label>
+          </div>
+          <label for="besked"><span data-besked-lead>Hey Kasper, byg os en Landing Page med fokus på …</span><textarea id="besked" name="besked" rows="4" placeholder="[indsæt produkt]"></textarea></label>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        </div>
+      </div>
+
+      <div class="contact-mode" data-panel="booking">
+        <p class="center lede-small">Vælg selv et tidspunkt i min kalender, så har vi en aftale med det samme.</p>
+        <div class="frame frame-form">
+          <div class="booking">
+            <span class="booking-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M9.5 15l2 2 3.5-3.5"/></svg>
+            </span>
+            <h3>Et møde på 30 minutter</h3>
+            <p>Når I har valgt et tidspunkt, får I en bekræftelse på mail, og mødet ligger i begge vores kalendere.</p>
+            <a class="btn" href="https://calendar.app.google/h7uCdYSGWCpxRuK57" target="_blank" rel="noopener">Åbn min kalender</a>
+            <p class="booking-note">Kalenderen åbner i en ny fane hos Google.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-name"><img class="logo" src="/assets/logo.svg" alt="Hey Kasper" width="404" height="85"> <span class="footer-by">v/ Kasper Schrøder Asmussen</span></p>
+    <p class="footer-contact"><a href="mailto:kasper@heyotto.dk">kasper@heyotto.dk</a>, <a href="tel:+4522463840">+45 22 46 38 40</a>, <a href="https://www.linkedin.com/in/kasperasmussen/" target="_blank" rel="noopener">LinkedIn</a></p>
+  </footer>
+  </div>
+
+  <script src="/js/main.js" defer></script>
+  <script src="/js/test-hero.js" defer></script>
+</body>
+</html>
