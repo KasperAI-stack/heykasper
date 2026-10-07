@@ -517,6 +517,9 @@ h1 {
 /* Tak-siden */
 .thanks { min-height: 75vh; justify-content: center; padding-bottom: 5rem; }
 .thanks .mascot { width: 140px; margin: 0 0 1.5rem; }
+.actions-404 { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--rail); }
+.btn-ghost:hover { color: var(--ink); background: var(--hover); }
 .thanks h1 { font-size: clamp(2.25rem, 6vw, 4rem); }
 
 @media (prefers-reduced-motion: reduce) {
