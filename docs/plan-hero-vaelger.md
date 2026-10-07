@@ -2,8 +2,6 @@
 
 Status: færdig. Den nye hero er flyttet ind på forsiden (site/index.html), testsiden er slettet, og sektionen "Tre ting, jeg tager ansvar for" er fjernet. De gældende tekster står i docs/copy.md. Planen herunder er gemt som baggrund.
 
-Mangler: billedet til Lead-agenten (faldskærmen). Indtil det kommer, bruges den almindelige memoji som pladsholder.
-
 ## 1. Hvad videoen gør
 
 Videoen er 8 sekunder og viser én skærm, der fungerer sådan her:

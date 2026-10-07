@@ -7,4 +7,4 @@ Billederne til siden:
 - favicon.svg og apple-touch-icon.png: memojiens hoved på lilla gradient, bruges som ikon i fanen og ved navnet i toppen
 - jer.svg: neutral avatar for virksomheden (bruges ikke længere, chatvinduet er fjernet)
 - kasper.jpg: rigtigt foto til "Om mig"
-- memoji/: memojien i fem situationer til agenterne i toppen, hver med et lille hoved til baren. landingpage.webp er en pladsholder, indtil billedet med faldskærmen kommer.
+- memoji/: memojien i fem situationer til agenterne i toppen, hver med et lille hoved til baren. landingpage.webp er Lead-agenten med faldskærmen.
