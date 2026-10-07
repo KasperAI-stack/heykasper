@@ -14,7 +14,12 @@
   <meta property="og:description" content="Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger løsningerne, der tager de marketingopgaver, I i dag løser i hånden hver uge.">
   <meta property="og:site_name" content="Hey Kasper">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://hey-kasper.dk/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kasper som memoji ved siden af overskriften: Jeres nye AI marketing manager.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://hey-kasper.dk/assets/og-image.jpg">
   <meta name="twitter:title" content="Hey Kasper | Jeres nye AI marketing manager">
   <meta name="twitter:description" content="Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger løsningerne, der tager de marketingopgaver, I i dag løser i hånden hver uge.">
   <meta property="og:locale" content="da_DK">
@@ -24,6 +29,59 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://hey-kasper.dk/#website",
+        "url": "https://hey-kasper.dk/",
+        "name": "Hey Kasper",
+        "inLanguage": "da-DK",
+        "publisher": { "@id": "https://hey-kasper.dk/#kasper" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://hey-kasper.dk/#kasper",
+        "name": "Kasper Schrøder Asmussen",
+        "url": "https://hey-kasper.dk/",
+        "jobTitle": "AI marketing manager",
+        "email": "mailto:kasper@heyotto.dk",
+        "telephone": "+4522463840",
+        "sameAs": ["https://www.linkedin.com/in/kasperasmussen/"],
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "degree",
+          "name": "Kandidat i Marketing & Brand Management"
+        },
+        "knowsAbout": ["Marketing", "AI-drevne marketingsystemer", "SEO", "Marketingautomatisering"]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://hey-kasper.dk/#service",
+        "name": "Hey Kasper",
+        "url": "https://hey-kasper.dk/",
+        "description": "Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger løsningerne, der tager de marketingopgaver, I i dag løser i hånden hver uge.",
+        "logo": "https://hey-kasper.dk/assets/favicon-512.png",
+        "image": "https://hey-kasper.dk/assets/og-image.jpg",
+        "email": "mailto:kasper@heyotto.dk",
+        "telephone": "+4522463840",
+        "founder": { "@id": "https://hey-kasper.dk/#kasper" },
+        "inLanguage": "da-DK",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Tre ting, jeg tager ansvar for",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Analyse og rapportering" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landingpages og leadforms" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content-agent" } }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#indhold">Gå til indholdet</a>
