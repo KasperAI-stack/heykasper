@@ -49,7 +49,7 @@ Lille tekst: Samarbejdsformen aftaler vi på det første møde. Værktøjerne op
 Overskrift: Hvem bygger det?
 Tekst: Jeg hedder Kasper Schrøder Asmussen og har en kandidat i Marketing & Brand Management. Jeg har arbejdet med marketing i både B2B og B2C, og i dag bygger jeg AI-drevne marketingsystemer, SEO og automatiseringer.
 Tekst: Fordi jeg kommer fra marketing, starter jeg med jeres kunder og jeres tal og først bagefter med teknikken. Jeg begynder altid med noget lille, som I kan se virke, og bygger kun videre, når I kan mærke, at det hjælper.
-Figur: den mediterende memoji. Alt-tekst: Kasper som memoji i beige t-shirt, der sidder med krydsede ben og mediterer med lukkede øjne og et lille smil
+Figur: den pegende og blinkende memoji. Alt-tekst: Kasper som memoji i sort t-shirt og lyse jeans, der blinker og peger på jer
 
 ## CV
 
@@ -89,12 +89,12 @@ Tekst: Ud over at bygge løsningerne holder jeg workshops for teams og giver ind
 
 ## Book et møde
 
-Overskrift: Lad os tage en snak
-Figur: den pegende og blinkende memoji. Alt-tekst: Kasper som memoji i sort t-shirt og lyse jeans, der blinker og peger på jer
+Overskrift: Hvilke opgaver skal I slippe for først?
+Figur: den mediterende memoji. Alt-tekst: Kasper som memoji i beige t-shirt, der sidder med krydsede ben og mediterer med lukkede øjne og et lille smil
 Skift mellem to muligheder: Send en forespørgsel, Book en tid
 
 Send en forespørgsel
-Tekst: Skriv kort, hvad I gerne vil slippe for at løse i hånden, så vender jeg tilbage inden for en arbejdsdag.
+Tekst: Skriv kort, hvad der tager tid hos jer i dag, så vender jeg tilbage inden for en arbejdsdag.
 Felter: Navn, Virksomhed, E-mail, Telefon (valgfrit), Hey Kasper, hjælp os med … (hjælpetekst i feltet: fx en ugentlig rapport, opfølgning på leads eller produkttekster…)
 Knap: Send forespørgsel
 

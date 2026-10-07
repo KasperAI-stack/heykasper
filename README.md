@@ -18,7 +18,7 @@ En enkel landingpage i ren HTML og CSS, der publiceres gratis via Netlify.
 1. Læg mappen et sted på din computer, og åbn en terminal i den.
 2. Start Claude Code med kommandoen `claude`. Den læser CLAUDE.md automatisk.
 3. Se siden lokalt: `npx serve site` og åbn adressen, der vises i terminalen.
-4. Din memoji ligger i site/assets/: kasper-memoji.webp (overkrop i hero), kasper-memoji-hel.webp (hele figuren på tak-siden), kasper-meditation.svg ("Hvem bygger det?") og kasper-peger.svg ("Lad os tage en snak"). Siden bruger ingen rigtige fotos.
+4. Din memoji ligger i site/assets/: kasper-memoji.webp (overkrop i hero), kasper-memoji-hel.webp (hele figuren på tak-siden), kasper-peger.svg ("Hvem bygger det?") og kasper-meditation.svg (bookingsektionen). Siden bruger ingen rigtige fotos.
 5. Udfyld pladsholderne i firkantede parenteser, fx resultater, e-mail, telefon, CVR og LinkedIn.
 
 ## Publicér via Netlify
