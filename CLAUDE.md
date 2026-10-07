@@ -85,6 +85,7 @@ Regler:
 - Automatisering: Netlify sender hver formular videre til et Google Apps Script (automatisering/henvendelser.gs), som gemmer den i et Google Sheet, mailer Kasper, sender et automatisk svar og sender en daglig påmindelse om ubesvarede henvendelser. Opsætningen står i docs/automatisering.md. Mappen automatisering/ kommer ikke online.
 - Ingen tracking eller cookies uden samtykke. Hvis der skal måles trafik, brug en cookiefri løsning og spørg Kasper først.
 - Billeder komprimeres og får altid en alt-tekst. Billeder under folden får loading="lazy".
+- Filer i /assets/ caches i et år (se netlify.toml). Når logo, favicon eller brand-mark skiftes ud under samme filnavn, skal ?v= i linkene i alle .html-filer tælles én op, ellers ser besøgende den gamle version.
 - Delingsbillede: site/assets/og-image.jpg (1200x630). Strukturerede data (JSON-LD) står i <head> på forsiden og må kun indeholde oplysninger, der også står på siden.
 - Domænet er https://hey-kasper.dk/ (med bindestreg). heykasper.dk uden bindestreg er et andet site, så canonical, og:url, robots.txt og sitemap skal altid pege på hey-kasper.dk.
 
