@@ -1,23 +1,18 @@
 // Siden virker uden JavaScript. Dette er kun små forbedringer.
 
-// Forhindrer dobbelt afsendelse af formularen.
-document.querySelectorAll("form[data-netlify]").forEach(function (form) {
+// Forhindrer dobbelt afsendelse af formularen. Netlify fjerner data-netlify ved deploy, så formularen findes på navnet.
+document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
+  var button = form.querySelector('button[type="submit"]');
+  if (!button) return;
+  var label = button.textContent;
   form.addEventListener("submit", function () {
-    var button = form.querySelector('button[type="submit"]');
-    if (button) {
-      button.disabled = true;
-      button.textContent = "Sender";
-    }
+    button.disabled = true;
+    button.textContent = "Sender…";
   });
-});
-
-// Svarfeltet i toppen hopper ned til formularen og sætter markøren i beskedfeltet.
-document.querySelectorAll("[data-focus]").forEach(function (link) {
-  link.addEventListener("click", function () {
-    var field = document.getElementById(link.getAttribute("data-focus"));
-    if (field) {
-      setTimeout(function () { field.focus({ preventScroll: true }); }, 400);
-    }
+  // Går man tilbage til siden (fx fra en fejl), skal knappen kunne bruges igen.
+  window.addEventListener("pageshow", function () {
+    button.disabled = false;
+    button.textContent = label;
   });
 });
 
@@ -25,12 +20,23 @@ document.querySelectorAll("[data-focus]").forEach(function (link) {
 var tabs = document.querySelectorAll(".tab[data-show]");
 tabs.forEach(function (tab) {
   tab.addEventListener("click", function () {
-    tabs.forEach(function (other) {
-      var active = other === tab;
-      other.setAttribute("aria-pressed", active ? "true" : "false");
-      var view = document.getElementById(other.getAttribute("data-show"));
-      if (view) view.hidden = !active;
-    });
+    selectTab(tab);
+  });
+});
+function selectTab(tab) {
+  tabs.forEach(function (other) {
+    var active = other === tab;
+    other.setAttribute("aria-pressed", active ? "true" : "false");
+    var view = document.getElementById(other.getAttribute("data-show"));
+    if (view) view.hidden = !active;
+  });
+}
+
+// Pillerne i toppen hopper til produkterne og vælger den fane, der står på pillen.
+document.querySelectorAll(".pill[data-tab]").forEach(function (pill) {
+  pill.addEventListener("click", function () {
+    var tab = document.querySelector('.tab[data-show="' + pill.getAttribute("data-tab") + '"]');
+    if (tab) selectTab(tab);
   });
 });
 
@@ -46,6 +52,10 @@ if (toggle) {
     var dark = current() === "dark";
     toggle.setAttribute("data-active", dark ? "dark" : "light");
     toggle.setAttribute("aria-label", dark ? "Skift til lyst tema" : "Skift til mørkt tema");
+    // Browserens farve (adresselinjen på mobil) følger det valgte tema.
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+      meta.setAttribute("content", dark ? "#0F0E13" : "#FFFFFF");
+    });
   };
   toggle.hidden = false;
   render();
@@ -79,8 +89,3 @@ if (contactSwitch) {
   document.getElementById("book").classList.add("js-switch");
   setContactMode("forespoergsel");
 }
-
-// Svarfeltet i toppen skal altid åbne formularen, også hvis booking er valgt.
-document.querySelectorAll("[data-focus]").forEach(function (link) {
-  link.addEventListener("click", function () { setContactMode("forespoergsel"); });
-});

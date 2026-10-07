@@ -30,7 +30,7 @@
 
   <div class="page">
   <header class="topbar">
-    <a class="brand" href="/" aria-label="Hey Kasper, til forsiden">
+    <a class="brand" href="/" aria-label="Hey Kasper, til forsiden" translate="no">
       <img class="brand-mark" src="/assets/brand-mark.webp" alt="" width="28" height="28">
       <img class="logo" src="/assets/logo.svg" alt="" width="404" height="85">
     </a>
@@ -54,9 +54,9 @@
         <img class="mascot" src="/assets/kasper-memoji.webp" srcset="/assets/kasper-memoji-360.webp 360w, /assets/kasper-memoji.webp 480w" sizes="(min-width: 40rem) 240px, 190px" alt="Kasper som memoji i sort t-shirt, smilende" width="240" height="321" fetchpriority="high">
         <div class="frame frame-hero">
           <nav class="pills" aria-label="Det kan jeg bygge">
-            <a class="pill" href="#produkter">Analyse og rapportering</a>
-            <a class="pill" href="#produkter">Landingpages og leadforms</a>
-            <a class="pill" href="#produkter">Content-agent</a>
+            <a class="pill" href="#produkter" data-tab="vis-analyse">Analyse og rapportering</a>
+            <a class="pill" href="#produkter" data-tab="vis-leads">Landingpages og leadforms</a>
+            <a class="pill" href="#produkter" data-tab="vis-content">Content-agent</a>
           </nav>
           <div class="window">
             <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -70,7 +70,7 @@
             <div class="chat chat-reply">
               <img class="avatar avatar-memoji" src="/assets/kasper-hoved.webp" alt="" width="44" height="44">
               <div class="chat-body">
-                <p class="chat-name">Kasper</p>
+                <p class="chat-name" translate="no">Kasper</p>
                 <span class="typing" aria-hidden="true"><i></i><i></i><i></i></span>
               </div>
             </div>
@@ -318,7 +318,7 @@
             <label for="virksomhed">Virksomhed<input id="virksomhed" type="text" name="virksomhed" autocomplete="organization" required></label>
           </div>
           <div class="form-row">
-            <label for="email">E-mail<input id="email" type="email" name="email" autocomplete="email" required></label>
+            <label for="email">E-mail<input id="email" type="email" name="email" autocomplete="email" spellcheck="false" required></label>
             <label for="telefon">Telefon (valgfrit)<input id="telefon" type="tel" name="telefon" autocomplete="tel"></label>
           </div>
           <label for="besked">Hey Kasper, hjælp os med …<textarea id="besked" name="besked" rows="4" placeholder="fx en ugentlig rapport, opfølgning på leads eller produkttekster…"></textarea></label>
@@ -346,7 +346,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p class="footer-name"><img class="logo" src="/assets/logo.svg" alt="Hey Kasper" width="404" height="85"> <span class="footer-by">v/ Kasper Schrøder Asmussen</span></p>
+    <p class="footer-name" translate="no"><img class="logo" src="/assets/logo.svg" alt="Hey Kasper" width="404" height="85"> <span class="footer-by">v/ Kasper Schrøder Asmussen</span></p>
     <p class="footer-contact"><a href="mailto:kasper@heyotto.dk">kasper@heyotto.dk</a>, <a href="tel:+4522463840">+45 22 46 38 40</a>, <a href="https://www.linkedin.com/in/kasperasmussen/" target="_blank" rel="noopener">LinkedIn</a></p>
   </footer>
   </div>

@@ -94,6 +94,8 @@ body {
   overflow-x: clip;
 }
 img { max-width: 100%; }
+a, button, input, textarea, label { touch-action: manipulation; }
+html { -webkit-tap-highlight-color: rgb(124 58 237 / .15); }
 a { color: inherit; text-underline-offset: 3px; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 p { margin: 0 0 1rem; }
@@ -123,7 +125,7 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
   position: absolute; left: var(--gutter); top: -4rem; z-index: 10;
   background: var(--ink); color: var(--bg); padding: .6rem 1rem; border-radius: 999px; text-decoration: none;
 }
-.skip:focus { top: 1rem; }
+.skip:focus-visible { top: 1rem; }
 
 /* Top */
 .topbar {
@@ -148,6 +150,11 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
 .btn:disabled { opacity: .6; cursor: progress; transform: none; }
 .btn-small { font-size: .9rem; padding: .6rem 1.1rem; white-space: nowrap; }
 .top-actions { display: flex; align-items: center; gap: .5rem; flex: none; }
+/* Små knapper i toppen får et usynligt trykområde på mindst 44 px på mobil */
+.theme-toggle, .btn-small { position: relative; }
+@media (pointer: coarse) {
+  .theme-toggle::after, .btn-small::after { content: ""; position: absolute; inset: -6px; }
+}
 @media (max-width: 26rem) {
   .brand .logo { height: 1.1rem; }
   .brand { gap: .45rem; }
@@ -442,7 +449,7 @@ h1 {
 @media (min-width: 36rem) { .form-row { grid-template-columns: 1fr 1fr; } }
 .form label { display: grid; gap: .4rem; font-weight: 500; font-size: .95rem; }
 .form input, .form textarea {
-  font: inherit; color: var(--ink); background: var(--soft); width: 100%;
+  font: inherit; font-size: 1rem; color: var(--ink); background: var(--soft); width: 100%;
   border: 1.5px solid var(--rail); border-radius: 10px; padding: .75rem .9rem;
   transition: border-color .15s;
 }
