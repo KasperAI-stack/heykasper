@@ -120,6 +120,6 @@ Hey Kasper v/ Kasper Schrøder Asmussen, kasper@heyotto.dk, +45 22 46 38 40, Lin
 ## Meta (vises i Google og ved deling)
 
 Forside, titel: Hey Kasper | Jeres nye AI marketing manager
-Forside, beskrivelse: Jeg er Kasper og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter, der skriver opslag, mails og tekster og holder øje med annoncer og leads.
+Forside, beskrivelse: Jeg hedder Kasper Schrøder Asmussen og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter til opslag, mails, tekster, annoncer og leads.
 Tak-siden, titel: Tak for jeres besked | Hey Kasper
 Tak-siden, beskrivelse: Tak for jeres besked til Kasper. Jeg vender tilbage inden for en arbejdsdag, så vi kan finde et tidspunkt, der passer jer.
