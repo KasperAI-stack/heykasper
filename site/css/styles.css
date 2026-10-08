@@ -430,6 +430,31 @@ h1 {
 .step-text { color: var(--muted); margin: 0; font-size: 1rem; }
 .process-note { margin: 0 calc(var(--gutter) * -1); padding: 1.5rem var(--gutter); border-top: 1px solid var(--line); }
 
+/* Samarbejdsform: vælgeren skifter trin 3 og 4 og linjen under trinnene. Uden JavaScript står alle tre spor under hinanden med en lille etiket. */
+.process-intro { color: var(--muted); max-width: var(--read); margin: 0 0 1.75rem; }
+.switch.spor-switch { margin: 0; }
+.spor-switch .switch-btn { white-space: nowrap; }
+@media (max-width: 30rem) {
+  .switch.spor-switch { width: 100%; }
+  .spor-switch .switch-btn { flex: 1; padding-inline: .5rem; }
+}
+.spor-label {
+  margin: 0 0 .35rem; font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted);
+}
+.steps .spor + .spor { margin-top: 1.75rem; }
+.spor-fits { margin: 0 calc(var(--gutter) * -1); border-top: 1px solid var(--line); }
+.spor-fit { padding: 2rem var(--gutter); display: grid; gap: 1rem; justify-items: start; }
+.spor-fit + .spor-fit { border-top: 1px solid var(--line); }
+.spor-fit-text { margin: 0; max-width: var(--read); font-size: 1.1rem; }
+@media (min-width: 52rem) {
+  .spor-fit { grid-template-columns: 1fr auto; align-items: center; gap: 2rem; }
+}
+.js-spor .spor-label { display: none; }
+.js-spor .spor:not(.is-active) { display: none; }
+.js-spor .spor-fit + .spor-fit { border-top: 0; }
+.js-spor .spor.is-active { animation: spor-ind .25s ease-out; }
+@keyframes spor-ind { from { opacity: 0; } to { opacity: 1; } }
+
 /* Om */
 .about { display: grid; gap: 2.5rem; align-items: center; }
 /* Den pegende memoji står på en rolig flade med en blød lysning bag figuren, så den står frem i begge temaer */
@@ -522,14 +547,14 @@ h1 {
 .form-row { display: grid; gap: 1.1rem; }
 @media (min-width: 36rem) { .form-row { grid-template-columns: 1fr 1fr; } }
 .form label { display: grid; gap: .4rem; font-weight: 500; font-size: .95rem; }
-.form input, .form textarea {
+.form input, .form textarea, .form select {
   font: inherit; font-size: 1rem; color: var(--ink); background: var(--soft); width: 100%;
   border: 1.5px solid var(--rail); border-radius: 10px; padding: .75rem .9rem;
   transition: border-color .15s;
 }
 .form textarea { resize: vertical; min-height: 7.5rem; }
-.form input:hover, .form textarea:hover { border-color: var(--plus); }
-.form input:focus-visible, .form textarea:focus-visible { border-color: var(--accent); outline: 3px solid rgb(244 114 182 / .3); outline-offset: 0; }
+.form input:hover, .form textarea:hover, .form select:hover { border-color: var(--plus); }
+.form input:focus-visible, .form textarea:focus-visible, .form select:focus-visible { border-color: var(--accent); outline: 3px solid rgb(244 114 182 / .3); outline-offset: 0; }
 .form .btn { justify-self: start; margin-top: .25rem; }
 
 /* Skift mellem forespørgsel og booking */
@@ -587,6 +612,7 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
+  .js-spor .spor.is-active { animation: none !important; }
   .hey-text, .hey-voice, .hey-voice i, .scene-fig,
   .scene-item.is-in *, .scene-item.is-out *, .picker-pill.is-moving { animation: none !important; }
   .scene-item.is-out { visibility: hidden; }

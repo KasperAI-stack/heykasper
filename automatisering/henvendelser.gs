@@ -25,7 +25,7 @@ const INDSTILLINGER = {
   PAAMINDELSE_KL: 8,
 };
 
-const KOLONNER = ['Modtaget', 'Status', 'Navn', 'Virksomhed', 'E-mail', 'Telefon', 'Besked'];
+const KOLONNER = ['Modtaget', 'Status', 'Navn', 'Virksomhed', 'E-mail', 'Telefon', 'Besked', 'Samarbejde'];
 
 /**
  * Kør denne funktion én gang fra editoren. Den opretter arket og den daglige påmindelse,
@@ -98,6 +98,7 @@ function testHenvendelse() {
     email: minEmail_(),
     telefon: '',
     besked: 'Dette er en test fra script.google.com.',
+    samarbejde: 'Ved ikke endnu',
   });
   Logger.log('Resultat: ' + status.getContent());
 }
@@ -110,6 +111,7 @@ function behandl_(data) {
     email: tekst_(data.email),
     telefon: tekst_(data.telefon),
     besked: tekst_(data.besked),
+    samarbejde: tekst_(data.samarbejde),
   };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(henvendelse.email)) {
     console.warn('Afvist: henvendelsen har ingen gyldig e-mail.');
@@ -157,7 +159,9 @@ function paamindelse() {
 function gemIArk_(h) {
   const ark = hentArk_();
   if (!ark) throw new Error('Arket findes ikke. Kør opsaet() først.');
-  ark.appendRow([h.modtaget, 'Ny', sikker_(h.navn), sikker_(h.virksomhed), sikker_(h.email), sikker_(h.telefon), sikker_(h.besked)]);
+  // Ældre ark mangler overskriften til den nye kolonne, så den sættes, hvis den er tom.
+  if (ark.getRange(1, KOLONNER.length).getValue() === '') ark.getRange(1, KOLONNER.length).setValue('Samarbejde').setFontWeight('bold');
+  ark.appendRow([h.modtaget, 'Ny', sikker_(h.navn), sikker_(h.virksomhed), sikker_(h.email), sikker_(h.telefon), sikker_(h.besked), sikker_(h.samarbejde)]);
 }
 
 function sendBeskedTilMig_(h) {
@@ -170,7 +174,8 @@ function sendBeskedTilMig_(h) {
       'Navn: ' + h.navn + '\n' +
       'Virksomhed: ' + h.virksomhed + '\n' +
       'E-mail: ' + h.email + '\n' +
-      'Telefon: ' + (h.telefon || 'ikke oplyst') + '\n\n' +
+      'Telefon: ' + (h.telefon || 'ikke oplyst') + '\n' +
+      'Samarbejde: ' + (h.samarbejde || 'ikke valgt') + '\n\n' +
       'Hey Kasper, hjælp os med:\n' + (h.besked || '(ikke udfyldt)') + '\n\n' +
       'Svar direkte på denne mail for at skrive til ' + (h.navn || 'afsenderen') + '.\n' +
       'Alle henvendelser: ' + (ark ? ark.getParent().getUrl() : ''),

@@ -167,32 +167,81 @@
       </div>
     </section>
 
-    <!-- 3. Sådan foregår det -->
-    <section class="section process" aria-labelledby="proces-titel">
+    <!-- 3. Sådan foregår det: trin 1 og 2 er ens, trin 3 og 4 skifter med samarbejdsformen. Uden JavaScript vises alle tre spor. -->
+    <section class="section process" id="samarbejde" aria-labelledby="proces-titel">
       <h2 id="proces-titel">Sådan foregår det</h2>
+      <p class="process-intro">Vælg, hvordan I helst vil arbejde sammen. De to første trin er de samme, uanset hvad I vælger, så I kan altid se en løsning virke på jeres egne data, før I beslutter noget.</p>
+      <div class="switch spor-switch" role="radiogroup" aria-label="Samarbejdsform" data-spor-switch hidden>
+        <button type="button" class="switch-btn" role="radio" data-spor-valg="fastansat" aria-checked="false" tabindex="-1">Fastansat</button>
+        <button type="button" class="switch-btn" role="radio" data-spor-valg="konsulent" aria-checked="false" tabindex="-1">Konsulent</button>
+        <button type="button" class="switch-btn" role="radio" data-spor-valg="projekt" aria-checked="false" tabindex="-1">Projekt</button>
+      </div>
       <ol class="steps">
         <li>
           <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-4.5 3.5V16H4z"/><path d="M8.5 10.5h7"/></svg></span>
           <h3 class="step-title"><strong>Afklaring</strong>, 30 minutter.</h3>
-          <p class="step-text">Vi tager en snak og finder den opgave i jeres marketing, hvor AI gør størst forskel.</p>
+          <p class="step-text">Vi tager en snak om jeres marketingplan og finder den opgave på listen, hvor AI gør størst forskel. I får samtidig et indtryk af, hvordan jeg tænker og arbejder.</p>
         </li>
         <li>
           <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5l1.9 4.6 4.6 1.9-4.6 1.9L11 16.5l-1.9-4.6L4.5 10l4.6-1.9z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>
           <h3 class="step-title"><strong>Prøveopgave</strong>, gratis.</h3>
-          <p class="step-text">Jeg bygger en fungerende løsning på en lille del af jeres egne data, så I kan se den virke, før I beslutter noget.</p>
+          <p class="step-text">Jeg bygger en fungerende løsning på en lille del af jeres egne data, så I kan se den virke, før I beslutter noget.<span class="spor spor-inline" data-spor="fastansat"> Så har I en reel case fra jeres egen hverdag at vurdere mig på, før I ansætter.</span></p>
         </li>
         <li>
           <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
-          <h3 class="step-title"><strong>Opstart</strong>, de første uger.</h3>
-          <p class="step-text">Jeg bygger løsningen færdig, kobler den på jeres systemer og lærer jeres team at bruge den.</p>
+          <div class="spor" data-spor="fastansat">
+            <p class="spor-label">Fastansat</p>
+            <h3 class="step-title"><strong>Opstart</strong>, de første måneder.</h3>
+            <p class="step-text">Jeg starter i teamet, bygger prøveopgaven færdig og kobler den på jeres systemer. De første faste opgaver forsvinder fra listen, mens jeg lærer jeres kunder, data og plan at kende indefra.</p>
+          </div>
+          <div class="spor" data-spor="konsulent">
+            <p class="spor-label">Konsulent</p>
+            <h3 class="step-title"><strong>Opstart</strong>, de første uger.</h3>
+            <p class="step-text">Vi aftaler et fast antal timer eller dage om ugen. Jeg bygger løsningen fra prøveopgaven færdig, kobler den på jeres systemer og lærer teamet at bruge den.</p>
+          </div>
+          <div class="spor" data-spor="projekt">
+            <p class="spor-label">Projekt</p>
+            <h3 class="step-title"><strong>Opstart</strong>, de første uger.</h3>
+            <p class="step-text">Jeg bygger én afgrænset opgave færdig, fx mandagsrapporten eller opfølgningen på leads, kobler den på jeres systemer og lærer jeres team at bruge den.</p>
+          </div>
         </li>
         <li>
           <span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg></span>
-          <h3 class="step-title"><strong>Hverdag</strong>, løbende.</h3>
-          <p class="step-text">Jeg holder løsningerne kørende, forbedrer dem og finder hele tiden den næste opgave, AI kan løse for jer.</p>
+          <div class="spor" data-spor="fastansat">
+            <p class="spor-label">Fastansat</p>
+            <h3 class="step-title"><strong>Hverdag</strong>, hver dag.</h3>
+            <p class="step-text">Jeg sidder med til jeres møder og bygger løbende de systemer, planen kræver. Så bliver AI en fast del af måden, I laver marketing på, og I har én i huset, der kan både marketingen og teknikken.</p>
+          </div>
+          <div class="spor" data-spor="konsulent">
+            <p class="spor-label">Konsulent</p>
+            <h3 class="step-title"><strong>Hverdag</strong>, løbende.</h3>
+            <p class="step-text">Jeg holder løsningerne kørende, forbedrer dem og tager hele tiden den næste opgave fra listen, mens teamet passer resten af to do-listen.</p>
+          </div>
+          <div class="spor" data-spor="projekt">
+            <p class="spor-label">Projekt</p>
+            <h3 class="step-title"><strong>Hverdag</strong>, hos jer.</h3>
+            <p class="step-text">Løsningen kører videre hos jer på jeres egne konti, så I ikke skal starte forfra. Når I er klar til den næste opgave på listen, tager vi den derfra.</p>
+          </div>
         </li>
       </ol>
-      <p class="muted small process-note">Samarbejdsformen aftaler vi på det første møde. Værktøjerne oprettes på jeres egne konti, så I ejer det hele.</p>
+      <div class="spor-fits" aria-live="polite">
+        <div class="spor spor-fit" data-spor="fastansat">
+          <p class="spor-label">Fastansat</p>
+          <p class="spor-fit-text">Passer til jer, der vil have AI ind i marketingen for alvor og hellere vil have en kollega end en leverandør. Som fastansat arbejder jeg kun for jer.</p>
+          <a class="btn" href="#book" data-vaelg-spor="fastansat">Tal med mig om en fast stilling</a>
+        </div>
+        <div class="spor spor-fit" data-spor="konsulent">
+          <p class="spor-label">Konsulent</p>
+          <p class="spor-fit-text">Passer til jer, der vil have fast fremdrift hver uge uden at ansætte nu.</p>
+          <a class="btn" href="#book" data-vaelg-spor="konsulent">Book en snak om et konsulentforløb</a>
+        </div>
+        <div class="spor spor-fit" data-spor="projekt">
+          <p class="spor-label">Projekt</p>
+          <p class="spor-fit-text">Passer til jer, der har én opgave, der skal løses først, og vil se resultatet, før I binder jer til mere.</p>
+          <a class="btn" href="#book" data-vaelg-spor="projekt">Book en snak om et projekt</a>
+        </div>
+      </div>
+      <p class="muted small process-note">Værktøjerne oprettes på jeres egne konti, så I ejer det hele.</p>
     </section>
 
     <!-- 4. Om mig -->
@@ -318,6 +367,14 @@
             <label for="email">E-mail<input id="email" type="email" name="email" autocomplete="email" spellcheck="false" required></label>
             <label for="telefon">Telefon (valgfrit)<input id="telefon" type="tel" name="telefon" autocomplete="tel"></label>
           </div>
+          <label for="samarbejde-felt">Hvordan vil I helst arbejde sammen? (valgfrit)
+            <select id="samarbejde-felt" name="samarbejde">
+              <option value="Ved ikke endnu" selected>Ved ikke endnu</option>
+              <option value="Fastansat">Fastansat</option>
+              <option value="Konsulent">Konsulent</option>
+              <option value="Projekt">Projekt</option>
+            </select>
+          </label>
           <label for="besked">Hey Kasper, hjælp os med …<textarea id="besked" name="besked" rows="4" placeholder="fx en ugentlig rapport, opfølgning på leads eller produkttekster…"></textarea></label>
           <button class="btn" type="submit">Send forespørgsel</button>
         </form>

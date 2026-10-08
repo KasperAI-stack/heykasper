@@ -22,6 +22,8 @@ Hvor Kasper skal starte, afgøres på det første møde.
 3. Opstart: løsningen bygges færdig, kobles på virksomhedens systemer, og teamet lærer at bruge den.
 4. Hverdag: løsningerne holdes kørende og forbedres, og Kasper finder den næste opgave, AI kan løse.
 
+De tre samarbejdsformer er fastansat, konsulent og projekt. Trin 1 og 2 er ens for alle tre, mens teksten i trin 3 og 4 skifter med samarbejdsformen (se docs/copy.md). Trinnenes navne er de samme.
+
 Værktøjer oprettes på virksomhedens egne konti, så den ejer det hele.
 
 ## Derudover

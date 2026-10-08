@@ -242,3 +242,67 @@ if (contactSwitch) {
   document.getElementById("book").classList.add("js-switch");
   setContactMode("forespoergsel");
 }
+
+// Samarbejdsform i "Sådan foregår det": vælgeren skifter trin 3 og 4 og linjen under trinnene.
+// ?samarbejde=fastansat|konsulent|projekt i adressen åbner et bestemt spor. Uden JavaScript står alle tre spor under hinanden.
+(function () {
+  var section = document.getElementById("samarbejde");
+  var group = document.querySelector("[data-spor-switch]");
+  if (!section || !group) return;
+  var radios = Array.prototype.slice.call(group.querySelectorAll("[data-spor-valg]"));
+  var navne = { fastansat: "Fastansat", konsulent: "Konsulent", projekt: "Projekt" };
+  var felt = document.getElementById("samarbejde-felt");
+
+  var vaelg = function (spor, fokus, maal) {
+    if (!navne[spor]) return;
+    radios.forEach(function (r) {
+      var on = r.getAttribute("data-spor-valg") === spor;
+      r.setAttribute("aria-checked", on ? "true" : "false");
+      r.setAttribute("aria-pressed", on ? "true" : "false");
+      r.tabIndex = on ? 0 : -1;
+      if (on && fokus) r.focus();
+    });
+    section.querySelectorAll(".spor[data-spor]").forEach(function (el) {
+      el.classList.toggle("is-active", el.getAttribute("data-spor") === spor);
+    });
+    // Lægges kun i dataLayer. Intet bliver målt, før der er sat sporing op med samtykke.
+    if (maal) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "samarbejdsform_valgt", form: spor });
+    }
+  };
+
+  radios.forEach(function (r) {
+    r.addEventListener("click", function () { vaelg(r.getAttribute("data-spor-valg"), false, true); });
+  });
+  group.addEventListener("keydown", function (e) {
+    var i = radios.indexOf(document.activeElement);
+    if (i < 0) return;
+    var next = null;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = radios[(i + 1) % radios.length];
+    if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = radios[(i - 1 + radios.length) % radios.length];
+    if (e.key === "Home") next = radios[0];
+    if (e.key === "End") next = radios[radios.length - 1];
+    if (!next) return;
+    e.preventDefault();
+    vaelg(next.getAttribute("data-spor-valg"), true, true);
+  });
+
+  // Knappen under trinnene hopper ned til formularen og vælger samarbejdsformen på forhånd.
+  section.querySelectorAll("[data-vaelg-spor]").forEach(function (link) {
+    link.addEventListener("click", function () {
+      var spor = link.getAttribute("data-vaelg-spor");
+      if (typeof setContactMode === "function") setContactMode("forespoergsel");
+      if (felt && navne[spor]) felt.value = navne[spor];
+    });
+  });
+
+  var start = "fastansat";
+  try {
+    var fraAdresse = new URLSearchParams(window.location.search).get("samarbejde");
+    if (fraAdresse && navne[fraAdresse.toLowerCase()]) start = fraAdresse.toLowerCase();
+  } catch (e) {}
+  section.classList.add("js-spor");
+  group.hidden = false;
+  vaelg(start, false, false);
+})();

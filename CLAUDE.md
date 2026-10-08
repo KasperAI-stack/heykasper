@@ -34,7 +34,7 @@ Se docs/tilbud.md. Trin og produkter skal stå præcis som der. Siden viser inge
 
 1. Hero: "Hey Kasper, byg os lige …", memojien og en buet bar med fem agenter (SoMe, mail, annoncer, leads og tekster). Hver agent har et navn og én eller to sætninger. Booking ligger i knappen i toppen.
 2. Problemet
-3. Sådan foregår det: de fire trin med priser
+3. Sådan foregår det: en vælger med samarbejdsform (Fastansat, Konsulent, Projekt) over de fire trin. Trin 1 og 2 står fast, trin 3 og 4 og linjen "Passer til jer, der …" med knap skifter. Knappen vælger samarbejdsformen i formularens felt "samarbejde", og ?samarbejde=… i adressen åbner et bestemt spor. Uden JavaScript står alle tre spor under hinanden.
 4. Hvem bygger det? (om Kasper)
 5. CV: stillinger, resultater og uddannelse fra Kaspers LinkedIn
 6. Værktøjer: de værktøjer, Kasper bygger med
@@ -69,7 +69,7 @@ Regler:
 - Skrift: Geist til både overskrifter og brødtekst. Skriften ligger selv på siden (site/fonts/geist-latin.woff2, SIL Open Font License), så der ikke hentes noget fra Google Fonts. Store overskrifter med stram afstand mellem bogstaverne.
 - Grid: Siden står i en ramme af tynde lodrette linjer, og sektionerne er adskilt af vandrette linjer med små plus-mærker, hvor linjerne mødes. De fire trin står i kolonner adskilt af gridlinjer, hver med et lille lysende ikon og en titel, hvor trinnets navn er fedt og prisen dæmpet.
 - Toppen har et neutralt gitter af tynde, grå linjer bag memojien og ingen farvet baggrund. Agenterne vælges i en buet bar, hvor den valgte ligger i en hvid, hævet pude (den eneste vælger, der ikke er i tekstfarven). Agentens navn står stort i sin egen lilla tone.
-- Sort, grå og hvid bærer siden. Knapper, valgte faner og vælgere er i tekstfarven (sort i lyst tema, lys i mørkt tema) og helt runde i enderne. Lilla er en accent, der kun bruges i agentens navn og prikkerne i toppen, i ikonerne ved de fire trin, i prikkerne i CV-sektionen og i figuren i værktøjssektionen.
+- Sort, grå og hvid bærer siden. Knapper, valgte faner og vælgere (også samarbejdsformen i "Sådan foregår det", der genbruger designet fra bookingsektionens skifter) er i tekstfarven (sort i lyst tema, lys i mørkt tema) og helt runde i enderne. Lilla er en accent, der kun bruges i agentens navn og prikkerne i toppen, i ikonerne ved de fire trin, i prikkerne i CV-sektionen og i figuren i værktøjssektionen.
 - Temakontakten i toppen viser sol og måne side om side, og det aktive tema er markeret.
 - Værktøjssektionen er en prikket flade med en stablet flise i midten (site/assets/stack.svg) og værktøjernes logoer i lyse app-ikoner rundt om. Logoerne ligger i site/assets/tools og kommer fra Iconify Logos og Simple Icons (CC0).
 - Illustrationer er rene vektorgrafikker (SVG). Memojien er den eneste figur. Ingen pixel-art og ingen detaljerede AI-genererede billeder.
