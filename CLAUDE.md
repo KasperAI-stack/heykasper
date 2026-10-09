@@ -76,7 +76,9 @@ Regler:
 - Værktøjssektionen er en prikket flade med en stablet flise i midten (site/assets/stack.svg) og værktøjernes logoer i lyse app-ikoner rundt om. Logoerne ligger i site/assets/tools og kommer fra Iconify Logos og Simple Icons (CC0).
 - Illustrationer er rene vektorgrafikker (SVG). Memojien er den eneste figur. Ingen pixel-art og ingen detaljerede AI-genererede billeder.
 - Mobil først. Kontrast mindst WCAG AA. Synligt fokus på alle knapper og felter.
-- Animation hører til i toppen: memojien svæver, agentens navn og beskrivelse glider ind, prikkerne lytter og taler, og puden i baren glider. Resten af siden holdes rolig. Al animation slås fra ved prefers-reduced-motion.
+- Animation følger skillen i .claude/skills/animate (Emil Kowalskis principper). Kurverne er tokens i :root (--ease-out, --ease-in-out, --ease-drawer), og der må ikke laves andre. Kun transform og opacity animeres, UI-animationer holdes under 300 ms, hover-bevægelse står i @media (hover: hover) and (pointer: fine), og ting, man kan klikke hurtigt på, bruger transitions i stedet for keyframes.
+- Toppen må have liv: memojien svæver, agentens navn og beskrivelse glider ind, prikkerne lytter og taler (scaleY, ikke height), og puden i baren glider. Resten af siden er rolig: overskrifter og grupper glider stille ind én gang ved scroll (data-reveal, sat af main.js), og knapper giver et lille tryk (scale 0.97).
+- Ved prefers-reduced-motion forsvinder bevægelse, men fades og farveskift bliver, så skift stadig kan ses.
 
 ## Teknik
 

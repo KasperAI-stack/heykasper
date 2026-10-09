@@ -43,6 +43,11 @@
   --p-rose: #F472B6;
   --gradient: linear-gradient(135deg, var(--p-deep) 0%, var(--p-violet) 38%, var(--p-orchid) 72%, var(--p-rose) 100%);
 
+  /* Bevægelse: stærke kurver til UI. Brug altid disse tokens, aldrig hjemmelavede kurver. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
   --font: "Geist", "Helvetica Neue", Arial, sans-serif;
   --max: 72rem;
   --read: 40rem;
@@ -167,9 +172,11 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
   font: inherit; font-weight: 600; font-size: 1rem; line-height: 1.2;
   background: var(--ink); color: var(--bg); text-decoration: none;
   padding: .95rem 1.6rem; border: 0; border-radius: 999px; cursor: pointer;
-  transition: transform .15s, background-color .15s;
+  transition: transform 160ms var(--ease-out), background-color 150ms ease;
 }
-.btn:hover { color: var(--bg); background: var(--btn-hover); transform: translateY(-1px); }
+.btn:hover { color: var(--bg); background: var(--btn-hover); }
+@media (hover: hover) and (pointer: fine) { .btn:hover { transform: translateY(-1px); } }
+.btn:active { transform: scale(0.97); }
 .btn:disabled { opacity: .6; cursor: progress; transform: none; }
 .btn-small { font-size: .9rem; padding: .6rem 1.1rem; white-space: nowrap; }
 .top-actions { display: flex; align-items: center; gap: .5rem; flex: none; }
@@ -229,7 +236,7 @@ h1 {
   --glow: var(--g3);
   position: relative; isolation: isolate; overflow: clip;
   padding-top: 1.75rem; padding-bottom: 1.5rem;
-  transition: --glow .6s ease;
+  transition: --glow 400ms ease;
 }
 .hero-pick[data-glow="1"] { --glow: var(--s3); }
 .hero-pick[data-glow="2"] { --glow: var(--s1); }
@@ -261,10 +268,10 @@ h1 {
 .hey-line { display: block; }
 @media (min-width: 56rem) { .hey-line { display: inline; } }
 .hey-soft { font-weight: 400; color: var(--muted); }
-.hey-text { display: inline-block; animation: hey-in .8s cubic-bezier(.2, .8, .2, 1) both; }
+.hey-text { display: inline-block; animation: hey-in 500ms var(--ease-out) both; }
 .hey-voice {
   display: inline-flex; align-items: center; gap: .09em; height: .5em; margin-left: .22em; vertical-align: -.02em;
-  animation: hey-in .6s .5s ease both;
+  animation: hey-in 400ms 300ms var(--ease-out) both;
 }
 .hey-voice i {
   display: block; width: .13em; height: .13em; border-radius: 99px;
@@ -274,13 +281,13 @@ h1 {
 .hey-voice i:nth-child(2) { background: var(--s2); animation-delay: .14s; }
 .hey-voice i:nth-child(3) { background: var(--s3); animation-delay: .28s; }
 .hey-voice i:nth-child(4) { background: var(--s4); animation-delay: .42s; }
-.hey.is-talking .hey-voice i { animation: hey-talk .32s ease-in-out infinite alternate; }
+.hey.is-talking .hey-voice i { animation: hey-talk 320ms ease-in-out infinite alternate; }
 .hey.is-talking .hey-voice i:nth-child(2) { animation-delay: -.12s; }
 .hey.is-talking .hey-voice i:nth-child(3) { animation-delay: -.24s; }
 .hey.is-talking .hey-voice i:nth-child(4) { animation-delay: -.06s; }
-@keyframes hey-in { from { opacity: 0; filter: blur(10px); transform: translateY(.15em); } to { opacity: 1; filter: none; transform: none; } }
+@keyframes hey-in { from { opacity: 0; filter: blur(4px); transform: translateY(.1em); } to { opacity: 1; filter: none; transform: none; } }
 @keyframes hey-listen { 0%, 55%, 100% { transform: translateY(0); } 25% { transform: translateY(-.14em); } }
-@keyframes hey-talk { from { height: .13em; } to { height: .46em; } }
+@keyframes hey-talk { from { transform: scaleY(1); } to { transform: scaleY(3.5); } }
 
 /* Scenen: memojien, agentens navn og beskrivelse */
 .scene {
@@ -312,19 +319,19 @@ h1 {
 .scene-title .ch { display: inline-block; }
 
 /* Skiftet: memojien popper ind, navnet glider ind bogstav for bogstav, og beskrivelsen kommer ord for ord */
-.scene-item.is-in .scene-img { animation: scene-pop .55s cubic-bezier(.34, 1.56, .64, 1) both; }
-.scene-item.is-in .ch { animation: ch-in .5s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--d) * 28ms + 80ms); }
-.scene-item.is-in .scene-text .wd { animation: wd-in .45s ease both; animation-delay: calc(var(--d) * 32ms + 320ms); }
+.scene-item.is-in .scene-img { animation: scene-pop 400ms var(--ease-out) both; }
+.scene-item.is-in .ch { animation: ch-in 300ms var(--ease-out) both; animation-delay: calc(min(var(--d), 14) * 20ms + 60ms); }
+.scene-item.is-in .scene-text .wd { animation: wd-in 300ms var(--ease-out) both; animation-delay: calc(min(var(--d), 16) * 14ms + 180ms); }
 .scene-item.is-out .scene-img,
 .scene-item.is-out .scene-title,
-.scene-item.is-out .scene-text { animation: scene-out .22s ease both; }
+.scene-item.is-out .scene-text { animation: scene-out 180ms var(--ease-out) both; }
 @keyframes scene-pop {
-  from { opacity: 0; transform: scale(.8) translateY(14px); filter: blur(8px); }
+  from { opacity: 0; transform: scale(.94) translateY(10px); filter: blur(4px); }
   to { opacity: 1; transform: none; filter: none; }
 }
-@keyframes ch-in { from { opacity: 0; transform: translateY(.4em) scale(.9); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
-@keyframes wd-in { from { opacity: 0; transform: translateY(5px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
-@keyframes scene-out { to { opacity: 0; transform: scale(.94); filter: blur(6px); } }
+@keyframes ch-in { from { opacity: 0; transform: translateY(.3em); } to { opacity: 1; transform: none; } }
+@keyframes wd-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+@keyframes scene-out { to { opacity: 0; transform: scale(.97); } }
 
 /* Hjælpetekst over baren. Mobil viser "stryg", computer viser "vælg". */
 .picker-hint {
@@ -361,10 +368,8 @@ h1 {
   position: absolute; z-index: 0; left: 0; top: 0; width: var(--bw); height: var(--bh);
   transform: translate(var(--px, 0), var(--py, 0)) rotate(var(--prot, 0deg));
   background: var(--pill-bg); border-radius: 1.5rem; box-shadow: var(--pill-shadow);
-  transition: transform .45s cubic-bezier(.34, 1.25, .64, 1);
+  transition: transform 280ms var(--ease-in-out);
 }
-.picker-pill.is-moving { animation: pill-stretch .45s ease; }
-@keyframes pill-stretch { 0% { scale: 1 1; } 35% { scale: 1.4 .86; } 70% { scale: .96 1.05; } 100% { scale: 1 1; } }
 
 .pick {
   position: relative; z-index: 1; flex: none; width: var(--bw); height: var(--bh);
@@ -374,15 +379,23 @@ h1 {
 .pick img {
   width: calc(var(--bh) - .5rem); height: calc(var(--bh) - .5rem);
   opacity: .62; filter: saturate(.4); scale: .9;
-  transition: opacity .3s, filter .3s, scale .4s cubic-bezier(.34, 1.56, .64, 1), translate .4s cubic-bezier(.34, 1.56, .64, 1), rotate .4s cubic-bezier(.34, 1.56, .64, 1);
+  transition: opacity 200ms ease, filter 200ms ease, scale 200ms var(--ease-out), translate 200ms var(--ease-out), rotate 200ms var(--ease-out);
 }
 .pick[aria-pressed="true"] img { opacity: 1; filter: none; scale: 1.06; }
 /* Hover: hovedet hopper op, vipper og får farve */
-@media (hover: hover) {
-  .pick:hover img { opacity: 1; filter: none; scale: 1.22; translate: 0 -7px; rotate: -7deg; }
-  .pick[aria-pressed="true"]:hover img { scale: 1.16; translate: 0 -4px; rotate: 5deg; }
+@media (hover: hover) and (pointer: fine) {
+  .pick:hover img { opacity: 1; filter: none; scale: 1.12; translate: 0 -4px; rotate: -5deg; }
+  .pick[aria-pressed="true"]:hover img { scale: 1.1; translate: 0 -3px; rotate: 4deg; }
 }
-.pick:active img { scale: .95; translate: 0; }
+.pick:active img { scale: .95; translate: 0; transition-duration: 100ms; }
+
+/* Afsløring ved scroll: overskrifter og grupper glider stille ind første gang, de ses. Kun når JavaScript kører. */
+.js-reveal [data-reveal] { opacity: 0; transform: translateY(12px); }
+.js-reveal [data-reveal].is-visible {
+  opacity: 1; transform: none;
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
 
 /* Sektioner */
 .section { padding: 5rem var(--gutter); }
@@ -452,8 +465,8 @@ h1 {
 .js-spor .spor-label { display: none; }
 .js-spor .spor:not(.is-active) { display: none; }
 .js-spor .spor-fit + .spor-fit { border-top: 0; }
-.js-spor .spor.is-active { animation: spor-ind .25s ease-out; }
-@keyframes spor-ind { from { opacity: 0; } to { opacity: 1; } }
+.js-spor .spor.is-active { transition: opacity 200ms var(--ease-out); }
+@starting-style { .js-spor .spor.is-active { opacity: 0; } }
 
 /* Om */
 .about { display: grid; gap: 2.5rem; align-items: center; }
@@ -510,10 +523,10 @@ h1 {
   display: grid; place-items: center; width: 3.6rem; height: 3.6rem; border-radius: 16px;
   background: var(--tile); border: 1px solid var(--line);
   box-shadow: 0 1px 2px rgb(15 14 19 / .06), 0 8px 20px rgb(15 14 19 / .08);
-  transform: rotate(var(--r, 0deg)); transition: transform .2s;
+  transform: rotate(var(--r, 0deg)); transition: transform 200ms var(--ease-out);
 }
 .tool-tile img { width: 55%; height: 55%; object-fit: contain; }
-.tool:hover .tool-tile { transform: rotate(0deg) translateY(-3px); }
+@media (hover: hover) and (pointer: fine) { .tool:hover .tool-tile { transform: rotate(0deg) translateY(-3px); } }
 .tool-name { font-size: .85rem; font-weight: 500; color: var(--muted); text-align: center; }
 .t1 { --r: -6deg; } .t2 { --r: 5deg; } .t3 { --r: -3deg; } .t4 { --r: 7deg; }
 .t5 { --r: 4deg; } .t6 { --r: -7deg; } .t7 { --r: 6deg; } .t8 { --r: -4deg; }
@@ -633,9 +646,19 @@ h1 {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
-  .js-spor .spor.is-active { animation: none !important; }
-  .hey-text, .hey-voice, .hey-voice i, .scene-fig,
-  .scene-item.is-in *, .scene-item.is-out *, .picker-pill.is-moving { animation: none !important; }
-  .scene-item.is-out { visibility: hidden; }
+  /* Det, der bevæger sig, står stille. Farver og fades bliver, fordi de hjælper med at forstå skiftet. */
+  .hey-voice i, .scene-fig { animation: none; }
+  .hey-text, .hey-voice { animation: fade 200ms ease both; }
+  .scene-item.is-in .scene-img, .scene-item.is-in .ch, .scene-item.is-in .scene-text .wd { animation: fade 200ms ease both; animation-delay: 0ms; }
+  .scene-item.is-out .scene-img, .scene-item.is-out .scene-title, .scene-item.is-out .scene-text { animation: fade-out 150ms ease both; }
+  .picker-pill { transition: none; }
+  .pick img { transition: opacity 200ms ease, filter 200ms ease; }
+  .pick:hover img, .pick[aria-pressed="true"]:hover img, .pick:active img { scale: 1.06; translate: none; rotate: none; }
+  .pick:not([aria-pressed="true"]):hover img { scale: .9; }
+  .btn, .btn:hover, .btn:active, .tool:hover .tool-tile { transform: none; }
+  .tool-tile { transition: none; }
+  .js-reveal [data-reveal] { transform: none; }
+  .js-reveal [data-reveal].is-visible { transition: opacity 300ms ease; transition-delay: 0ms; }
 }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fade-out { to { opacity: 0; } }

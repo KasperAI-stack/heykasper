@@ -103,7 +103,7 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     });
   };
 
-  // Den hvide pude glider hen bag den valgte agent og strækker sig lidt på vejen.
+  // Den hvide pude glider hen bag den valgte agent.
   var movePill = function (animate) {
     var a = current.arc;
     if (!animate) pill.style.transition = "none";
@@ -113,10 +113,6 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     if (!animate) {
       void pill.offsetWidth;
       pill.style.transition = "";
-    } else if (!reduce.matches) {
-      pill.classList.remove("is-moving");
-      void pill.offsetWidth;
-      pill.classList.add("is-moving");
     }
   };
 
@@ -134,12 +130,12 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     prev.outTimer = setTimeout(function () {
       prev.classList.remove("is-out");
       prev.classList.add("is-off");
-    }, reduce.matches ? 0 : 220);
+    }, reduce.matches ? 150 : 180);
 
     clearTimeout(next.outTimer);
     next.classList.remove("is-off", "is-out", "is-in");
     void next.offsetWidth; // starter animationen forfra
-    if (!reduce.matches) next.classList.add("is-in");
+    next.classList.add("is-in"); // ved reduceret bevægelse bliver det en stille fade (se CSS)
 
     current = btn;
     movePill(true);
@@ -186,10 +182,8 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
   if (hint) hint.hidden = false;
   layout();
   movePill(false);
-  if (!reduce.matches) {
-    panel(current).classList.add("is-in");
-    setTimeout(talk, 400);
-  }
+  panel(current).classList.add("is-in");
+  if (!reduce.matches) setTimeout(talk, 400);
   window.addEventListener("resize", function () { layout(); movePill(false); });
   if (document.fonts) document.fonts.ready.then(function () { layout(); movePill(false); });
 })();
@@ -314,3 +308,32 @@ document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
     window.dataLayer.push({ event: "booking_klik" });
   });
 });
+
+// Afsløring ved scroll: overskrifter og grupper glider stille ind første gang, de kommer frem.
+// Kun når browseren kan det, så intet indhold nogensinde bliver hængende usynligt.
+(function () {
+  if (!("IntersectionObserver" in window)) return;
+  var groups = [
+    ".section:not(.hero) > h2", ".split-text", ".section > .lede-small", ".process-intro",
+    ".steps > li", ".spor-fits", ".about-text", ".cv-head", ".cv-item", ".tool", ".panel"
+  ];
+  var els = [];
+  groups.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el, i) {
+      el.setAttribute("data-reveal", "");
+      // Elementer i samme gruppe kommer lidt efter hinanden (højst 5 trin, så intet venter længe)
+      if (/li|item|tool/.test(sel)) el.style.setProperty("--i", Math.min(i, 5));
+      els.push(el);
+    });
+  });
+  if (!els.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      io.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  document.documentElement.classList.add("js-reveal");
+  els.forEach(function (el) { io.observe(el); });
+})();
