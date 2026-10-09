@@ -146,3 +146,15 @@ Forside, titel: Hey Kasper | Jeres nye AI marketing manager
 Forside, beskrivelse: Jeg hedder Kasper Schrøder Asmussen og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter til opslag, mails, tekster, annoncer og leads.
 Tak-siden, titel: Tak for jeres besked | Hey Kasper
 Tak-siden, beskrivelse: Tak for jeres besked til Kasper. Jeg vender tilbage inden for en arbejdsdag, så vi kan finde et tidspunkt, der passer jer.
+
+## Privatlivspolitik og vilkår for brug
+
+Teksten står direkte i site/privatliv.html og site/vilkaar.html. Linje under formularen: Jeg bruger kun jeres oplysninger til at svare jer. Læs mere i privatlivspolitikken.
+
+## 404-siden
+
+Etiket: Fejl 404
+Overskrift: Den side kunne jeg ikke finde
+Tekst: Linket virker ikke længere, eller adressen er skrevet forkert. Her er de steder, de fleste leder efter, eller I kan gå direkte til forsiden.
+Genveje: Sådan foregår det, Mit CV, Book en snak
+Knap: Gå til forsiden

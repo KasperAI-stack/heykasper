@@ -600,6 +600,28 @@ h1 {
 .footer p { margin: 0; }
 .footer-name { color: var(--ink); font-weight: 600; display: flex; align-items: center; flex-wrap: wrap; gap: .25rem .6rem; }
 .footer-by { font-weight: 400; color: var(--muted); }
+.footer-links { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; flex-basis: 100%; font-size: .9rem; }
+.form-note { margin: 0; font-size: .875rem; color: var(--muted); }
+
+/* Privatlivspolitik og vilkår: rolig læsetekst i én kolonne */
+.legal { padding-top: 4rem; padding-bottom: 5rem; }
+.legal > * { max-width: 42rem; }
+.legal h1 { font-size: clamp(2.25rem, 6vw, 3.5rem); font-weight: 600; line-height: 1.05; letter-spacing: -.04em; margin: 0 0 1.25rem; }
+.legal h2 { font-size: 1.3rem; letter-spacing: -.02em; margin: 2.5rem 0 .6rem; }
+.legal p, .legal li { color: var(--muted); }
+.legal a { color: var(--ink); }
+.legal ul { padding-left: 1.25rem; margin: 0 0 1rem; display: grid; gap: .35rem; }
+.legal-date { font-size: .9rem; margin-bottom: .75rem; }
+.legal-lede { font-size: 1.15rem; color: var(--ink) !important; margin-bottom: 0; }
+
+/* 404: lille etiket over overskriften og genveje til de mest brugte steder */
+.eyebrow-404 { font-size: .85rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 .5rem; }
+.links-404 { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.links-404 a {
+  display: inline-block; padding: .5rem 1rem; border-radius: 999px; text-decoration: none; font-weight: 500;
+  background: var(--soft); border: 1px solid var(--line); transition: background-color .15s;
+}
+.links-404 a:hover { background: var(--hover); }
 
 /* Tak-siden */
 .thanks { min-height: 75vh; justify-content: center; padding-bottom: 5rem; }

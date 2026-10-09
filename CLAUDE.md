@@ -40,7 +40,9 @@ Se docs/tilbud.md. Trin og produkter skal stå præcis som der. Siden viser inge
 6. Værktøjer: de værktøjer, Kasper bygger med
 7. Workshops og oplæring
 8. Book et møde: formularen eller booking
-9. Footer: e-mail (kasper@heyotto.dk), telefon (+45 22 46 38 40) og LinkedIn. CVR tilføjes, når Kasper har et.
+9. Footer: e-mail (kasper@heyotto.dk), telefon (+45 22 46 38 40), LinkedIn og links til Privatlivspolitik og Vilkår for brug. CVR tilføjes, når Kasper har et.
+
+Undersider: site/privatliv.html (/privatliv), site/vilkaar.html (/vilkaar), site/tak.html og site/404.html. De har samme top og footer som forsiden. Privatlivspolitikken skal passe med det, siden faktisk gør (formularens felter, Netlify, Google Sheets og Gmail, ingen cookies, temavalg i localStorage), så den skal opdateres, hvis der kommer nye felter, værktøjer eller sporing til. Under formularen står en kort linje med link til privatlivspolitikken.
 
 Teksten til hver sektion ligger i docs/copy.md.
 
