@@ -16,8 +16,9 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     # Kun rapportering indtil videre (se konsollen i browseren). Skift til Content-Security-Policy, når den er testet live.
-    # Hashen er det lille tema-script i <head>. Ændres scriptet, skal hashen beregnes igen.
-    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'sha256-WaAKXHuIv9tyz+vMQ0g7WJ9OlUaXnYbd86B8r3s8AU4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+    # Hashene er de små inline-scripts i <head> (tema, samtykke, GTM og eventet på tak-siden). Ændres et af dem, skal hashen beregnes igen.
+    # Når der kommer tags i GTM (fx GA4, Google Ads eller Cookiebot), skal deres domæner også tilføjes her.
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'sha256-CnZuhP8n507ogd3REFUwh6kZhY6uU46xfu4EIVyWPAY=' 'sha256-FefpOSuXYFoENJDALXtk7FFAN4N4FB8CGojwK3pne0w=' 'sha256-WaAKXHuIv9tyz+vMQ0g7WJ9OlUaXnYbd86B8r3s8AU4=' 'sha256-iXHA58f7SY2Y3qhiDCA5L9DeNR5tidz+pOrs4boVCx4=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com; frame-src https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
 
 [[headers]]
   for = "/assets/*"

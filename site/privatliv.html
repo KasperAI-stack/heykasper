@@ -3,8 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Samtykke: statistik og annoncer starter som "nej", indtil et cookiebanner giver samtykke. Skal stå før GTM. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-K7W77X5Z');</script>
+  <!-- End Google Tag Manager -->
   <title>Privatlivspolitik | Hey Kasper</title>
-  <meta name="description" content="Sådan behandler Kasper Schrøder Asmussen de oplysninger, I sender gennem hey-kasper.dk. Ingen cookies og ingen sporing.">
+  <meta name="description" content="Sådan behandler Kasper Schrøder Asmussen de oplysninger, I sender gennem hey-kasper.dk. Ingen måling uden samtykke.">
   <link rel="canonical" href="https://hey-kasper.dk/privatliv">
   <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0F0E13" media="(prefers-color-scheme: dark)">
@@ -18,6 +39,10 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7W77X5Z"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <a class="skip" href="#indhold">Gå til indholdet</a>
 
   <div class="page">
@@ -38,7 +63,7 @@
     <article class="section legal" aria-labelledby="legal-titel">
       <p class="legal-date">Opdateret 9. oktober 2026</p>
       <h1 id="legal-titel">Privatlivspolitik</h1>
-      <p class="legal-lede">Jeg indsamler kun de oplysninger, I selv skriver i kontaktformularen. Siden sætter ingen cookies, bruger ingen sporing, og jeg sælger eller deler aldrig jeres oplysninger med andre til markedsføring.</p>
+      <p class="legal-lede">Jeg indsamler kun de oplysninger, I selv skriver i kontaktformularen. Siden måler ikke, hvad I gør, uden jeres samtykke, og jeg sælger eller deler aldrig jeres oplysninger med andre til markedsføring.</p>
 
       <h2>Hvem er ansvarlig</h2>
       <p>Hey Kasper drives af Kasper Schrøder Asmussen, som er dataansvarlig for de oplysninger, I giver mig gennem siden. I kan altid skrive til mig på <a href="mailto:kasper@heyotto.dk">kasper@heyotto.dk</a> eller ringe på <a href="tel:+4522463840">+45 22 46 38 40</a>.</p>
@@ -58,8 +83,9 @@
       <h2>Hvor længe jeg gemmer dem</h2>
       <p>Jeg gemmer jeres henvendelse, så længe vi er i dialog, og sletter den senest 12 måneder efter vores seneste kontakt. Indgår vi en aftale, gemmer jeg de oplysninger, aftalen og bogføringsloven kræver.</p>
 
-      <h2>Cookies og lokal lagring</h2>
-      <p>Siden sætter ingen cookies. Skifter I mellem lyst og mørkt tema, husker jeres egen browser valget. Det bliver på jeres enhed og sendes ikke til mig. Skriften ligger på siden selv, så der hentes intet fra Google Fonts.</p>
+      <h2>Cookies, måling og lokal lagring</h2>
+      <p>Siden indlæser Google Tag Manager, som er et værktøj, jeg kan bruge til at styre måling af besøg og annoncer. Al måling står som standard på "nej", så der bliver ikke sat cookies til statistik eller annoncer, og der bliver ikke målt noget om jer, før I har givet samtykke. Når Google Tag Manager indlæses, modtager Google jeres IP-adresse og oplysninger om jeres browser, ligesom ved ethvert andet besøg på en side hos Google. Begynder jeg at måle besøg eller annoncer, kommer der et cookiebanner, hvor I selv vælger, og denne side bliver opdateret med de konkrete værktøjer.</p>
+      <p>Bortset fra det sætter siden ingen cookies. Skifter I mellem lyst og mørkt tema, husker jeres egen browser valget. Det bliver på jeres enhed og sendes ikke til mig. Skriften ligger på siden selv, så der hentes intet fra Google Fonts.</p>
       <p>Netlify registrerer, ligesom alle webhoteller, tekniske oplysninger som IP-adresse og browsertype i en kort periode for at holde siden sikker og kørende. Jeg bruger dem ikke til at følge med i, hvem I er.</p>
 
       <h2>Når I forlader siden</h2>

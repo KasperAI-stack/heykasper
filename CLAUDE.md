@@ -86,6 +86,7 @@ Regler:
 - Kontaktsektionen har en knap, der skifter mellem "Send en forespørgsel" (formularen) og "Book en tid" (link til Kaspers gratis bookingside i Google Kalender). Bookingsiden linkes og indlejres ikke, så Google ikke sætter cookies på siden.
 - Automatisering: Netlify sender hver formular videre til et Google Apps Script (automatisering/henvendelser.gs), som gemmer den i et Google Sheet, mailer Kasper, sender et automatisk svar og sender en daglig påmindelse om ubesvarede henvendelser. Opsætningen står i docs/automatisering.md. Mappen automatisering/ kommer ikke online.
 - Ingen tracking eller cookies uden samtykke. Hvis der skal måles trafik, brug en cookiefri løsning og spørg Kasper først.
+- Google Tag Manager (GTM-K7W77X5Z) står på alle sider med Consent Mode-standard "denied" før sig. Nye sider skal have samme kode i <head> og noscript efter <body>. Status, events og næste skridt står i docs/sporing.md.
 - Billeder komprimeres og får altid en alt-tekst. Billeder under folden får loading="lazy".
 - Filer i /assets/ caches i et år (se netlify.toml). Når logo, favicon eller brand-mark skiftes ud under samme filnavn, skal ?v= i linkene i alle .html-filer tælles én op, ellers ser besøgende den gamle version.
 - Delingsbillede: site/assets/og-image.jpg (1200x630). Strukturerede data (JSON-LD) står i <head> på forsiden og må kun indeholde oplysninger, der også står på siden.

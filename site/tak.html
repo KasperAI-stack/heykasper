@@ -3,6 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Samtykke: statistik og annoncer starter som "nej", indtil et cookiebanner giver samtykke. Skal stå før GTM. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-K7W77X5Z');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Konvertering: en henvendelse er sendt. GTM lytter efter eventet "henvendelse_sendt". -->
+  <script>dataLayer.push({event: 'henvendelse_sendt'});</script>
   <title>Tak for jeres besked | Hey Kasper</title>
   <meta name="description" content="Tak for jeres besked til Kasper. Jeg vender tilbage inden for en arbejdsdag, så vi kan finde et tidspunkt, der passer jer.">
   <meta name="robots" content="noindex">
@@ -18,6 +41,10 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7W77X5Z"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <a class="skip" href="#indhold">Gå til indholdet</a>
 
   <div class="page">
@@ -38,7 +65,7 @@
       <img class="mascot" src="/assets/kasper-memoji-hel.webp" alt="Kasper som memoji i sort t-shirt og jeans, smilende" width="280" height="667">
       <h1>Tak for jeres besked</h1>
       <p class="lede">Jeg vender tilbage inden for en arbejdsdag, så vi kan finde et tidspunkt, der passer jer.</p>
-      <p class="lede-small">Har I travlt, kan I <a href="https://calendar.app.google/h7uCdYSGWCpxRuK57" target="_blank" rel="noopener">booke en tid i min kalender</a> med det samme.</p>
+      <p class="lede-small">Har I travlt, kan I <a href="https://calendar.app.google/h7uCdYSGWCpxRuK57" target="_blank" rel="noopener" data-track="booking">booke en tid i min kalender</a> med det samme.</p>
       <a class="btn" href="/">Tilbage til forsiden</a>
     </section>
   </main>

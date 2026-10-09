@@ -306,3 +306,11 @@ if (contactSwitch) {
   group.hidden = false;
   vaelg(start, false, false);
 })();
+
+// Konvertering: klik på et link til min kalender. GTM lytter efter eventet "booking_klik".
+document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
+  link.addEventListener("click", function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "booking_klik" });
+  });
+});

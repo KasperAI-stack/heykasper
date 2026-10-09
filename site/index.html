@@ -3,6 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Samtykke: statistik og annoncer starter som "nej", indtil et cookiebanner giver samtykke. Skal stå før GTM. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-K7W77X5Z');</script>
+  <!-- End Google Tag Manager -->
   <meta name="google-site-verification" content="lTNoFoLnO_X4oPJ0lE1W8n97fP3PQ7NGPv2_HDsCT_c">
   <title>Hey Kasper | Jeres nye AI marketing manager</title>
   <meta name="description" content="Jeg hedder Kasper Schrøder Asmussen og bliver jeres nye AI marketing manager. Jeg bygger AI-agenter til opslag, mails, tekster, annoncer og leads.">
@@ -89,6 +110,10 @@
   </script>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7W77X5Z"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <a class="skip" href="#indhold">Gå til indholdet</a>
 
   <div class="page">
@@ -391,7 +416,7 @@
             </span>
             <h3>Et møde på 30 minutter</h3>
             <p>Når I har valgt et tidspunkt, får I en bekræftelse på mail, og mødet ligger i begge vores kalendere.</p>
-            <a class="btn" href="https://calendar.app.google/h7uCdYSGWCpxRuK57" target="_blank" rel="noopener">Åbn min kalender</a>
+            <a class="btn" href="https://calendar.app.google/h7uCdYSGWCpxRuK57" target="_blank" rel="noopener" data-track="booking">Åbn min kalender</a>
             <p class="booking-note">Kalenderen åbner i en ny fane hos Google.</p>
           </div>
         </div>
