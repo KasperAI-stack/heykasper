@@ -34,10 +34,10 @@ Se docs/tilbud.md. Trin og produkter skal stå præcis som der. Siden viser inge
 
 1. Hero: "Hey Kasper, byg os lige …", memojien og en buet bar med fem agenter (SoMe, mail, annoncer, leads og tekster). Hver agent har et navn og én eller to sætninger. Booking ligger i knappen i toppen.
 2. Problemet
-3. Sådan foregår det: en vælger med samarbejdsform (Fastansat, Konsulent, Projekt) over de fire trin. Trin 1 og 2 står fast, trin 3 og 4 og linjen "Passer til jer, der …" med knap skifter. Knappen vælger samarbejdsformen i formularens felt "samarbejde", og ?samarbejde=… i adressen åbner et bestemt spor. Uden JavaScript står alle tre spor under hinanden.
-4. Hvem bygger det? (om Kasper)
-5. CV: stillinger, resultater og uddannelse fra Kaspers LinkedIn
-6. Værktøjer: de værktøjer, Kasper bygger med
+3. Værktøjer: de værktøjer, Kasper bygger med
+4. Sådan foregår det: en vælger med samarbejdsform (Fastansat, Konsulent, Projekt) over de fire trin. Trin 1 og 2 står fast, trin 3 og 4 og linjen "Passer til jer, der …" med knap skifter. Knappen vælger samarbejdsformen i formularens felt "samarbejde", og ?samarbejde=… i adressen åbner et bestemt spor. Uden JavaScript står alle tre spor under hinanden.
+5. Hvem bygger det? (om Kasper)
+6. CV: stillinger, resultater og uddannelse fra Kaspers LinkedIn
 7. Workshops og oplæring
 8. Book et møde: formularen eller booking
 9. Footer: e-mail (kasper@heyotto.dk), telefon (+45 22 46 38 40), LinkedIn og links til Privatlivspolitik og Vilkår for brug. CVR tilføjes, når Kasper har et.

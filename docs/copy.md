@@ -31,6 +31,12 @@ Overskrift: I ved godt, at AI kan klare mere af jeres marketing
 Tekst: Men der sidder ingen i huset, som både kender marketingen og kan bygge løsningerne. Så tallene til mandagsrapporten bliver stadig samlet i hånden, og henvendelsen fra hjemmesiden ligger og venter, til nogen får tid.
 Tekst: Den rolle vil jeg gerne tage hos jer.
 
+## Værktøjer
+
+Overskrift: Værktøjer, som I selv ejer
+Tekst: Jeg vælger værktøjerne efter opgaven, og alt bliver oprettet på jeres egne konti. Hvis I en dag stopper samarbejdet, beholder I løsningerne og skal ikke starte forfra.
+Værktøjer: Claude, n8n, VS Code, Lovable, Google Cloud, GitHub, Netlify, Google Sheets
+
 ## Sådan foregår det
 
 Intro: Vælg, hvordan I helst vil arbejde sammen. De to første trin er de samme, uanset hvad I vælger, så I kan altid se en løsning virke på jeres egne data, før I beslutter noget.
@@ -94,12 +100,6 @@ Maj 2021 til jul. 2023. Konsulent, Cand. Deltid.
 - Hjalp virksomheder på projektbasis med brandstrategi og udvikling af webshops.
 
 Uddannelse. Kandidat i Marketing & Brand Management.
-
-## Værktøjer
-
-Overskrift: Værktøjer, som I selv ejer
-Tekst: Jeg vælger værktøjerne efter opgaven, og alt bliver oprettet på jeres egne konti. Hvis I en dag stopper samarbejdet, beholder I løsningerne og skal ikke starte forfra.
-Værktøjer: Claude, n8n, VS Code, Lovable, Google Cloud, GitHub, Netlify, Google Sheets
 
 ## Workshops og oplæring
 
