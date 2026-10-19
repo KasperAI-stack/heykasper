@@ -1,0 +1,47 @@
+# Testsite på GitHub Pages. site/ er præcis det, der senere skal til hey-kasper.dk.
+# Kun preview-kopien får noindex, stier under /heykasper-test/ og ingen GTM.
+name: Preview på GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Byg preview-kopi
+        env:
+          BASE: /heykasper-test
+        run: |
+          cp -r site _site
+          # Rodstier ("/css/...") peger på projektmappen på Pages
+          find _site -name '*.html' -exec sed -i -E "s#(href|src|action)=\"/([^/])#\1=\"$BASE/\2#g" {} +
+          sed -i "s#url(\"/#url(\"$BASE/#g" _site/css/*.css
+          # Testsitet må ikke indekseres og må ikke sende data til GTM
+          find _site -name '*.html' -exec sed -i 's#<head>#<head>\n  <meta name="robots" content="noindex, nofollow">#' {} +
+          find _site -name '*.html' -exec sed -i 's#www.googletagmanager.com#gtm.invalid#g' {} +
+          printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
