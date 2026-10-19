@@ -10,9 +10,9 @@ En personlig landingpage for Kasper Schrøder Asmussen, der præsenterer sig som
 
 - Navn: Hey Kasper. Skrives "Hey Kasper" i tekst. Kasper Schrøder Asmussen skriver siden som "jeg".
 - Logo: vektorgrafikken site/assets/logo.svg ("hey" i en tynd serif og "Kasper" i en fed skrift) med gennemsigtig baggrund. Den er mørk i lyst tema og bliver vendt til lys i mørkt tema. Står ved siden af memojiens hoved (favicon) i toppen og i footeren med "v/ Kasper Schrøder Asmussen".
-- Overskrift (h1): en lille linje med "Jeres nye AI marketing manager" og under den "Hey Kasper, byg os lige …", hvor fire lilla prikker lytter og taler ligesom "Hey Siri". Den lille linje står inde i h1, så Google kan se, hvad siden handler om.
+- Overskrift (h1): tilbuddet i én sætning (arbejdstekst: "Jeg bygger AI-agenter, der overtager jeres faste marketingopgaver"). "Hey Kasper, byg os lige …" er sidens motiv: en taleboble i agentkortet i hero, hvor fire violette prikker lytter og taler ligesom "Hey Siri". "Jeres nye AI marketing manager" står i titel og meta.
 - Koncept: En moderne konsulentside i sort, grå og lilla, med lyst og mørkt tema. Ordene er jordnære, og alt, hvad der står, er let at forstå.
-- Figur: Kaspers memoji med gennemsigtig baggrund. Kasper optræder kun som memoji, aldrig på rigtige fotos. I toppen står memojien i fem situationer, én for hver agent (site/assets/memoji/), og hovederne fra de samme billeder er knapperne i baren. Hele figuren (site/assets/kasper-memoji-hel.webp) står på tak-siden og 404-siden, og hovedet med gennemsigtig baggrund er ikon i browserfanen og ved logoet i toppen (favicon.svg, favicon-*.png, apple-touch-icon.png, site/favicon.ico og brand-mark.webp). I "Hvem bygger det?" står den pegende og blinkende memoji (site/assets/kasper-peger.svg) på en rolig flade, og i bookingsektionen ("Hvilke opgaver skal I slippe for først?") sidder den mediterende memoji (site/assets/kasper-meditation.svg). Begge er SVG med gennemsigtig baggrund.
+- Figur: Kaspers memoji med gennemsigtig baggrund. Kasper optræder kun som memoji, aldrig på rigtige fotos. I agentkortet i hero står memojien i fem situationer, én for hver agent (site/assets/memoji/), og hovederne fra de samme billeder er knapperne i rækken under. Hele figuren (site/assets/kasper-memoji-hel.webp) står på tak-siden og 404-siden, og hovedet med gennemsigtig baggrund er ikon i browserfanen og ved logoet i toppen (favicon.svg, favicon-*.png, apple-touch-icon.png, site/favicon.ico og brand-mark.webp). I "Hvem bygger det?" står den pegende og blinkende memoji (site/assets/kasper-peger.svg) på den grå flade, og i bookingsektionen ("Hvilke opgaver skal I slippe for først?") sidder den mediterende memoji (site/assets/kasper-meditation.svg). Begge er SVG med gennemsigtig baggrund.
 
 ## Sprog og tone
 
@@ -32,60 +32,50 @@ Se docs/tilbud.md. Trin og produkter skal stå præcis som der. Siden viser inge
 
 ## Sidens opbygning
 
-1. Hero: "Hey Kasper, byg os lige …", memojien og en buet bar med fem agenter (SoMe, mail, annoncer, leads og tekster). Hver agent har et navn og én eller to sætninger. Booking ligger i knappen i toppen.
-2. Problemet
-3. Værktøjer: de værktøjer, Kasper bygger med
-4. Sådan foregår det: en vælger med samarbejdsform (Fastansat, Konsulent, Projekt) over de fire trin. Trin 1 og 2 står fast, trin 3 og 4 og linjen "Passer til jer, der …" med knap skifter. Knappen vælger samarbejdsformen i formularens felt "samarbejde", og ?samarbejde=… i adressen åbner et bestemt spor. Uden JavaScript står alle tre spor under hinanden.
-5. Hvem bygger det? (om Kasper)
-6. CV: stillinger, resultater og uddannelse fra Kaspers LinkedIn
-7. Workshops og oplæring
-8. Book et møde: formularen eller booking
-9. Footer: e-mail (kasper@heyotto.dk), telefon (+45 22 46 38 40), LinkedIn og links til Privatlivspolitik og Vilkår for brug. CVR tilføjes, når Kasper har et.
+Redesignet fra 19. oktober 2026 er beskrevet i docs/redesign-plan.md (farver, skala, komponenter og hvad der er fjernet).
 
-Undersider: site/privatliv.html (/privatliv), site/vilkaar.html (/vilkaar), site/tak.html og site/404.html. De har samme top og footer som forsiden. Privatlivspolitikken skal passe med det, siden faktisk gør (formularens felter, Netlify, Google Sheets og Gmail, ingen cookies, temavalg i localStorage), så den skal opdateres, hvis der kommer nye felter, værktøjer eller sporing til. Under formularen står en kort linje med link til privatlivspolitikken.
+0. Top (sticky): logo og knappen "Book 30 minutter" (→ #book). Ingen temaknap.
+1. Hero: h1 med tilbuddet, en underlinje og to knapper ("Book 30 minutter" → #book og "Se hvordan det foregår" → #samarbejde). Til højre (på mobil under) agentkortet: taleboblen "Hey Kasper, byg os lige …", memojiens svar med agentens navn og én eller to sætninger, og en række med fem memoji-hoveder (SoMe, mail, annoncer, leads og tekster). Uden JavaScript vises Annonce-agenten, og rækken er skjult.
+2. Problemet (grå flade)
+3. Sådan foregår det (#samarbejde): fire trin med tal (Afklaring, Prøveopgave, Opstart, Hverdag). Derunder "Tre måder at arbejde sammen på": Projekt, Konsulent og Fastansat side om side, hver med opstart, hverdag, "Passer til jer, der …" og en knap, der hopper til #book og vælger samarbejdsformen i formularens felt "samarbejde". Til sidst én stille linje om, at værktøjerne oprettes på kundens egne konti, med små logoer.
+4. Hvem bygger det? (grå flade): den pegende memoji, to afsnit og én linje med uddannelsen.
+5. Cases (#cases, sort flade): ét kort pr. job (VoiceArchive, Poetype, Africa Tours, Cand) med de rigtige tal fra CV'et som store tal og pladsholdere for kontekst, udfordring og udtalelse.
+6. Book et møde (#book): overskrift og den mediterende memoji. Google-kalenderen indlejret til venstre (på mobil øverst), formularen til højre.
+7. Footer: e-mail (kasper@heyotto.dk), telefon (+45 22 46 38 40), LinkedIn og links til Privatlivspolitik og Vilkår for brug. CVR tilføjes, når Kasper har et.
+
+Undersider: site/privatliv.html (/privatliv), site/vilkaar.html (/vilkaar), site/tak.html og site/404.html. De har samme top og footer som forsiden. Privatlivspolitikken skal passe med det, siden faktisk gør (formularens felter, Netlify, Google Sheets og Gmail, den indlejrede Google-kalender og GTM med samtykke som standard "nej"), så den skal opdateres, hvis der kommer nye felter, værktøjer eller sporing til. Under formularen står en kort linje med link til privatlivspolitikken.
 
 Teksten til hver sektion ligger i docs/copy.md.
 
 ## Design
 
-Farver (defineret som CSS-variabler i site/css/styles.css). Siden har et lyst og et mørkt tema. Den følger den besøgendes egen indstilling, og en knap i toppen skifter mellem dem. Valget huskes i browseren (localStorage, ingen cookies).
+Retningen: samtalen er formen (talebobler), memojien er den eneste illustration, beviser frem for teknik, én accent, og rytmen kommer fra flader, der skifter (hvid, grå, sort). Alle farver er CSS-variabler i site/css/styles.css. Siden følger enhedens lyse eller mørke tema. Der er ingen temaknap, og intet gemmes i browseren.
 
-Neutrale:
+Lyst tema: baggrund #FFFFFF, flader #F4F4F4, tekst #000000, metadata #5C5C5C, pynt-linjer #E2E2E2, feltkanter #8A8A8A, violet #7C3AED (hover #6D28D9), lys violet flade #F1EBFE. Case-sektionen er sort med hvid tekst, metadata #BDBDBD og tal i #C4B5FD.
 
-- Onyx #0F0E13: tekst i lyst tema, baggrund i mørkt tema
-- Grafit #1E1C24: flader i mørkt tema
-- Skifer #3B3845: linjer i mørkt tema
-- Sølvgrå #A7A3B2: dæmpet tekst i mørkt tema
-- Tåge #F4F2F8: flader i lyst tema, tekst i mørkt tema
-- Lyst tema har hvid baggrund og dæmpet tekst i #5E5A6B
-
-Lilla accenter:
-
-- Dyb violet #4C1D95
-- Violet #7C3AED
-- Orkidé #C026D3
-- Rosé #F472B6 (kun i mørkt tema, den er for lys på hvid baggrund)
+Mørkt tema: baggrund #000000, flader #151515, tekst #F2F2F2, metadata #C4C4C4, linjer #2A2A2A, feltkanter #7A7A7A, violet #A78BFA med sort tekst på knapper, lys violet flade #1E1830. Case-sektionen står på #151515.
 
 Regler:
 
-- Skrift: Geist til både overskrifter og brødtekst. Skriften ligger selv på siden (site/fonts/geist-latin.woff2, SIL Open Font License), så der ikke hentes noget fra Google Fonts. Store overskrifter med stram afstand mellem bogstaverne.
-- Grid: Siden står i en ramme af tynde lodrette linjer, og sektionerne er adskilt af vandrette linjer med små plus-mærker, hvor linjerne mødes. De fire trin står i kolonner adskilt af gridlinjer, hver med et lille lysende ikon og en titel, hvor trinnets navn er fedt og prisen dæmpet.
-- Toppen har et neutralt gitter af tynde, grå linjer bag memojien og ingen farvet baggrund. Agenterne vælges i en buet bar, hvor den valgte ligger i en hvid, hævet pude (den eneste vælger, der ikke er i tekstfarven). Agentens navn står stort i sin egen lilla tone.
-- Sort, grå og hvid bærer siden. Knapper, valgte faner og vælgere (også samarbejdsformen i "Sådan foregår det", der genbruger designet fra bookingsektionens skifter) er i tekstfarven (sort i lyst tema, lys i mørkt tema) og helt runde i enderne. Lilla er en accent, der kun bruges i agentens navn og prikkerne i toppen, i ikonerne ved de fire trin, i prikkerne i CV-sektionen og i figuren i værktøjssektionen.
-- Temakontakten i toppen viser sol og måne side om side, og det aktive tema er markeret.
-- Værktøjssektionen er en prikket flade med en stablet flise i midten (site/assets/stack.svg) og værktøjernes logoer i lyse app-ikoner rundt om. Logoerne ligger i site/assets/tools og kommer fra Iconify Logos og Simple Icons (CC0).
-- Illustrationer er rene vektorgrafikker (SVG). Memojien er den eneste figur. Ingen pixel-art og ingen detaljerede AI-genererede billeder.
-- Mobil først. Kontrast mindst WCAG AA. Synligt fokus på alle knapper og felter.
+- Skrift: Schibsted Grotesk (variabel, 400 til 900) til både overskrifter og brødtekst. Skriften ligger selv på siden (site/fonts/schibsted-grotesk-latin.woff2, SIL Open Font License), så der ikke hentes noget fra Google Fonts. Skalaen er 14, 17, 21, 26, 33, 41, 52 og 64 px (--fs-14 til --fs-64). Overskrifter i vægt 800, ingen versaler i labels og ingen fremhævede enkeltord i overskrifter.
+- Brødtekst står i tekstfarven. Den dæmpede grå bruges kun til metadata (perioder, roller, noter).
+- Ren sort og hvid med neutrale grå. Violet er den eneste farve og betyder "Kasper taler" eller "det kan I trykke på": primære knapper, links i fokus, taleboblen og den valgte agent. Ingen gradienter og ingen glød.
+- Knapper er handlinger: primær er violet med radius 12 px, sekundær er en kant i feltkantfarven. Kun knapper er udfyldte. Agentrækken er en toggle: den valgte agent får lys violet flade og violet kant.
+- Talebobler har radius 20 px og ét skarpt hjørne mod den, der taler. Kort (samarbejdsformer og cases) har radius 16 px og en tynd kant, ingen skygger.
+- Ingen gitter, skinner med plus-mærker, prikkede flader, isometriske figurer eller stregikoner. Sektioner adskilles af flader, ikke af linjer.
+- Pladsholdere i firkantede parenteser har klassen ph (stiplet understregning).
+- Illustrationer er rene vektorgrafikker (SVG) eller memojien. Memojien er den eneste figur. Ingen pixel-art og ingen detaljerede AI-genererede billeder. Værktøjslogoerne i site/assets/tools kommer fra Iconify Logos og Simple Icons (CC0).
+- Mobil først. Kontrast mindst WCAG AA (feltkanter mindst 3:1). Synligt fokus (3 px violet ring) på alle knapper, links og felter.
 - Animation følger skillen i .claude/skills/animate (Emil Kowalskis principper). Kurverne er tokens i :root (--ease-out, --ease-in-out, --ease-drawer), og der må ikke laves andre. Kun transform og opacity animeres, UI-animationer holdes under 300 ms, hover-bevægelse står i @media (hover: hover) and (pointer: fine), og ting, man kan klikke hurtigt på, bruger transitions i stedet for keyframes.
-- Toppen må have liv: memojien svæver, agentens navn og beskrivelse glider ind, prikkerne lytter og taler (scaleY, ikke height), og puden i baren glider. Resten af siden er rolig: overskrifter og grupper glider stille ind én gang ved scroll (data-reveal, sat af main.js), og knapper giver et lille tryk (scale 0.97).
-- Ved prefers-reduced-motion forsvinder bevægelse, men fades og farveskift bliver, så skift stadig kan ses.
+- Bevægelse sker kun som svar på det, den besøgende gør: når man vælger en agent, kommer memojien frem, navnet glider ind bogstav for bogstav, og prikkerne taler (scaleY, ikke height). Prikkerne lytter stille, mens man venter. Ingen scroll-reveals, ingen blur og ingen svævende figurer. Knapper giver et lille tryk (scale 0.97).
+- Ved prefers-reduced-motion står prikkerne stille, og skiftet mellem agenter bliver en stille fade.
 
 ## Teknik
 
 - Ren HTML, CSS og JavaScript. Intet framework og intet build-step.
 - Alt, der skal online, ligger i mappen site/, som Netlify publicerer (se netlify.toml).
 - Formularen bruger Netlify Forms (data-netlify="true") med et honeypot-felt mod spam. Efter afsendelse sendes brugeren til /tak.html.
-- Kontaktsektionen har en knap, der skifter mellem "Send en forespørgsel" (formularen) og "Book en tid" (link til Kaspers gratis bookingside i Google Kalender). Bookingsiden linkes og indlejres ikke, så Google ikke sætter cookies på siden.
+- Bookingsektionen viser Kaspers gratis bookingside fra Google Kalender i en iframe (loading="lazy") ved siden af formularen, med et link til samme side under rammen. https://calendar.google.com står i frame-src i CSP'en i netlify.toml. Google kan sætte egne cookies i rammen, og det er nævnt i privatlivspolitikken. Klik inde i rammen kan ikke måles (se docs/sporing.md).
 - Automatisering: Netlify sender hver formular videre til et Google Apps Script (automatisering/henvendelser.gs), som gemmer den i et Google Sheet, mailer Kasper, sender et automatisk svar og sender en daglig påmindelse om ubesvarede henvendelser. Opsætningen står i docs/automatisering.md. Mappen automatisering/ kommer ikke online.
 - Ingen tracking eller cookies uden samtykke. Hvis der skal måles trafik, brug en cookiefri løsning og spørg Kasper først.
 - Google Tag Manager (GTM-K7W77X5Z) står på alle sider med Consent Mode-standard "denied" før sig. Nye sider skal have samme kode i <head> og noscript efter <body>. Status, events og næste skridt står i docs/sporing.md.

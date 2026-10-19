@@ -4,11 +4,18 @@ Tekst i firkantede parenteser er pladsholdere.
 
 ## Hero
 
-Lille linje (står inde i h1): Jeres nye AI marketing manager
-Overskrift (h1): Hey Kasper, byg os lige … (prikkerne er animerede)
-Hjælpetekst over baren: Stryg for at vælge en agent (mobil) / Vælg en agent herunder (computer)
+Arbejdstekster foreslået af copywriteren. Kasper kan ændre dem (se docs/redesign-plan.md).
 
-Agenterne i baren, fra venstre. Den midterste er valgt, når siden åbner.
+Overskrift (h1): Jeg bygger AI-agenter, der overtager jeres faste marketingopgaver
+Underlinje: Til marketingteams uden en udvikler i huset. Vi starter med én opgave og en gratis prøveopgave på jeres egne data, så I ser den virke, før I beslutter noget.
+Knapper: Book 30 minutter (til booking), Se hvordan det foregår (til "Sådan foregår det")
+Knap i toppen: Book 30 minutter
+
+Agentkortet
+Taleboble (den besøgende): Hey Kasper, byg os lige … (prikkerne er animerede)
+Hjælpetekst under rækken: Stryg eller tryk for at vælge en agent (mobil) / Vælg en agent for at se, hvad den kan (computer)
+
+Agenterne i rækken, fra venstre. Den midterste er valgt, når siden åbner. Navn og tekst står i Kaspers taleboble.
 
 SoMe-agenten
 Agenten skriver jeres opslag i jeres egen tone, så næste uges indhold ligger klar, før I har tænkt på det.
@@ -31,98 +38,98 @@ Overskrift: I ved godt, at AI kan klare mere af jeres marketing
 Tekst: Men der sidder ingen i huset, som både kender marketingen og kan bygge løsningerne. Så tallene til mandagsrapporten bliver stadig samlet i hånden, og henvendelsen fra hjemmesiden ligger og venter, til nogen får tid.
 Tekst: Den rolle vil jeg gerne tage hos jer.
 
-## Værktøjer
-
-Overskrift: Værktøjer, som I selv ejer
-Tekst: Jeg vælger værktøjerne efter opgaven, og alt bliver oprettet på jeres egne konti. Hvis I en dag stopper samarbejdet, beholder I løsningerne og skal ikke starte forfra.
-Værktøjer: Claude, n8n, VS Code, Lovable, Google Cloud, GitHub, Netlify, Google Sheets
-
 ## Sådan foregår det
 
-Intro: Vælg, hvordan I helst vil arbejde sammen. De to første trin er de samme, uanset hvad I vælger, så I kan altid se en løsning virke på jeres egne data, før I beslutter noget.
-Vælger (Fastansat er valgt fra start): Fastansat, Konsulent, Projekt
+Overskrift: Sådan foregår det
+Intro (arbejdstekst): De to første trin er de samme, uanset hvordan vi arbejder sammen, så I altid kan se en løsning virke på jeres egne data, før I beslutter noget.
 
-Trin 1 og 2 er ens for alle tre:
-1. Afklaring, 30 minutter. Vi tager en snak om jeres marketingplan og finder den opgave på listen, hvor AI gør størst forskel. I får samtidig et indtryk af, hvordan jeg tænker og arbejder.
-2. Prøveopgave, gratis. Jeg bygger en fungerende løsning på en lille del af jeres egne data, så I kan se den virke, før I beslutter noget.
-   Kun ved Fastansat: Så har I en reel case fra jeres egen hverdag at vurdere mig på, før I ansætter.
+De fire trin (tallet står over hvert trin, og den lille linje under navnet er metadata):
+1. Afklaring. 30 minutter. Vi tager en snak om jeres marketingplan og finder den opgave på listen, hvor AI gør størst forskel. I får samtidig et indtryk af, hvordan jeg tænker og arbejder.
+2. Prøveopgave. Gratis. Jeg bygger en fungerende løsning på en lille del af jeres egne data, så I kan se den virke, før I beslutter noget.
+3. Opstart. Afhænger af samarbejdsformen. Jeg bygger løsningen færdig, kobler den på jeres systemer og lærer jeres team at bruge den.
+4. Hverdag. Løbende. Løsningerne bliver holdt kørende og forbedret, og jeg finder den næste opgave, AI kan løse hos jer.
 
-Fastansat
-3. Opstart, de første måneder. Jeg starter i teamet, bygger prøveopgaven færdig og kobler den på jeres systemer. De første faste opgaver forsvinder fra listen, mens jeg lærer jeres kunder, data og plan at kende indefra.
-4. Hverdag, hver dag. Jeg sidder med til jeres møder og bygger løbende de systemer, planen kræver. Så bliver AI en fast del af måden, I laver marketing på, og I har én i huset, der kan både marketingen og teknikken.
-Passer til jer, der vil have AI ind i marketingen for alvor og hellere vil have en kollega end en leverandør. Som fastansat arbejder jeg kun for jer.
-Knap: Tal med mig om en fast stilling
-
-Konsulent
-3. Opstart, de første uger. Vi aftaler et fast antal timer eller dage om ugen. Jeg bygger løsningen fra prøveopgaven færdig, kobler den på jeres systemer og lærer teamet at bruge den.
-4. Hverdag, løbende. Jeg holder løsningerne kørende, forbedrer dem og tager hele tiden den næste opgave fra listen, mens teamet passer resten af to do-listen.
-Passer til jer, der vil have fast fremdrift hver uge uden at ansætte nu.
-Knap: Book en snak om et konsulentforløb
+Overskrift over sammenligningen (arbejdstekst): Tre måder at arbejde sammen på
 
 Projekt
-3. Opstart, de første uger. Jeg bygger én afgrænset opgave færdig, fx mandagsrapporten eller opfølgningen på leads, kobler den på jeres systemer og lærer jeres team at bruge den.
-4. Hverdag, hos jer. Løsningen kører videre hos jer på jeres egne konti, så I ikke skal starte forfra. Når I er klar til den næste opgave på listen, tager vi den derfra.
 Passer til jer, der har én opgave, der skal løses først, og vil se resultatet, før I binder jer til mere.
+Opstart, de første uger: Jeg bygger én afgrænset opgave færdig, fx mandagsrapporten eller opfølgningen på leads, kobler den på jeres systemer og lærer jeres team at bruge den.
+Hverdag, hos jer: Løsningen kører videre hos jer på jeres egne konti, så I ikke skal starte forfra. Når I er klar til den næste opgave på listen, tager vi den derfra.
 Knap: Book en snak om et projekt
 
-Lille tekst: Værktøjerne oprettes på jeres egne konti, så I ejer det hele.
+Konsulent
+Passer til jer, der vil have fast fremdrift hver uge uden at ansætte nu.
+Opstart, de første uger: Vi aftaler et fast antal timer eller dage om ugen. Jeg bygger løsningen fra prøveopgaven færdig, kobler den på jeres systemer og lærer teamet at bruge den.
+Hverdag, løbende: Jeg holder løsningerne kørende, forbedrer dem og tager hele tiden den næste opgave fra listen, mens teamet passer resten af to do-listen.
+Knap: Book en snak om et konsulentforløb
 
-Knapperne hopper ned til formularen og vælger samarbejdsformen i feltet "Hvordan vil I helst arbejde sammen? (valgfrit)" (Ved ikke endnu, Fastansat, Konsulent, Projekt). Et link med ?samarbejde=fastansat, ?samarbejde=konsulent eller ?samarbejde=projekt åbner siden på det spor.
+Fastansat
+Passer til jer, der vil have AI ind i marketingen for alvor og hellere vil have en kollega end en leverandør. Som fastansat arbejder jeg kun for jer.
+Opstart, de første måneder: Jeg starter i teamet, bygger prøveopgaven færdig og kobler den på jeres systemer. Så har I en reel case fra jeres egen hverdag at vurdere mig på, før I ansætter. De første faste opgaver forsvinder fra listen, mens jeg lærer jeres kunder, data og plan at kende indefra.
+Hverdag, hver dag: Jeg sidder med til jeres møder og bygger løbende de systemer, planen kræver. Så bliver AI en fast del af måden, I laver marketing på, og I har én i huset, der kan både marketingen og teknikken.
+Knap: Tal med mig om en fast stilling
+
+Knapperne hopper ned til booking og vælger samarbejdsformen i feltet "Hvordan vil I helst arbejde sammen? (valgfrit)" (Ved ikke endnu, Fastansat, Konsulent, Projekt).
+
+Værktøjer (én stille linje under sammenligningen): Jeg vælger værktøjerne efter opgaven, og alt bliver oprettet på jeres egne konti. Hvis I en dag stopper samarbejdet, beholder I løsningerne og skal ikke starte forfra.
+Logoer med navn: Claude, n8n, VS Code, Lovable, Google Cloud, GitHub, Netlify, Google Sheets
 
 ## Om mig
 
 Overskrift: Hvem bygger det?
-Tekst: Jeg hedder Kasper Schrøder Asmussen og har en kandidat i Marketing & Brand Management. Jeg har arbejdet med marketing i både B2B og B2C, og i dag bygger jeg AI-drevne marketingsystemer, SEO og automatiseringer.
+Tekst: Jeg hedder Kasper Schrøder Asmussen. Jeg har arbejdet med marketing i både B2B og B2C, og i dag bygger jeg AI-drevne marketingsystemer, SEO og automatiseringer.
 Tekst: Fordi jeg kommer fra marketing, starter jeg med jeres kunder og jeres tal og først bagefter med teknikken. Jeg begynder altid med noget lille, som I kan se virke, og bygger kun videre, når I kan mærke, at det hjælper.
+Linje (metadata): Uddannelse: Kandidat i Marketing & Brand Management
 Figur: den pegende og blinkende memoji. Alt-tekst: Kasper som memoji i sort t-shirt og lyse jeans, der blinker og peger på jer
 
-## CV
+## Cases
 
-Overskrift: Mit CV
+Overskrift (arbejdstekst): Det har mit arbejde ført til
 Tekst: Her er de steder, jeg har arbejdet med marketing, og hvad arbejdet førte til. Hele profilen ligger på LinkedIn.
 
-Aug. 2026 til nu. AI Marketing Manager, Africa Tours ApS. Fuldtid.
+Tallene er fra Kaspers CV. Alt i firkantede parenteser venter på Kasper.
 
-Aug. 2024 til aug. 2026. Marketing Koordinator, VoiceArchive. Fuldtid.
-- Fik flyttet fokus fra alle kunder til de få, der passer bedst (ICP).
-- Account Based Marketing, der gav 12 gange ROI.
-- LinkedIn Ads til thought leadership og leadgenerering.
-- Google Ads, hvor søgevisningsandelen steg fra 17 til 40 %.
-- Et AI-drevet SEO-flow, der flyttede den gennemsnitlige placering fra 30 til 10.
-- 320 landingpages produceret automatisk med n8n og programmatisk SEO.
+VoiceArchive. Marketing Koordinator, fuldtid, aug. 2024 til aug. 2026.
+[KONTEKST: hvad VoiceArchive er, og hvor marketingen stod, da jeg startede]
+Store tal: 12x (ROI på Account Based Marketing), 17→40 % (søgevisningsandel i Google Ads), 30→10 (gennemsnitlig placering i Google med et AI-drevet SEO-flow), 320 (landingpages produceret automatisk med n8n og programmatisk SEO)
+Punkter: Fik flyttet fokus fra alle kunder til de få, der passer bedst (ICP). LinkedIn Ads til thought leadership og leadgenerering.
+[HVAD VAR SVÆRT, og hvordan jeg løste det]
+[UDTALELSE fra en kollega eller leder] [NAVN, TITEL]
 
-Nov. 2023 til aug. 2024. Marketing Koordinator, Poetype. Fuldtid.
-- 5 fysiske events med 260 deltagere i alt.
-- 5 webinarer med 600 deltagere.
-- 12 podcastepisoder, der nåede top 2 på marketinghitlisten.
+Poetype. Marketing Koordinator, fuldtid, nov. 2023 til aug. 2024.
+[KONTEKST]
+Store tal: 260 (deltagere på 5 fysiske events), 600 (deltagere på 5 webinarer), Top 2 (på marketinghitlisten med 12 podcastepisoder)
+[HVAD VAR SVÆRT]
+[UDTALELSE] [NAVN, TITEL]
 
-Maj 2021 til jul. 2023. Konsulent, Cand. Deltid.
-- Hjalp virksomheder på projektbasis med brandstrategi og udvikling af webshops.
+Africa Tours ApS. AI Marketing Manager, fuldtid, aug. 2026 til nu.
+[KONTEKST]
+Stort tal: [RESULTAT] ([HVAD TALLET VISER])
+[HVAD VAR SVÆRT]
+[UDTALELSE] [NAVN, TITEL]
 
-Uddannelse. Kandidat i Marketing & Brand Management.
-
-## Workshops og oplæring
-
-Overskrift: Skal resten af teamet også med?
-Tekst: Ud over at bygge løsningerne holder jeg workshops for teams og giver individuel oplæring. Så kan hele marketingafdelingen bruge AI i sin egen hverdag og behøver ikke vente på, at jeg har tid.
+Cand. Konsulent, deltid, maj 2021 til jul. 2023.
+Hjalp virksomheder på projektbasis med brandstrategi og udvikling af webshops.
+Stort tal: [RESULTAT] ([HVAD TALLET VISER])
+[UDTALELSE] [NAVN, TITEL]
 
 ## Book et møde
 
 Overskrift: Hvilke opgaver skal I slippe for først?
+Tekst (arbejdstekst): Vælg selv et tidspunkt til en snak på 30 minutter, eller skriv kort, hvad der tager tid hos jer i dag.
 Figur: den mediterende memoji. Alt-tekst: Kasper som memoji i beige t-shirt, der sidder med krydsede ben og mediterer med lukkede øjne og et lille smil
-Skift mellem to muligheder: Send en forespørgsel, Book en tid
 
-Send en forespørgsel
+Kalenderen (til venstre, på mobil øverst)
+Overskrift (arbejdstekst): Vælg et tidspunkt i kalenderen
+Tekst: Når I har valgt et tidspunkt, får I en bekræftelse på mail, og mødet ligger i begge vores kalendere.
+Under rammen: Vises kalenderen ikke, kan I åbne den hos Google. (link til bookingsiden)
+Titel på rammen (til skærmlæsere): Book en snak på 30 minutter i Kaspers Google-kalender
+
+Formularen (til højre)
+Overskrift (arbejdstekst): Eller skriv til mig
 Tekst: Skriv kort, hvad der tager tid hos jer i dag, så vender jeg tilbage inden for en arbejdsdag.
-Felter: Navn, Virksomhed, E-mail, Telefon (valgfrit), Hey Kasper, hjælp os med … (hjælpetekst i feltet: fx en ugentlig rapport, opfølgning på leads eller produkttekster…)
+Felter: Navn, Virksomhed, E-mail, Telefon (valgfrit), Hvordan vil I helst arbejde sammen? (valgfrit), Hey Kasper, hjælp os med … (hjælpetekst i feltet: fx en ugentlig rapport, opfølgning på leads eller produkttekster…)
 Knap: Send forespørgsel
-
-Book en tid
-Tekst: Vælg selv et tidspunkt i min kalender, så har vi en aftale med det samme.
-Overskrift i boksen: Et møde på 30 minutter
-Tekst i boksen: Når I har valgt et tidspunkt, får I en bekræftelse på mail, og mødet ligger i begge vores kalendere.
-Knap: Åbn min kalender
-Lille tekst: Kalenderen åbner i en ny fane hos Google.
 
 ## Automatisk svar på forespørgsler
 
@@ -156,5 +163,5 @@ Teksten står direkte i site/privatliv.html og site/vilkaar.html. Linje under fo
 Etiket: Fejl 404
 Overskrift: Den side kunne jeg ikke finde
 Tekst: Linket virker ikke længere, eller adressen er skrevet forkert. Her er de steder, de fleste leder efter, eller I kan gå direkte til forsiden.
-Genveje: Sådan foregår det, Mit CV, Book en snak
+Genveje: Sådan foregår det, Cases, Book en snak
 Knap: Gå til forsiden
