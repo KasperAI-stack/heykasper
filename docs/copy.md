@@ -84,6 +84,30 @@ Citat: ”[UDTALELSE]”
 Under citatet: [NAVN], [TITEL], [VIRKSOMHED]
 Billeder: memojiens overkrop til venstre og selfie-agenten til højre (dekorative, ingen alt-tekst)
 
+## FAQ
+
+Overskrift: Ofte stillede spørgsmål
+Kort: Book 30 minutter. Har I et spørgsmål, der ikke står her, så tag det med til en kort afklaring. Det er gratis, og I forpligter jer ikke til noget. Knap: Book en snak
+
+1. Hvad laver Hey Kasper?
+   Hey Kasper er Kasper Schrøder Asmussen, der bygger AI-agenter til marketing. Agenterne overtager faste opgaver som analyse og rapportering, landingpages med leadforms og opfølgning samt produkttekster, SEO-indhold og opslag i jeres tone.
+2. Hvem passer det til?
+   Det passer til mindre og mellemstore virksomheder, der vil bruge AI i marketingen, men ikke har en udvikler eller egne AI-folk i huset. I behøver ikke være i en bestemt branche.
+3. Hvad koster prøveopgaven?
+   Prøveopgaven er gratis. Jeg bygger en fungerende løsning på en lille del af jeres egne data, så I kan se den virke, før I beslutter noget.
+4. Hvad koster et samarbejde?
+   Prisen afhænger af opgaven og af, hvordan vi arbejder sammen, så den aftaler vi efter afklaringen og prøveopgaven. I får altid prisen at vide, før I siger ja.
+5. Hvordan kommer vi i gang?
+   Vi starter med en afklaring på 30 minutter, hvor vi finder den opgave i jeres marketing, hvor AI gør størst forskel. Derefter kommer den gratis prøveopgave, så opstarten, hvor løsningen bygges færdig og kobles på jeres systemer, og til sidst hverdagen, hvor den holdes kørende og forbedres.
+6. Hvem ejer løsningerne?
+   Det gør I. Alt bliver oprettet på jeres egne konti, så hvis I en dag stopper samarbejdet, beholder I løsningerne og skal ikke starte forfra.
+7. Hvilke værktøjer bruger du?
+   Jeg vælger værktøjerne efter opgaven. Typisk bygger jeg med Claude, n8n, Google Cloud, Google Sheets, GitHub, Netlify, Lovable og VS Code.
+8. Kan jeg ansætte dig fast?
+   Ja. Vi kan arbejde sammen som fastansat, som konsulent med et fast antal timer om ugen eller som et afgrænset projekt. Det aftaler vi på det første møde.
+
+Samme tekst står som FAQPage i JSON-LD i site/index.html.
+
 ## Book et møde
 
 Overskrift: Hvilke opgaver skal I slippe for først?
