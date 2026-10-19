@@ -45,35 +45,18 @@ Værktøjer: Claude, n8n, VS Code, Lovable, Google Cloud, GitHub, Netlify, Googl
 
 ## Sådan foregår det
 
-Intro: Vælg, hvordan I helst vil arbejde sammen. De to første trin er de samme, uanset hvad I vælger, så I kan altid se en løsning virke på jeres egne data, før I beslutter noget.
-Vælger (Fastansat er valgt fra start): Fastansat, Konsulent, Projekt
+Mørk sektion med fire kort, der stables, når man scroller. Ét fælles flow for alle samarbejdsformer.
 
-Trin 1 og 2 er ens for alle tre:
+Intro: Fire trin fra første snak til en løsning, der kører hver dag. I ser den altid virke på jeres egne data, før I beslutter noget.
+
 1. Afklaring, 30 minutter. Vi tager en snak om jeres marketingplan og finder den opgave på listen, hvor AI gør størst forskel. I får samtidig et indtryk af, hvordan jeg tænker og arbejder.
+   Knap: Book afklaringen (til #book)
 2. Prøveopgave, gratis. Jeg bygger en fungerende løsning på en lille del af jeres egne data, så I kan se den virke, før I beslutter noget.
-   Kun ved Fastansat: Så har I en reel case fra jeres egen hverdag at vurdere mig på, før I ansætter.
-
-Fastansat
-3. Opstart, de første måneder. Jeg starter i teamet, bygger prøveopgaven færdig og kobler den på jeres systemer. De første faste opgaver forsvinder fra listen, mens jeg lærer jeres kunder, data og plan at kende indefra.
-4. Hverdag, hver dag. Jeg sidder med til jeres møder og bygger løbende de systemer, planen kræver. Så bliver AI en fast del af måden, I laver marketing på, og I har én i huset, der kan både marketingen og teknikken.
-Passer til jer, der vil have AI ind i marketingen for alvor og hellere vil have en kollega end en leverandør. Som fastansat arbejder jeg kun for jer.
-Knap: Tal med mig om en fast stilling
-
-Konsulent
-3. Opstart, de første uger. Vi aftaler et fast antal timer eller dage om ugen. Jeg bygger løsningen fra prøveopgaven færdig, kobler den på jeres systemer og lærer teamet at bruge den.
-4. Hverdag, løbende. Jeg holder løsningerne kørende, forbedrer dem og tager hele tiden den næste opgave fra listen, mens teamet passer resten af to do-listen.
-Passer til jer, der vil have fast fremdrift hver uge uden at ansætte nu.
-Knap: Book en snak om et konsulentforløb
-
-Projekt
-3. Opstart, de første uger. Jeg bygger én afgrænset opgave færdig, fx mandagsrapporten eller opfølgningen på leads, kobler den på jeres systemer og lærer jeres team at bruge den.
-4. Hverdag, hos jer. Løsningen kører videre hos jer på jeres egne konti, så I ikke skal starte forfra. Når I er klar til den næste opgave på listen, tager vi den derfra.
-Passer til jer, der har én opgave, der skal løses først, og vil se resultatet, før I binder jer til mere.
-Knap: Book en snak om et projekt
-
-Lille tekst: Værktøjerne oprettes på jeres egne konti, så I ejer det hele.
-
-Knapperne hopper ned til formularen og vælger samarbejdsformen i feltet "Hvordan vil I helst arbejde sammen? (valgfrit)" (Ved ikke endnu, Fastansat, Konsulent, Projekt). Et link med ?samarbejde=fastansat, ?samarbejde=konsulent eller ?samarbejde=projekt åbner siden på det spor.
+   Knap: Se, hvad jeg har bygget (til #cases)
+3. Opstart, de første uger. Jeg bygger løsningen fra prøveopgaven færdig, kobler den på jeres systemer og lærer jeres team at bruge den.
+   Knap: Se værktøjerne (til #vaerktoejer)
+4. Hverdag, løbende. Jeg holder løsningerne kørende og forbedrer dem, og når I er klar, tager vi den næste opgave på listen. Alt ligger på jeres egne konti, så I ejer det hele.
+   Knap: Book 30 minutter (til #book)
 
 ## Om mig
 

@@ -248,70 +248,6 @@ if (contactSwitch) {
   setContactMode("booking");
 }
 
-// Samarbejdsform i "Sådan foregår det": vælgeren skifter trin 3 og 4 og linjen under trinnene.
-// ?samarbejde=fastansat|konsulent|projekt i adressen åbner et bestemt spor. Uden JavaScript står alle tre spor under hinanden.
-(function () {
-  var section = document.getElementById("samarbejde");
-  var group = document.querySelector("[data-spor-switch]");
-  if (!section || !group) return;
-  var radios = Array.prototype.slice.call(group.querySelectorAll("[data-spor-valg]"));
-  var navne = { fastansat: "Fastansat", konsulent: "Konsulent", projekt: "Projekt" };
-  var felt = document.getElementById("samarbejde-felt");
-
-  var vaelg = function (spor, fokus, maal) {
-    if (!navne[spor]) return;
-    radios.forEach(function (r) {
-      var on = r.getAttribute("data-spor-valg") === spor;
-      r.setAttribute("aria-checked", on ? "true" : "false");
-      r.setAttribute("aria-pressed", on ? "true" : "false");
-      r.tabIndex = on ? 0 : -1;
-      if (on && fokus) r.focus();
-    });
-    section.querySelectorAll(".spor[data-spor]").forEach(function (el) {
-      el.classList.toggle("is-active", el.getAttribute("data-spor") === spor);
-    });
-    // Lægges kun i dataLayer. Intet bliver målt, før der er sat sporing op med samtykke.
-    if (maal) {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "samarbejdsform_valgt", form: spor });
-    }
-  };
-
-  radios.forEach(function (r) {
-    r.addEventListener("click", function () { vaelg(r.getAttribute("data-spor-valg"), false, true); });
-  });
-  group.addEventListener("keydown", function (e) {
-    var i = radios.indexOf(document.activeElement);
-    if (i < 0) return;
-    var next = null;
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = radios[(i + 1) % radios.length];
-    if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = radios[(i - 1 + radios.length) % radios.length];
-    if (e.key === "Home") next = radios[0];
-    if (e.key === "End") next = radios[radios.length - 1];
-    if (!next) return;
-    e.preventDefault();
-    vaelg(next.getAttribute("data-spor-valg"), true, true);
-  });
-
-  // Knappen under trinnene hopper ned til formularen og vælger samarbejdsformen på forhånd.
-  section.querySelectorAll("[data-vaelg-spor]").forEach(function (link) {
-    link.addEventListener("click", function () {
-      var spor = link.getAttribute("data-vaelg-spor");
-      if (typeof setContactMode === "function") setContactMode("forespoergsel");
-      if (felt && navne[spor]) felt.value = navne[spor];
-    });
-  });
-
-  var start = "fastansat";
-  try {
-    var fraAdresse = new URLSearchParams(window.location.search).get("samarbejde");
-    if (fraAdresse && navne[fraAdresse.toLowerCase()]) start = fraAdresse.toLowerCase();
-  } catch (e) {}
-  section.classList.add("js-spor");
-  group.hidden = false;
-  vaelg(start, false, false);
-})();
-
 // Konvertering: klik på et link til min kalender. GTM lytter efter eventet "booking_klik".
 document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
   link.addEventListener("click", function () {
@@ -326,7 +262,7 @@ document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
   if (!("IntersectionObserver" in window)) return;
   var groups = [
     ".section:not(.hero) > h2", ".split-text", ".section > .lede-small", ".process-intro",
-    ".steps > li", ".spor-fits", ".about-text", ".cases-head", ".case-card", ".tool"
+    ".about-text", ".cases-head", ".case-card", ".tool"
   ];
   var els = [];
   groups.forEach(function (sel) {
@@ -498,4 +434,41 @@ document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
   new MutationObserver(function () { readColors(); draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { readColors(); draw(); });
   build();
+})();
+
+// Sådan foregår det: kortene stables med position: sticky (CSS). Her skaleres de efter scroll:
+// det kommende kort vokser fra 92 % til fuld størrelse, og hvert kort, der lægger sig ovenpå, gør de underliggende
+// lidt mindre og mørkere. Kører kun, mens sektionen er på skærmen, og slet ikke ved reduceret bevægelse.
+(function () {
+  var stack = document.querySelector("[data-pstack]");
+  if (!stack || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var cards = Array.prototype.slice.call(stack.querySelectorAll(".pcard"));
+  var raf = 0, visible = false;
+  var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+
+  var update = function () {
+    raf = 0;
+    var vh = window.innerHeight;
+    // Skaleringen sker fra toppen af kortet, så toppens position påvirkes ikke af den
+    var info = cards.map(function (c) {
+      return { el: c, stick: parseFloat(getComputedStyle(c).top) || 0, top: c.getBoundingClientRect().top, h: c.offsetHeight };
+    });
+    info.forEach(function (c, i) {
+      // Hvor langt kortet er fra sin faste plads: 0 = på plads, 1 = et godt stykke nede
+      var away = clamp((c.top - c.stick) / (vh * .55));
+      var depth = 0;
+      for (var j = i + 1; j < info.length; j++) {
+        depth += clamp(1 - (info[j].top - info[j].stick) / Math.max(c.h, 1));
+      }
+      c.el.style.setProperty("--s", (1 - .08 * away - .04 * depth).toFixed(4));
+      c.el.style.setProperty("--b", (1 - .1 * depth).toFixed(3));
+    });
+  };
+  var kick = function () { if (visible && !raf) raf = requestAnimationFrame(update); };
+  new IntersectionObserver(function (entries) {
+    visible = entries[0].isIntersecting; kick();
+  }, { rootMargin: "20% 0px" }).observe(stack);
+  window.addEventListener("scroll", kick, { passive: true });
+  window.addEventListener("resize", kick);
+  update();
 })();

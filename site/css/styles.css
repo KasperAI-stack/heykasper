@@ -426,53 +426,73 @@ h1 {
   .split-text { margin-top: .5rem; }
 }
 
-/* Trin: fire kolonner adskilt af luft */
-.steps {
-  list-style: none; padding: 0; display: grid; gap: 2.5rem 3rem;
-  margin: 3.5rem 0 0;
+/* Sådan foregår det: mørk sektion med fire kort, der stables, når man scroller.
+   Hvert kort sætter sig fast under toppen, og det næste glider op over det. main.js skalerer kortene:
+   det kommende vokser på plads, og de dækkede krymper og bliver lidt mørkere. Uden JS stables de bare. */
+.process {
+  --pbg: #0F0E13; --stick: 5.25rem; --peek: 1.5rem;
+  background: var(--pbg); color: #fff;
+  box-shadow: 0 0 0 100vmax var(--pbg); clip-path: inset(0 -100vmax);
 }
-@media (min-width: 40rem) { .steps { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 64rem) { .steps { grid-template-columns: repeat(4, 1fr); } }
-.steps li { min-width: 0; }
-.step-icon {
-  display: grid; place-items: center; width: 2.5rem; height: 2.5rem; margin-bottom: 1.75rem;
-  border-radius: 10px; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent);
-  box-shadow: 0 0 22px color-mix(in srgb, var(--c) 35%, transparent);
+:root[data-theme="dark"] .process { --pbg: #1A1820; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .process { --pbg: #1A1820; } }
+.process h2 { color: #fff; }
+.process-intro { color: #C9C5D3; max-width: var(--read); margin: 0 0 3rem; font-size: 1.1rem; }
+.pstack { list-style: none; margin: 0; padding: 0; display: grid; gap: 7vh; }
+.pcard {
+  --card: #4C1D95; --fg: #fff; --sub: rgb(255 255 255 / .8); --blob: rgb(255 255 255 / .06);
+  --dot: #E9D5FF; --dot-fg: #4C1D95; --art: #7C3AED; --s: 1; --b: 1;
+  position: sticky; top: calc(var(--stick) + var(--i) * var(--peek));
+  display: grid; gap: 1.5rem; overflow: hidden; isolation: isolate;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border-radius: 24px; background: var(--card); color: var(--fg);
+  box-shadow: 0 -10px 30px rgb(0 0 0 / .25);
+  transform: scale(var(--s)); transform-origin: 50% 0; filter: brightness(var(--b));
 }
-.step-icon svg { filter: drop-shadow(0 0 4px color-mix(in srgb, var(--c) 60%, transparent)); }
-.steps li:nth-child(1) { --c: var(--s1); }
-.steps li:nth-child(2) { --c: var(--s2); }
-.steps li:nth-child(3) { --c: var(--s3); }
-.steps li:nth-child(4) { --c: var(--s4); }
-.step-title { font-size: 1.2rem; font-weight: 500; letter-spacing: -.02em; color: var(--muted); margin: 0 0 .75rem; }
-.step-title strong { color: var(--ink); font-weight: 600; }
-.step-text { color: var(--muted); margin: 0; font-size: 1rem; }
-.process-note { margin: 2rem 0 0; }
-
-/* Samarbejdsform: vælgeren skifter trin 3 og 4 og linjen under trinnene. Uden JavaScript står alle tre spor under hinanden med en lille etiket. */
-.process-intro { color: var(--muted); max-width: var(--read); margin: 0 0 1.75rem; }
-.switch.spor-switch { margin: 0; }
-.spor-switch .switch-btn { white-space: nowrap; }
-@media (max-width: 30rem) {
-  .switch.spor-switch { width: 100%; }
-  .spor-switch .switch-btn { flex: 1; padding-inline: .5rem; }
+.pcard[data-tone="violet"]   { --card: #7C3AED; --dot: #FFFFFF; --dot-fg: #7C3AED; --art: #4C1D95; --blob: rgb(255 255 255 / .08); }
+.pcard[data-tone="lavender"] { --card: #E6DCFB; --fg: #0F0E13; --sub: #3F3B4A; --dot: #4C1D95; --dot-fg: #fff; --art: #7C3AED; --blob: rgb(76 29 149 / .07); }
+.pcard[data-tone="white"]    { --card: #FFFFFF; --fg: #0F0E13; --sub: #4A4656; --dot: #7C3AED; --dot-fg: #fff; --art: #E6DCFB; --blob: rgb(124 58 237 / .05); }
+/* Den store, svage klat i baggrunden */
+.pcard::before {
+  content: ""; position: absolute; z-index: -1; left: 4%; top: -18%; width: 52%; aspect-ratio: 1.35;
+  border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%; background: var(--blob);
 }
-.spor-label {
-  margin: 0 0 .35rem; font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted);
+.pcard-body { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.pcard-icon {
+  display: grid; place-items: center; width: 3.75rem; height: 3.75rem; border-radius: 50%;
+  background: var(--dot); color: var(--dot-fg); margin-bottom: clamp(1.5rem, 4vw, 3rem);
 }
-.steps .spor + .spor { margin-top: 1.75rem; }
-.spor-fits { margin: 3.5rem 0 0; }
-.spor-fit { display: grid; gap: 1rem; justify-items: start; }
-.spor-fit + .spor-fit { margin-top: 2rem; }
-.spor-fit-text { margin: 0; max-width: var(--read); font-size: 1.1rem; }
-@media (min-width: 52rem) {
-  .spor-fit { grid-template-columns: 1fr auto; align-items: center; gap: 2rem; }
+.pcard-title { font-family: var(--serif); font-weight: 400; font-size: clamp(2.1rem, 4.4vw, 3.1rem); line-height: 1.05; letter-spacing: -.01em; margin: 0 0 .9rem; color: var(--fg); }
+.pcard-text { color: var(--sub); font-size: 1.05rem; line-height: 1.6; max-width: 34rem; margin: 0 0 1.75rem; }
+.pcard-btn {
+  display: inline-flex; align-items: center; gap: .6rem; min-height: 3rem; padding: .7rem 1.4rem;
+  border-radius: 10px; border: 1px solid color-mix(in srgb, var(--fg) 30%, transparent);
+  color: var(--fg); font-weight: 600; text-decoration: none; transition: background 200ms ease, border-color 200ms ease;
 }
-.js-spor .spor-label { display: none; }
-.js-spor .spor:not(.is-active) { display: none; }
-.js-spor .spor-fit + .spor-fit { margin-top: 0; }
-.js-spor .spor.is-active { transition: opacity 200ms var(--ease-out); }
-@starting-style { .js-spor .spor.is-active { opacity: 0; } }
+.pcard-btn svg { transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .pcard-btn:hover { background: color-mix(in srgb, var(--fg) 8%, transparent); border-color: color-mix(in srgb, var(--fg) 55%, transparent); }
+  .pcard-btn:hover svg { transform: translateX(3px); }
+}
+.pcard-btn:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
+/* Memojien står på en klat i kortets kontrastfarve */
+.pcard-art { position: relative; z-index: 0; display: grid; place-items: center; justify-self: center; width: min(20rem, 100%); aspect-ratio: 1; }
+.pcard-art::before {
+  content: ""; position: absolute; inset: 8% 2% 0; z-index: -1;
+  border-radius: 58% 42% 46% 54% / 50% 60% 40% 50%; background: var(--art);
+}
+.pcard-art img { width: 100%; height: auto; }
+/* Mobil: memojien står lille i øverste højre hjørne ud for ikonet, så hvert kort kan være på skærmen */
+@media (max-width: 47.99rem) {
+  .process { --peek: .75rem; --stick: 4.75rem; }
+  .pcard { gap: 0; }
+  .pcard-icon { width: 3rem; height: 3rem; margin-bottom: 4.25rem; }
+  .pcard-text { font-size: 1rem; margin-bottom: 1.25rem; }
+  .pcard-art { position: absolute; right: .25rem; top: .5rem; width: 8rem; }
+}
+@media (min-width: 48rem) {
+  .pcard { grid-template-columns: 1.15fr .85fr; align-items: center; min-height: min(30rem, calc(100vh - var(--stick) - 6rem)); }
+}
 
 /* Om */
 .about { display: grid; gap: 2.5rem; align-items: center; }

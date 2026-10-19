@@ -15,7 +15,7 @@ Usynlige tilgængelighedsfixes, der ikke ændrer udtrykket:
 ## 2. De ændringer, der er bygget (i den rækkefølge, de er bygget)
 
 1. **Workshop-sektionen er slettet** (HTML, CSS og JS).
-2. **Booking direkte på siden.** I bookingsektionen er "Book en tid" valgt fra start og viser Googles bookingside i en iframe i den originale ramme. Iframen har title, loading="lazy", responsiv højde (820 px på mobil, 760 px fra 48rem) og et link under sig til samme side hos Google. "Send en forespørgsel" viser formularen som før. Knapperne under samarbejdsformerne skifter stadig til formularen og vælger samarbejdsformen. netlify.toml har fået https://calendar.google.com i frame-src. privatliv.html, vilkaar.html og docs/sporing.md nævner den indlejrede kalender.
+2. **Booking direkte på siden.** I bookingsektionen er "Book en tid" valgt fra start og viser Googles bookingside i en iframe i den originale ramme. Iframen har title, loading="lazy", responsiv højde (820 px på mobil, 760 px fra 48rem) og et link under sig til samme side hos Google. "Send en forespørgsel" viser formularen som før. netlify.toml har fået https://calendar.google.com i frame-src. privatliv.html, vilkaar.html og docs/sporing.md nævner den indlejrede kalender.
 3. **Sticky top.** Toppen med logo, temaknap og "Book en snak" står fast, når man scroller.
 4. **Ny hero.** Centreret h1 med tilbuddet, underlinje og én knap, og under dem et chatfelt i stil med ChatGPT og Claude (se afsnit 3).
 5. **Cases i stedet for CV.** Et rent gitter med 2x3 lyse kort (se afsnit 4).
@@ -71,3 +71,7 @@ Værktøjssektionen er uændret fra originalen og må ikke fjernes.
 - Udtalelse: [UDTALELSE] og [NAVN], [TITEL], [VIRKSOMHED].
 - Cases: [KONTEKST] på hvert af de seks kort.
 - CVR til footeren, når det findes.
+
+## Stablede kort i "Sådan foregår det" (19. oktober 2026)
+
+Samarbejdsvælgeren og de tre spor er erstattet af ét fælles flow med fire kort, inspireret af stablede servicekort. Sektionen er mørk (onyx, i mørkt tema #1A1820) og går helt ud til skærmens kanter. Kortene er dyb violet #4C1D95, violet #7C3AED, lavendel #E6DCFB og hvid, hver med ikon i en cirkel, overskrift i Instrument Serif, tekst, en knap med pil og en memoji på en klat i kontrastfarven (posttasken, detektiven, faldskærmen og løbebåndet). Kortene sætter sig fast under toppen med en kant på 24 px (12 px på mobil), og main.js skalerer dem efter scroll. På mobil står memojien lille i øverste højre hjørne, så hvert kort kan være på skærmen. Eventet samarbejdsform_valgt og ?samarbejde= i adressen er fjernet.
