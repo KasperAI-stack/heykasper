@@ -307,64 +307,70 @@
       </div>
     </section>
 
-    <!-- 5. CV -->
-    <section class="section cv" id="cv" aria-labelledby="cv-titel">
-      <div class="cv-head">
-        <h2 id="cv-titel">Mit CV</h2>
-        <p class="muted">Her er de steder, jeg har arbejdet med marketing, og hvad arbejdet førte til. Hele profilen ligger på <a href="https://www.linkedin.com/in/kasperasmussen/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    <!-- 5. Cases: ét resultat pr. kort. Tallene er fra Kaspers CV, og konteksten står som pladsholdere. -->
+    <section class="section cases" id="cases" aria-labelledby="cases-titel">
+      <div class="cases-head">
+        <h2 id="cases-titel">Det har mit arbejde<br> ført til</h2>
+        <p>Tallene er fra mit CV. Hele profilen ligger på <a href="https://www.linkedin.com/in/kasperasmussen/" target="_blank" rel="noopener">LinkedIn</a>.</p>
       </div>
-      <ol class="cv-list">
-        <li class="cv-item">
-          <p class="cv-when">Aug. 2026 til nu</p>
-          <div class="cv-body">
-            <h3 class="cv-role"><strong>AI Marketing Manager</strong>, Africa Tours ApS</h3>
-            <p class="cv-type">Fuldtid</p>
+      <ul class="case-grid">
+        <li class="case-card">
+          <h3 class="case-title">Account Based Marketing</h3>
+          <p class="case-label">VoiceArchive</p>
+          <div class="case-visual">
+            <p class="case-num">12x</p>
+            <p class="case-unit">ROI</p>
           </div>
+          <p class="case-note"><span class="ph">[KONTEKST]</span></p>
         </li>
-        <li class="cv-item">
-          <p class="cv-when">Aug. 2024 til aug. 2026</p>
-          <div class="cv-body">
-            <h3 class="cv-role"><strong>Marketing Koordinator</strong>, VoiceArchive</h3>
-            <p class="cv-type">Fuldtid</p>
-            <ul class="cv-points">
-              <li>Fik flyttet fokus fra alle kunder til de få, der passer bedst (ICP).</li>
-              <li>Account Based Marketing, der gav 12 gange ROI.</li>
-              <li>LinkedIn Ads til thought leadership og leadgenerering.</li>
-              <li>Google Ads, hvor søgevisningsandelen steg fra 17 til 40 %.</li>
-              <li>Et AI-drevet SEO-flow, der flyttede den gennemsnitlige placering fra 30 til 10.</li>
-              <li>320 landingpages produceret automatisk med n8n og programmatisk SEO.</li>
-            </ul>
+        <li class="case-card">
+          <h3 class="case-title">Google Ads</h3>
+          <p class="case-label">VoiceArchive</p>
+          <div class="case-visual">
+            <p class="case-num"><span aria-hidden="true">17→40&nbsp;%</span><span class="visually-hidden">Fra 17 til 40 %</span></p>
+            <p class="case-unit">søgevisningsandel</p>
+            <div class="case-bars" aria-hidden="true"><span style="--v: 17%"></span><span style="--v: 40%"></span></div>
           </div>
+          <p class="case-note"><span class="ph">[KONTEKST]</span></p>
         </li>
-        <li class="cv-item">
-          <p class="cv-when">Nov. 2023 til aug. 2024</p>
-          <div class="cv-body">
-            <h3 class="cv-role"><strong>Marketing Koordinator</strong>, Poetype</h3>
-            <p class="cv-type">Fuldtid</p>
-            <ul class="cv-points">
-              <li>5 fysiske events med 260 deltagere i alt.</li>
-              <li>5 webinarer med 600 deltagere.</li>
-              <li>12 podcastepisoder, der nåede top 2 på marketinghitlisten.</li>
-            </ul>
+        <li class="case-card">
+          <h3 class="case-title">AI-drevet SEO</h3>
+          <p class="case-label">VoiceArchive</p>
+          <div class="case-visual">
+            <p class="case-num"><span aria-hidden="true">30→10</span><span class="visually-hidden">Fra 30 til 10</span></p>
+            <p class="case-unit">gennemsnitlig placering i Google</p>
           </div>
+          <p class="case-note"><span class="ph">[KONTEKST]</span></p>
         </li>
-        <li class="cv-item">
-          <p class="cv-when">Maj 2021 til jul. 2023</p>
-          <div class="cv-body">
-            <h3 class="cv-role"><strong>Konsulent</strong>, Cand</h3>
-            <p class="cv-type">Deltid</p>
-            <ul class="cv-points">
-              <li>Hjalp virksomheder på projektbasis med brandstrategi og udvikling af webshops.</li>
-            </ul>
+        <li class="case-card">
+          <h3 class="case-title">Programmatisk SEO</h3>
+          <p class="case-label">VoiceArchive</p>
+          <div class="case-visual case-pages">
+            <p class="case-num">320</p>
+            <p class="case-unit">landingpages lavet automatisk med n8n</p>
           </div>
+          <p class="case-note"><span class="ph">[KONTEKST]</span></p>
         </li>
-        <li class="cv-item">
-          <p class="cv-when">Uddannelse</p>
-          <div class="cv-body">
-            <h3 class="cv-role"><strong>Kandidat</strong> i Marketing &amp; Brand Management</h3>
+        <li class="case-card">
+          <h3 class="case-title">Webinarer</h3>
+          <p class="case-label">Poetype</p>
+          <div class="case-visual">
+            <p class="case-num">600</p>
+            <p class="case-unit">deltagere på 5 webinarer</p>
           </div>
+          <p class="case-note"><span class="ph">[KONTEKST]</span></p>
         </li>
-      </ol>
+        <li class="case-card">
+          <h3 class="case-title">Podcast</h3>
+          <p class="case-label">Poetype</p>
+          <div class="case-visual">
+            <ol class="case-rank" aria-hidden="true"><li>1</li><li class="is-me">2</li><li>3</li></ol>
+            <p class="case-num">Top 2</p>
+            <p class="case-unit">på marketinghitlisten med 12 episoder</p>
+          </div>
+          <p class="case-note"><span class="ph">[KONTEKST]</span></p>
+        </li>
+      </ul>
     </section>
 
     <!-- Book et møde -->

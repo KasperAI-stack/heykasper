@@ -513,27 +513,40 @@ h1 {
   .about { grid-template-columns: 22rem 1fr; gap: 4rem; }
 }
 
-/* CV: år til venstre og stilling til højre, adskilt af gridlinjer */
-.cv { padding-bottom: 0; }
-.cv-head { display: grid; gap: .5rem 4rem; }
-.cv-head h2 { margin: 0; }
-.cv-head p { margin: 0; max-width: var(--read); font-size: 1.1rem; }
-@media (min-width: 56rem) { .cv-head { grid-template-columns: 1fr 1fr; } .cv-head p { margin-top: .5rem; } }
-.cv-list { list-style: none; padding: 0; margin: 3rem calc(var(--gutter) * -1) 0; border-top: 1px solid var(--line); }
-.cv-item { display: grid; gap: .35rem 2rem; padding: 2rem var(--gutter); border-bottom: 1px solid var(--line); }
-.cv-item:last-child { border-bottom: 0; }
-@media (min-width: 48rem) { .cv-item { grid-template-columns: 13rem 1fr; } }
-.cv-when { margin: 0; color: var(--muted); font-size: .95rem; font-variant-numeric: tabular-nums; padding-top: .15rem; }
-.cv-body { min-width: 0; }
-.cv-role { font-size: 1.2rem; font-weight: 500; letter-spacing: -.02em; color: var(--muted); margin: 0; }
-.cv-role strong { color: var(--ink); font-weight: 600; }
-.cv-type { margin: .2rem 0 0; color: var(--muted); font-size: .95rem; }
-.cv-points { margin: 1rem 0 0; padding: 0; list-style: none; display: grid; gap: .45rem; color: var(--muted); }
-.cv-points li { position: relative; padding-left: 1.25rem; }
-.cv-points li::before {
-  content: ""; position: absolute; left: 0; top: .62em; width: .45rem; height: .45rem; border-radius: 50%;
-  background: var(--accent);
+/* Cases: et rent gitter af lyse kort med ét resultat i midten af hvert */
+.cases-head { text-align: center; }
+.cases-head h2 { margin: 0 auto .75rem; }
+.cases-head p { margin: 0 auto; color: var(--muted); max-width: var(--read); }
+.case-grid { list-style: none; padding: 0; margin: 3rem 0 0; display: grid; gap: 1.25rem; }
+@media (min-width: 40rem) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64rem) { .case-grid { grid-template-columns: repeat(3, 1fr); } }
+.case-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0;
+  min-height: 21rem; padding: 1.75rem 1.5rem 1.5rem; background: var(--soft); border-radius: 28px;
 }
+.case-title { margin: 0; font-size: 1.2rem; font-weight: 600; letter-spacing: -.02em; }
+.case-label { margin: .15rem 0 0; font-size: .9rem; color: var(--muted); }
+.case-visual { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; padding: 1.5rem 0; position: relative; }
+.case-num { margin: 0; font-size: clamp(3rem, 7vw, 4.25rem); font-weight: 600; line-height: 1; letter-spacing: -.05em; }
+.case-unit { margin: 0; max-width: 16rem; font-size: .95rem; color: var(--muted); }
+.case-note { margin: 0; font-size: .85rem; color: var(--muted); }
+/* Små motiver: søjler for søgevisningsandelen, stablede sider bag 320 og en hitliste bag Top 2 */
+.case-bars { display: flex; align-items: flex-end; gap: .5rem; height: 3rem; margin-top: .75rem; }
+.case-bars span { width: 1.75rem; height: var(--v); min-height: .5rem; border-radius: 6px; background: var(--rail); }
+.case-bars span:last-child { background: var(--accent); }
+.case-pages::before, .case-pages::after {
+  content: ""; position: absolute; z-index: 0; top: 50%; left: 50%; width: 7rem; height: 8.5rem;
+  border-radius: 14px; background: var(--bg); border: 1px solid var(--line);
+  translate: -50% -58%; rotate: -6deg;
+}
+.case-pages::after { rotate: 5deg; translate: -44% -54%; }
+.case-pages > * { position: relative; z-index: 1; }
+.case-rank { list-style: none; margin: 0 0 .5rem; padding: 0; display: flex; gap: .4rem; }
+.case-rank li {
+  display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 10px;
+  font-size: .85rem; font-weight: 600; color: var(--muted); background: var(--bg); border: 1px solid var(--line);
+}
+.case-rank li.is-me { color: var(--bg); background: var(--ink); border-color: var(--ink); }
 
 /* Værktøjer: prikket flade med en stablet flise i midten og værktøjerne spredt rundt om */
 .tools-stage {

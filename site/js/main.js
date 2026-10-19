@@ -326,14 +326,14 @@ document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
   if (!("IntersectionObserver" in window)) return;
   var groups = [
     ".section:not(.hero) > h2", ".split-text", ".section > .lede-small", ".process-intro",
-    ".steps > li", ".spor-fits", ".about-text", ".cv-head", ".cv-item", ".tool"
+    ".steps > li", ".spor-fits", ".about-text", ".cases-head", ".case-card", ".tool"
   ];
   var els = [];
   groups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el, i) {
       el.setAttribute("data-reveal", "");
       // Elementer i samme gruppe kommer lidt efter hinanden (højst 5 trin, så intet venter længe)
-      if (/li|item|tool/.test(sel)) el.style.setProperty("--i", Math.min(i, 5));
+      if (/li|item|tool|card/.test(sel)) el.style.setProperty("--i", Math.min(i, 5));
       els.push(el);
     });
   });
