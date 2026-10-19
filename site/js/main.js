@@ -234,7 +234,7 @@ if (contactSwitch) {
   });
   contactSwitch.hidden = false;
   document.getElementById("book").classList.add("js-switch");
-  setContactMode("forespoergsel");
+  setContactMode("booking");
 }
 
 // Samarbejdsform i "Sådan foregår det": vælgeren skifter trin 3 og 4 og linjen under trinnene.

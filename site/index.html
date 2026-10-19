@@ -366,8 +366,8 @@
       <h2 class="center big" id="book-titel">Hvilke opgaver skal I slippe for først?</h2>
 
       <div class="switch" data-contact-switch hidden>
-        <button type="button" class="switch-btn" data-mode="forespoergsel" aria-pressed="true">Send en forespørgsel</button>
-        <button type="button" class="switch-btn" data-mode="booking" aria-pressed="false">Book en tid</button>
+        <button type="button" class="switch-btn" data-mode="booking" aria-pressed="true">Book en tid</button>
+        <button type="button" class="switch-btn" data-mode="forespoergsel" aria-pressed="false">Send en forespørgsel</button>
       </div>
 
       <div class="contact-mode" data-panel="forespoergsel">
@@ -400,18 +400,13 @@
       </div>
 
       <div class="contact-mode" data-panel="booking">
-        <p class="center lede-small">Vælg selv et tidspunkt i min kalender, så har vi en aftale med det samme.</p>
-        <div class="frame frame-form">
-          <div class="booking">
-            <span class="booking-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M9.5 15l2 2 3.5-3.5"/></svg>
-            </span>
-            <h3>Et møde på 30 minutter</h3>
-            <p>Når I har valgt et tidspunkt, får I en bekræftelse på mail, og mødet ligger i begge vores kalendere.</p>
-            <a class="btn" href="https://calendar.app.google/h7uCdYSGWCpxRuK57" target="_blank" rel="noopener" data-track="booking">Åbn min kalender</a>
-            <p class="booking-note">Kalenderen åbner i en ny fane hos Google.</p>
+        <p class="center lede-small">Vælg selv et tidspunkt i min kalender, så har vi en aftale med det samme. Når I har valgt, får I en bekræftelse på mail.</p>
+        <div class="frame frame-form frame-booking">
+          <div class="booking-frame">
+            <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3MViM8rz10NnRz3-VbJuZ231pkGropG5vH6Q_wX3aKAZgnltTjzKpcPQnqLo_ya82ZmCmgYgiA?gv=true" title="Book en snak på 30 minutter i Kaspers Google-kalender" loading="lazy"></iframe>
           </div>
         </div>
+        <p class="center booking-note">Vises kalenderen ikke, kan I <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3MViM8rz10NnRz3-VbJuZ231pkGropG5vH6Q_wX3aKAZgnltTjzKpcPQnqLo_ya82ZmCmgYgiA" target="_blank" rel="noopener" data-track="booking">åbne den hos Google</a>.</p>
       </div>
     </section>
   </main>
