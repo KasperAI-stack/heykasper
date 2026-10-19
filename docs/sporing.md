@@ -13,12 +13,10 @@ Status 9. oktober 2026: Google Tag Manager er installeret på alle sider. Der er
 | Event | Hvornår | Hvor i koden |
 |---|---|---|
 | `henvendelse_sendt` | Når tak-siden vises, altså efter en sendt formular | site/tak.html |
-| `booking_klik` | Når man klikker på et link til Google Kalender (`data-track="booking"`): linket under den indlejrede kalender og linket på tak-siden | site/js/main.js |
-| `samarbejdsform_valgt` | Når man klikker på knappen under Projekt, Konsulent eller Fastansat i sammenligningen i "Sådan foregår det" (før redesignet: når man skiftede i vælgeren). Parameter: `form` | site/js/main.js |
+| `booking_klik` | Når man klikker på et link til Google Kalender (`data-track="booking"`) | site/js/main.js |
+| `samarbejdsform_valgt` | Når man vælger Fastansat, Konsulent eller Projekt i "Sådan foregår det". Parameter: `form` | site/js/main.js |
 
 Signalerne afhænger ikke af sidernes adresser, så målingen virker, selv om en URL ændrer sig. Et booking-klik er ikke en bekræftet booking, fordi Google Kalender ikke kan sende besked tilbage til siden.
-
-Siden 19. oktober 2026 er bookingkalenderen indlejret i en iframe i bookingsektionen. Klik og bookinger inde i iframen kan siden ikke se, fordi rammen ligger hos Google. `booking_klik` fanger derfor kun dem, der bruger linkene. En bekræftet booking kan kun måles i Google Kalender, fx ved at sende Googles bekræftelsesmails videre til Apps Scriptet og tælle dem dér.
 
 ## Google Tag Manager
 

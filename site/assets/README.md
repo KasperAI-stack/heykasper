@@ -10,5 +10,5 @@ Billederne til siden. Kasper optræder kun som memoji, aldrig på rigtige fotos.
 - brand-mark.webp: samme ikon i 96 px, vises ved logoet i toppen (favicon.svg er for tung til det)
 - og-image.jpg: delingsbillede til LinkedIn og andre (1200x630) med logo, overskrift og memoji
 - jer.svg: neutral avatar for virksomheden (bruges ikke længere, chatvinduet er fjernet)
-- tools/: værktøjslogoerne i linjen om værktøjer under "Sådan foregår det"
-- memoji/: memojien i fem situationer til agentkortet i hero, hver med et lille hoved til rækken under. landingpage.webp er Lead-agenten med faldskærmen.
+- stack.svg og tools/: figuren og værktøjslogoerne i værktøjssektionen
+- memoji/: memojien i fem situationer til agenterne i toppen, hver med et lille hoved til baren. landingpage.webp er Lead-agenten med faldskærmen.

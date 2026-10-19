@@ -1,6 +1,6 @@
 # Plan: Ny hero med memoji-vælger
 
-Status: afløst af docs/redesign-plan.md (19. oktober 2026), hvor den buede bar er blevet til en ren række og overskriften til en taleboble. Tidligere status: færdig. Den nye hero er flyttet ind på forsiden (site/index.html), testsiden er slettet, og sektionen "Tre ting, jeg tager ansvar for" er fjernet. De gældende tekster står i docs/copy.md. Planen herunder er gemt som baggrund.
+Status: færdig. Den nye hero er flyttet ind på forsiden (site/index.html), testsiden er slettet, og sektionen "Tre ting, jeg tager ansvar for" er fjernet. De gældende tekster står i docs/copy.md. Planen herunder er gemt som baggrund.
 
 ## 1. Hvad videoen gør
 

@@ -7,7 +7,6 @@ En enkel landingpage i ren HTML og CSS, der publiceres gratis via Netlify.
 - CLAUDE.md: briefen til Claude Code. Brand, tone, design og regler.
 - docs/tilbud.md: produkter, proces og priser.
 - docs/copy.md: teksten til hver sektion.
-- docs/redesign-plan.md: designsystemet (farver, skrift, komponenter) og hvad der mangler fra Kasper.
 - site/: selve hjemmesiden. Det er kun denne mappe, der kommer online.
 - docs/automatisering.md: sådan sætter du booking og automatiske svar op (gratis).
 - automatisering/: scriptet til Google Apps Script. Kommer ikke online.
@@ -19,7 +18,7 @@ En enkel landingpage i ren HTML og CSS, der publiceres gratis via Netlify.
 1. Læg mappen et sted på din computer, og åbn en terminal i den.
 2. Start Claude Code med kommandoen `claude`. Den læser CLAUDE.md automatisk.
 3. Se siden lokalt: `npx serve site` og åbn adressen, der vises i terminalen.
-4. Din memoji ligger i site/assets/: memoji/ (de fem agenter i hero), kasper-memoji-hel.webp (hele figuren på tak-siden), kasper-peger.svg ("Hvem bygger det?") og kasper-meditation.svg (bookingsektionen). Siden bruger ingen rigtige fotos.
+4. Din memoji ligger i site/assets/: kasper-memoji.webp (overkrop i hero), kasper-memoji-hel.webp (hele figuren på tak-siden), kasper-peger.svg ("Hvem bygger det?") og kasper-meditation.svg (bookingsektionen). Siden bruger ingen rigtige fotos.
 5. Udfyld pladsholderne i firkantede parenteser, fx resultater, e-mail, telefon, CVR og LinkedIn.
 
 ## Publicér via Netlify
