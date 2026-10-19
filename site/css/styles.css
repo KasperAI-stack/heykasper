@@ -271,7 +271,7 @@ h1 {
 }
 .hero-title .accent {
   font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em;
-  font-size: 1.1em; line-height: .9; color: var(--tint); transition: color 400ms ease;
+  font-size: 1.1em; line-height: .9; color: var(--tint); transition: color 200ms ease;
 }
 .hero-lede { max-width: 38rem; margin-bottom: 1.75rem; }
 .nowrap, .composer-typed { white-space: nowrap; }
@@ -283,7 +283,7 @@ h1 {
   content: ""; position: absolute; z-index: -1; left: 50%; top: 4rem; width: min(140%, 52rem); height: 70%;
   translate: -50% 0; pointer-events: none;
   background: radial-gradient(closest-side, color-mix(in srgb, var(--glow) 16%, transparent), transparent);
-  transition: background 400ms ease;
+  transition: background 200ms ease;
 }
 .composer {
   width: 100%; text-align: left;
@@ -342,7 +342,7 @@ h1 {
 .pick img {
   width: 82%; height: 82%;
   opacity: .62; filter: saturate(.4); scale: .9;
-  transition: opacity 200ms ease, filter 200ms ease, scale 200ms var(--ease-out), translate 200ms var(--ease-out), rotate 200ms var(--ease-out);
+  transition: opacity 150ms ease, filter 150ms ease, scale 150ms var(--ease-out), translate 150ms var(--ease-out), rotate 150ms var(--ease-out);
 }
 .pick[aria-pressed="true"] { background: var(--pill-bg); box-shadow: var(--pill-shadow); }
 .pick[aria-pressed="true"] img { opacity: 1; filter: none; scale: 1.06; }
