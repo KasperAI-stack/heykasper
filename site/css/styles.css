@@ -547,11 +547,6 @@ h1 {
   .t8 { right: 22%; top: 73%; }
 }
 
-/* Workshops */
-.panel { background: var(--soft); border-radius: var(--radius); padding: 3rem 1.5rem; text-align: center; }
-.panel h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-.panel p { color: var(--muted); max-width: var(--read); margin: 0 auto; }
-
 /* Kontakt og formular */
 .big { font-size: clamp(2.25rem, 6vw, 3.75rem); }
 .frame-form { max-width: 44rem; margin: 0 auto; padding: .6rem; background: var(--soft); border: 1px solid var(--line); }

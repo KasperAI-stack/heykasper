@@ -287,7 +287,7 @@ document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
   if (!("IntersectionObserver" in window)) return;
   var groups = [
     ".section:not(.hero) > h2", ".split-text", ".section > .lede-small", ".process-intro",
-    ".steps > li", ".spor-fits", ".about-text", ".cv-head", ".cv-item", ".tool", ".panel"
+    ".steps > li", ".spor-fits", ".about-text", ".cv-head", ".cv-item", ".tool"
   ];
   var els = [];
   groups.forEach(function (sel) {
