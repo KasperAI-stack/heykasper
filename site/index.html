@@ -355,19 +355,25 @@
       </ol>
     </section>
 
-    <!-- Book et møde -->
+    <!-- Book et møde: kalenderen og formularen står side om side (på mobil kalenderen først) -->
     <section class="section contact" id="book" aria-labelledby="book-titel">
-      <img class="memoji-contact" src="/assets/kasper-meditation.svg" alt="Kasper som memoji i beige t-shirt, der sidder med krydsede ben og mediterer med lukkede øjne og et lille smil" width="734" height="800" loading="lazy" decoding="async">
-      <h2 class="center big" id="book-titel">Hvilke opgaver skal I slippe for først?</h2>
-
-      <div class="switch" data-contact-switch hidden>
-        <button type="button" class="switch-btn" data-mode="forespoergsel" aria-pressed="true">Send en forespørgsel</button>
-        <button type="button" class="switch-btn" data-mode="booking" aria-pressed="false">Book en tid</button>
+      <div class="contact-head">
+        <img class="memoji-contact" src="/assets/kasper-meditation.svg" alt="Kasper som memoji i beige t-shirt, der sidder med krydsede ben og mediterer med lukkede øjne og et lille smil" width="734" height="800" loading="lazy" decoding="async">
+        <h2 id="book-titel">Hvilke opgaver skal I slippe for først?</h2>
+        <p class="lede">Vælg selv et tidspunkt til en snak på 30 minutter, eller skriv kort, hvad der tager tid hos jer i dag.</p>
       </div>
-
-      <div class="contact-mode" data-panel="forespoergsel">
-        <p class="center lede-small">Skriv kort, hvad der tager tid hos jer i dag, så vender jeg tilbage inden for en arbejdsdag.</p>
-        <div class="frame frame-form">
+      <div class="contact-grid">
+        <div class="contact-col booking">
+          <h3>Vælg et tidspunkt i kalenderen</h3>
+          <p class="contact-text">Når I har valgt et tidspunkt, får I en bekræftelse på mail, og mødet ligger i begge vores kalendere.</p>
+          <div class="booking-frame">
+            <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3MViM8rz10NnRz3-VbJuZ231pkGropG5vH6Q_wX3aKAZgnltTjzKpcPQnqLo_ya82ZmCmgYgiA?gv=true" title="Book en snak på 30 minutter i Kaspers Google-kalender" loading="lazy"></iframe>
+          </div>
+          <p class="booking-note">Vises kalenderen ikke, kan I <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3MViM8rz10NnRz3-VbJuZ231pkGropG5vH6Q_wX3aKAZgnltTjzKpcPQnqLo_ya82ZmCmgYgiA" target="_blank" rel="noopener" data-track="booking">åbne den hos Google</a>.</p>
+        </div>
+        <div class="contact-col inquiry">
+          <h3>Eller skriv til mig</h3>
+          <p class="contact-text">Skriv kort, hvad der tager tid hos jer i dag, så vender jeg tilbage inden for en arbejdsdag.</p>
         <form class="form" name="kontakt" method="POST" action="/tak.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="kontakt">
           <p class="hidden"><label>Udfyld ikke dette felt <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
@@ -391,21 +397,6 @@
           <button class="btn" type="submit">Send forespørgsel</button>
           <p class="form-note">Jeg bruger kun jeres oplysninger til at svare jer. Læs mere i <a href="/privatliv">privatlivspolitikken</a>.</p>
         </form>
-        </div>
-      </div>
-
-      <div class="contact-mode" data-panel="booking">
-        <p class="center lede-small">Vælg selv et tidspunkt i min kalender, så har vi en aftale med det samme.</p>
-        <div class="frame frame-form">
-          <div class="booking">
-            <span class="booking-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M9.5 15l2 2 3.5-3.5"/></svg>
-            </span>
-            <h3>Et møde på 30 minutter</h3>
-            <p>Når I har valgt et tidspunkt, får I en bekræftelse på mail, og mødet ligger i begge vores kalendere.</p>
-            <a class="btn" href="https://calendar.app.google/h7uCdYSGWCpxRuK57" target="_blank" rel="noopener" data-track="booking">Åbn min kalender</a>
-            <p class="booking-note">Kalenderen åbner i en ny fane hos Google.</p>
-          </div>
         </div>
       </div>
     </section>

@@ -188,27 +188,6 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
   if (document.fonts) document.fonts.ready.then(function () { layout(); movePill(false); });
 })();
 
-// Kontakt: skift mellem forespørgsel og booking. Uden JavaScript vises begge dele under hinanden.
-var contactSwitch = document.querySelector("[data-contact-switch]");
-if (contactSwitch) {
-  var modeButtons = contactSwitch.querySelectorAll("[data-mode]");
-  var panels = document.querySelectorAll(".contact-mode[data-panel]");
-  var setContactMode = function (mode) {
-    modeButtons.forEach(function (btn) {
-      btn.setAttribute("aria-pressed", btn.getAttribute("data-mode") === mode ? "true" : "false");
-    });
-    panels.forEach(function (panel) {
-      panel.hidden = panel.getAttribute("data-panel") !== mode;
-    });
-  };
-  modeButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () { setContactMode(btn.getAttribute("data-mode")); });
-  });
-  contactSwitch.hidden = false;
-  document.getElementById("book").classList.add("js-switch");
-  setContactMode("forespoergsel");
-}
-
 // Samarbejdsform i "Sådan foregår det": vælgeren skifter trin 3 og 4 og linjen under trinnene.
 // ?samarbejde=fastansat|konsulent|projekt i adressen åbner et bestemt spor. Uden JavaScript står alle tre spor under hinanden.
 (function () {
@@ -258,7 +237,6 @@ if (contactSwitch) {
   section.querySelectorAll("[data-vaelg-spor]").forEach(function (link) {
     link.addEventListener("click", function () {
       var spor = link.getAttribute("data-vaelg-spor");
-      if (typeof setContactMode === "function") setContactMode("forespoergsel");
       if (felt && navne[spor]) felt.value = navne[spor];
     });
   });
