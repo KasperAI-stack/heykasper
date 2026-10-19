@@ -348,3 +348,154 @@ document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
   document.documentElement.classList.add("js-reveal");
   els.forEach(function (el) { io.observe(el); });
 })();
+
+// Værktøjer: prikkerne viger for musen (eller fingeren) som et magnetfelt, fliserne retter sig op og trækkes mod den,
+// når den kommer tæt på, og øjnene i stakken kigger efter den. Ved reduceret bevægelse står alt stille med CSS-prikkerne.
+(function () {
+  var stage = document.querySelector("[data-tools]");
+  var canvas = stage && stage.querySelector(".tools-field");
+  if (!canvas || !canvas.getContext) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var ctx = canvas.getContext("2d");
+  var eyes = stage.querySelector("[data-eyes]");
+  var svg = stage.querySelector("[data-stack]");
+  var tools = Array.prototype.slice.call(stage.querySelectorAll(".tool")).map(function (li) {
+    return { li: li, tile: li.querySelector(".tool-tile"), x: 0, y: 0, half: 30, hit: false };
+  });
+
+  var GAP = 18, RADIUS = 120, PUSH = 26, REACH = 190;
+  var dots = [], w = 0, h = 0, dpr = 1, raf = 0;
+  var pointer = { x: 0, y: 0, active: false, strength: 0 };
+  var eye = { x: 0, y: 0 };
+  var colors = { dot: "#A7A3B2", accent: "#7C3AED" };
+
+  stage.classList.add("has-field");
+
+  var readColors = function () {
+    var cs = getComputedStyle(stage);
+    colors.dot = cs.getPropertyValue("--plus").trim() || colors.dot;
+    colors.accent = cs.getPropertyValue("--accent").trim() || colors.accent;
+  };
+
+  // Fliserne måles i forhold til fladen, uden deres egen transform
+  var measure = function () {
+    var r = stage.getBoundingClientRect();
+    tools.forEach(function (t) {
+      var el = t.tile, x = 0, y = 0;
+      var keep = el.style.transform;
+      el.style.transform = "none";
+      var b = el.getBoundingClientRect();
+      el.style.transform = keep;
+      x = b.left - r.left + b.width / 2; y = b.top - r.top + b.height / 2;
+      t.x = x; t.y = y; t.half = b.width / 2;
+    });
+  };
+
+  var build = function () {
+    var r = stage.getBoundingClientRect();
+    w = r.width; h = r.height; dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    dots = [];
+    var cols = Math.floor(w / GAP), rows = Math.floor(h / GAP);
+    var offX = (w - (cols - 1) * GAP) / 2, offY = (h - (rows - 1) * GAP) / 2;
+    for (var j = 0; j < rows; j++) for (var i = 0; i < cols; i++) {
+      dots.push({ hx: offX + i * GAP, hy: offY + j * GAP, ox: 0, oy: 0, vx: 0, vy: 0, f: 0 });
+    }
+    readColors(); measure(); draw();
+  };
+
+  var draw = function () {
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalAlpha = .55; ctx.fillStyle = colors.dot;
+    ctx.beginPath();
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      if (d.f > .02) continue;
+      ctx.moveTo(d.hx + d.ox + 1.1, d.hy + d.oy); ctx.arc(d.hx + d.ox, d.hy + d.oy, 1.1, 0, 6.2832);
+    }
+    ctx.fill();
+    // Prikkerne tæt på musen bliver lidt større og tager accentfarven
+    ctx.fillStyle = colors.accent;
+    for (var k = 0; k < dots.length; k++) {
+      var e = dots[k];
+      if (e.f <= .02) continue;
+      ctx.globalAlpha = .55 + e.f * .4;
+      ctx.beginPath(); ctx.arc(e.hx + e.ox, e.hy + e.oy, 1.1 + e.f * 1.3, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  };
+
+  var step = function () {
+    raf = 0;
+    pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * .12;
+    var moving = pointer.strength > .01;
+
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i], tx = 0, ty = 0, f = 0;
+      if (moving) {
+        var dx = d.hx - pointer.x, dy = d.hy - pointer.y, dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < RADIUS && dist > .001) {
+          f = (1 - dist / RADIUS); f = f * f * pointer.strength;
+          tx = dx / dist * PUSH * f; ty = dy / dist * PUSH * f;
+        }
+      }
+      // Fjeder tilbage mod hjemmet, med lidt efterslæb som sand
+      d.vx = (d.vx + (tx - d.ox) * .1) * .78; d.vy = (d.vy + (ty - d.oy) * .1) * .78;
+      d.ox += d.vx; d.oy += d.vy; d.f = f;
+      if (Math.abs(d.ox) > .05 || Math.abs(d.vx) > .05 || Math.abs(d.oy) > .05) moving = true;
+    }
+
+    tools.forEach(function (t) {
+      var dx = pointer.x - t.x, dy = pointer.y - t.y, dist = Math.sqrt(dx * dx + dy * dy);
+      var p = Math.max(0, 1 - dist / REACH) * pointer.strength;
+      var hit = pointer.active && dist < t.half + 6;
+      t.tile.style.setProperty("--p", p.toFixed(3));
+      t.tile.style.setProperty("--px", (dx * .12 * p).toFixed(2));
+      t.tile.style.setProperty("--py", (dy * .12 * p).toFixed(2));
+      if (hit !== t.hit) { t.hit = hit; t.li.classList.toggle("is-hit", hit); }
+    });
+
+    if (eyes && svg) {
+      // Musens retning set fra ansigtets midte, omregnet til ansigtets skrå (isometriske) plan
+      var sb = svg.getBoundingClientRect(), r = stage.getBoundingClientRect(), s = sb.width / 320;
+      var cx = sb.left - r.left + 160 * s, cy = sb.top - r.top + 95 * s;
+      var ex = 0, ey = 0;
+      if (pointer.strength > .01) {
+        var vx = pointer.x - cx, vy = pointer.y - cy, len = Math.sqrt(vx * vx + vy * vy) || 1;
+        var amt = Math.min(1, len / 160) * pointer.strength;
+        vx = vx / len * amt; vy = vy / len * amt;
+        ex = (vx / 1.732 + vy) * 7; ey = (-vx / 1.732 + vy) * 7;
+      }
+      eye.x += (ex - eye.x) * .18; eye.y += (ey - eye.y) * .18;
+      eyes.setAttribute("transform", "translate(" + eye.x.toFixed(2) + " " + eye.y.toFixed(2) + ")");
+      if (Math.abs(ex - eye.x) > .02 || Math.abs(ey - eye.y) > .02) moving = true;
+    }
+
+    draw();
+    if (moving || pointer.active) raf = requestAnimationFrame(step);
+  };
+
+  var kick = function () { if (!raf) raf = requestAnimationFrame(step); };
+  var place = function (e) {
+    var r = stage.getBoundingClientRect();
+    pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top;
+  };
+
+  stage.addEventListener("pointerenter", function (e) { readColors(); measure(); place(e); pointer.active = true; kick(); });
+  stage.addEventListener("pointermove", function (e) { place(e); pointer.active = true; kick(); });
+  stage.addEventListener("pointerdown", function (e) { place(e); pointer.active = true; kick(); });
+  ["pointerleave", "pointercancel"].forEach(function (type) {
+    stage.addEventListener(type, function () { pointer.active = false; kick(); });
+  });
+  // På touch slipper fingeren feltet, når den løftes
+  stage.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") { pointer.active = false; kick(); } });
+
+  var resizeTimer = 0;
+  new ResizeObserver(function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(build, 80); }).observe(stage);
+  // Temaskift ændrer prikkernes farve
+  new MutationObserver(function () { readColors(); draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { readColors(); draw(); });
+  build();
+})();
