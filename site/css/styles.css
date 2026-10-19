@@ -159,7 +159,6 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
 /* Siden står frit uden ramme. Sektionerne adskilles af luft, ikke af linjer. */
 .page { max-width: 76rem; width: 100%; margin: 0 auto; min-width: 0; }
 .section { position: relative; }
-.footer { position: relative; }
 
 /* Spring til indhold (kun synlig ved tastatur) */
 .skip {
@@ -182,7 +181,6 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
 .brand-mark { width: 28px; height: 28px; flex: none; }
 /* Logo: vektorgrafik (SVG) med gennemsigtig baggrund. I mørkt tema vendes farven, så logoet bliver lyst. */
 .logo { display: block; height: 1.8rem; width: auto; filter: var(--logo-filter); }
-.footer-name .logo { height: 1.35rem; }
 
 /* Knapper */
 .btn {
@@ -681,16 +679,40 @@ h1 {
 @media (min-width: 48rem) { .booking-frame iframe { height: 760px; } }
 .booking-note { font-size: .9rem; color: var(--muted); margin: 1rem auto 0; }
 
-/* Footer */
+/* Footer: mørk violet flade helt ud til kanterne. En tynd linje med navn, genveje og kontakt,
+   og under den memojien og logoet skaleret op, så de fylder hele bredden. Logoet er samme SVG, farvet med en maske. */
 .footer {
-  padding: 2rem var(--gutter) 3rem;
-  color: var(--muted); font-size: .95rem;
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem;
+  --fbg: #13092B; --ffg: #E6DCFB; --fdim: #B9AEDB;
+  position: relative; padding: 2.25rem var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--fbg); color: var(--fdim); font-size: .9rem;
+  box-shadow: 0 0 0 100vmax var(--fbg); clip-path: inset(0 -100vmax);
 }
 .footer p { margin: 0; }
-.footer-name { color: var(--ink); font-weight: 600; display: flex; align-items: center; flex-wrap: wrap; gap: .25rem .6rem; }
-.footer-by { font-weight: 400; color: var(--muted); }
-.footer-links { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; flex-basis: 100%; font-size: .9rem; }
+.footer a { color: var(--ffg); text-decoration: none; transition: color 150ms ease; }
+@media (hover: hover) and (pointer: fine) { .footer a:hover { color: #fff; } }
+.footer a:focus-visible { outline: 2px solid var(--ffg); outline-offset: 3px; border-radius: 4px; }
+.footer-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2.5rem; }
+@media (min-width: 64rem) { .footer-bar { flex-wrap: nowrap; } .footer-nav { margin-inline: auto; } }
+.footer-nav, .footer-contact { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+.footer-icon { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; margin: -.75rem; }
+/* Hovedet og logoet deler bredden, så de altid er lige høje: hoved = (100 % - mellemrum) / (1 + logoets format) */
+.footer-mark {
+  container-type: inline-size;
+  display: flex; align-items: flex-end; gap: 2cqw; margin-top: clamp(2.5rem, 6vw, 4.5rem);
+}
+.footer-head { width: 17cqw; height: 17cqw; flex: none; object-fit: contain; }
+.footer-logo {
+  flex: 1; aspect-ratio: 5043 / 1056; background: var(--ffg);
+  -webkit-mask: url("/assets/logo.svg") center / contain no-repeat;
+  mask: url("/assets/logo.svg") center / contain no-repeat;
+}
+@media (hover: hover) and (pointer: fine) {
+  .footer-head { transition: rotate 250ms var(--ease-out), scale 250ms var(--ease-out); }
+  .footer-mark:hover .footer-head { rotate: -6deg; scale: 1.04; }
+}
+@media (max-width: 47.99rem) {
+  .footer-bar { flex-direction: column; align-items: flex-start; }
+}
 .form-note { margin: 0; font-size: .875rem; color: var(--muted); }
 
 /* Privatlivspolitik og vilkår: rolig læsetekst i én kolonne */

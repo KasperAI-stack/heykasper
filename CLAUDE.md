@@ -42,7 +42,7 @@ Se docs/tilbud.md. Trin og produkter skal stå præcis som der. Siden viser inge
 6. Cases (#cases): stor centreret overskrift og 2x3 lyse kort med ét tal fra Kaspers CV i hvert og en pladsholder for konteksten
 7. Udtalelse: stort citat i serif med navn, titel og virksomhed (pladsholdere) og memojien på hver side
 8. Book et møde: "Book en tid" (Googles bookingside indlejret i en iframe, valgt fra start) eller "Send en forespørgsel" (formularen)
-9. Footer: e-mail (kasper@heyotto.dk), telefon (+45 22 46 38 40), LinkedIn og links til Privatlivspolitik og Vilkår for brug. CVR tilføjes, når Kasper har et.
+9. Footer: mørk violet flade (#13092B) helt ud til kanterne. Øverst én linje med "© 2026 Kasper Schrøder Asmussen", genveje (Cases, Book en snak, Privatlivspolitik, Vilkår for brug) og kontakt (kasper@heyotto.dk, +45 22 46 38 40, LinkedIn-ikon). Under den står memojiens hoved (assets/favicon-512.png) og logoet skaleret op i lavendel, så de fylder hele bredden. Logoet er logo.svg brugt som CSS-maske. Samme footer på alle sider. CVR tilføjes, når Kasper har et.
 
 Undersider: site/privatliv.html (/privatliv), site/vilkaar.html (/vilkaar), site/tak.html og site/404.html. De har samme top og footer som forsiden. Privatlivspolitikken skal passe med det, siden faktisk gør (formularens felter, Netlify, Google Sheets og Gmail, den indlejrede Google-kalender, temavalg i localStorage), så den skal opdateres, hvis der kommer nye felter, værktøjer eller sporing til. Under formularen står en kort linje med link til privatlivspolitikken.
 
