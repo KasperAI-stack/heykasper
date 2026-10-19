@@ -19,6 +19,7 @@
   --line: #E4E1EC;
   --plus: #A7A3B2;
   --rail: #D3CFDD;
+  --field-border: #8A8697; /* feltkant, 3,2:1 på Tåge */
   --focus: #7C3AED;
   --hover: rgb(15 14 19 / .04);
   --btn-hover: #2B2932;
@@ -65,6 +66,7 @@
   --line: #2B2932;
   --plus: #6B6778;
   --rail: #3B3845;
+  --field-border: #75707F; /* feltkant, 3,5:1 på Grafit */
   --focus: #F472B6;
   --hover: rgb(244 242 248 / .05);
   --btn-hover: #D9D6E2;
@@ -89,6 +91,7 @@
   --line: #2B2932;
   --plus: #6B6778;
   --rail: #3B3845;
+  --field-border: #75707F; /* feltkant, 3,5:1 på Grafit */
   --focus: #F472B6;
   --hover: rgb(244 242 248 / .05);
   --btn-hover: #D9D6E2;
@@ -106,7 +109,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 body {
   margin: 0;
   background: var(--bg);
@@ -156,7 +159,9 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
 .skip:focus-visible { top: 1rem; }
 
 /* Top */
+/* Toppen står fast, så booking altid er ét klik væk */
 .topbar {
+  position: sticky; top: 0; z-index: 20; background: var(--bg);
   display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   padding: 1rem var(--gutter); border-bottom: 1px solid var(--line);
 }
@@ -557,11 +562,11 @@ h1 {
 .form label { display: grid; gap: .4rem; font-weight: 500; font-size: .95rem; }
 .form input, .form textarea, .form select {
   font: inherit; font-size: 1rem; color: var(--ink); background: var(--soft); width: 100%;
-  border: 1.5px solid var(--rail); border-radius: 10px; padding: .75rem .9rem;
+  border: 1.5px solid var(--field-border); border-radius: 10px; padding: .75rem .9rem;
   transition: border-color .15s;
 }
 .form textarea { resize: vertical; min-height: 7.5rem; }
-.form input:hover, .form textarea:hover, .form select:hover { border-color: var(--plus); }
+.form input:hover, .form textarea:hover, .form select:hover { border-color: var(--muted); }
 .form input:focus-visible, .form textarea:focus-visible, .form select:focus-visible { border-color: var(--accent); outline: 3px solid rgb(244 114 182 / .3); outline-offset: 0; }
 .form .btn { justify-self: start; margin-top: .25rem; }
 
