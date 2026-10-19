@@ -463,7 +463,7 @@ document.querySelectorAll('[data-track="booking"]').forEach(function (link) {
         depth += clamp(1 - (info[j].top - info[j].stick) / Math.max(c.h, 1));
       }
       c.el.style.setProperty("--s", (1 - .08 * away - .04 * depth).toFixed(4));
-      c.el.style.setProperty("--b", (1 - .1 * depth).toFixed(3));
+      c.el.style.setProperty("--b", (1 - .05 * depth).toFixed(3));
     });
   };
   var kick = function () { if (visible && !raf) raf = requestAnimationFrame(update); };
