@@ -40,7 +40,7 @@ jobs:
           touch _site/.nojekyll
           # Ny version ved hvert push, så browseren ikke viser gammel CSS og JS fra sin cache (Pages gemmer i 10 min)
           V=${GITHUB_SHA::7}
-          find _site -name '*.html' -exec sed -i -E "s#(/css/styles\.css|/js/main\.js)\"#?v=$V\"#g" {} +
+          find _site -name '*.html' -exec sed -i -E "s#(/css/styles\.css|/js/main\.js)\"#\1?v=$V\"#g" {} +
 
       - uses: actions/upload-pages-artifact@v3
         with:
