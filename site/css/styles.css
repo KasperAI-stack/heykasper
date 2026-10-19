@@ -390,12 +390,12 @@ h1 {
 .scene-title .ch { display: inline-block; }
 
 /* Skiftet: memojien popper ind, navnet glider ind bogstav for bogstav, og beskrivelsen kommer ord for ord */
-.scene-item.is-in .scene-img { animation: scene-pop 400ms var(--ease-out) both; }
-.scene-item.is-in .ch { animation: ch-in 300ms var(--ease-out) both; animation-delay: calc(min(var(--d), 14) * 20ms + 60ms); }
-.scene-item.is-in .scene-text .wd { animation: wd-in 300ms var(--ease-out) both; animation-delay: calc(min(var(--d), 16) * 14ms + 180ms); }
+.scene-item.is-in .scene-img { animation: scene-pop 280ms var(--ease-out) both; }
+.scene-item.is-in .ch { animation: ch-in 220ms var(--ease-out) both; animation-delay: calc(min(var(--d), 14) * 10ms + 30ms); }
+.scene-item.is-in .scene-text .wd { animation: wd-in 220ms var(--ease-out) both; animation-delay: calc(min(var(--d), 16) * 7ms + 90ms); }
 .scene-item.is-out .scene-img,
 .scene-item.is-out .scene-title,
-.scene-item.is-out .scene-text { animation: scene-out 180ms var(--ease-out) both; }
+.scene-item.is-out .scene-text { animation: scene-out 140ms var(--ease-out) both; }
 @keyframes scene-pop {
   from { opacity: 0; transform: scale(.94) translateY(10px); filter: blur(4px); }
   to { opacity: 1; transform: none; filter: none; }

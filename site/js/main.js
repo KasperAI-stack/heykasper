@@ -89,11 +89,12 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
 
   // Teksten i feltet bliver slettet og skrevet igen, bogstav for bogstav. Ved reduceret bevægelse skiftes den bare.
   var typeTimer;
-  var type = function (text, done) {
+  var type = function (text, done, erased) {
     clearTimeout(typeTimer);
     if (reduce.matches) {
       typed.textContent = text;
       hey.classList.remove("is-typing", "is-busy");
+      if (erased) erased();
       if (done) done();
       return;
     }
@@ -103,18 +104,19 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
       // Det fælles "en " bliver stående, så kun agentens navn skrives om
       if (t.length > 3) {
         typed.textContent = t.slice(0, -1);
-        typeTimer = setTimeout(erase, 14);
+        typeTimer = setTimeout(erase, 8);
       } else {
+        if (erased) erased();
         write(t.length);
       }
     };
     var write = function (i) {
       if (i <= text.length) {
         typed.textContent = text.slice(0, i);
-        typeTimer = setTimeout(function () { write(i + 1); }, 28);
+        typeTimer = setTimeout(function () { write(i + 1); }, 18);
       } else {
         hey.classList.remove("is-busy");
-        typeTimer = setTimeout(function () { hey.classList.remove("is-typing"); }, 900);
+        typeTimer = setTimeout(function () { hey.classList.remove("is-typing"); }, 700);
         if (done) done();
       }
     };
@@ -132,7 +134,7 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     prev.outTimer = setTimeout(function () {
       prev.classList.remove("is-out");
       prev.classList.add("is-off");
-    }, reduce.matches ? 150 : 180);
+    }, reduce.matches ? 150 : 140);
 
     clearTimeout(next.outTimer);
     next.classList.remove("is-off", "is-out", "is-in");
@@ -147,8 +149,8 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     hero.setAttribute("data-glow", btn.getAttribute("data-glow"));
     if (live) live.textContent = btn.getAttribute("aria-label") + ". " + panel(btn).querySelector(".scene-text").textContent;
     talk(1600);
-    // Først bliver prompten skrevet færdig, så kommer svaret
-    type(btn.getAttribute("data-prompt"), function () { show(btn); });
+    // Svaret kommer, så snart det gamle navn er slettet, mens det nye bliver skrevet
+    type(btn.getAttribute("data-prompt"), null, function () { show(btn); });
   };
 
   picks.forEach(function (btn) {
@@ -195,7 +197,7 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     setTimeout(function () {
       talk(1400);
       type(current.getAttribute("data-prompt"));
-    }, 500);
+    }, 300);
   }
 })();
 
