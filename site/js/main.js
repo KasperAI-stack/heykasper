@@ -188,34 +188,6 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
   if (document.fonts) document.fonts.ready.then(function () { layout(); movePill(false); });
 })();
 
-// Knappen i toppen skifter mellem lyst og mørkt tema og husker valget i browseren.
-var toggle = document.querySelector("[data-theme-toggle]");
-if (toggle) {
-  var root = document.documentElement;
-  var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-  var current = function () {
-    return root.getAttribute("data-theme") || (prefersDark.matches ? "dark" : "light");
-  };
-  var render = function () {
-    var dark = current() === "dark";
-    toggle.setAttribute("data-active", dark ? "dark" : "light");
-    toggle.setAttribute("aria-label", dark ? "Skift til lyst tema" : "Skift til mørkt tema");
-    // Browserens farve (adresselinjen på mobil) følger det valgte tema.
-    document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
-      meta.setAttribute("content", dark ? "#0F0E13" : "#FFFFFF");
-    });
-  };
-  toggle.hidden = false;
-  render();
-  prefersDark.addEventListener("change", render);
-  toggle.addEventListener("click", function () {
-    var next = current() === "dark" ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    try { localStorage.setItem("tema", next); } catch (e) {}
-    render();
-  });
-}
-
 // Kontakt: skift mellem forespørgsel og booking. Uden JavaScript vises begge dele under hinanden.
 var contactSwitch = document.querySelector("[data-contact-switch]");
 if (contactSwitch) {
