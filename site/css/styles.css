@@ -159,7 +159,7 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
 /* Siden står frit uden ramme. Sektionerne adskilles af luft, ikke af linjer. */
 .page { max-width: 76rem; width: 100%; margin: 0 auto; min-width: 0; }
 .section { position: relative; }
-.footer { position: relative; border-top: 1px solid var(--line); }
+.footer { position: relative; }
 
 /* Spring til indhold (kun synlig ved tastatur) */
 .skip {
@@ -173,7 +173,10 @@ h3 { font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; margin: 0 0 
 .topbar {
   position: sticky; top: 0; z-index: 20; background: var(--bg);
   display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  padding: 1rem var(--gutter); border-bottom: 1px solid var(--line);
+  padding: 1rem var(--gutter);
+  /* Baggrund og streg går helt ud til skærmens kanter, så toppen ikke danner en ramme */
+  box-shadow: 0 0 0 100vmax var(--bg), 0 1px 0 100vmax var(--line);
+  clip-path: inset(0 -100vmax -1px);
 }
 .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-weight: 600; letter-spacing: -.01em; }
 .brand-mark { width: 28px; height: 28px; flex: none; }
