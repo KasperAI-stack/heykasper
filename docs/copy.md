@@ -4,11 +4,17 @@ Tekst i firkantede parenteser er pladsholdere.
 
 ## Hero
 
-Lille linje (står inde i h1): Jeres nye AI marketing manager
-Overskrift (h1): Hey Kasper, byg os lige … (prikkerne er animerede)
-Hjælpetekst over baren: Stryg for at vælge en agent (mobil) / Vælg en agent herunder (computer)
+Arbejdstekster foreslået af copywriteren. Kasper kan ændre dem.
 
-Agenterne i baren, fra venstre. Den midterste er valgt, når siden åbner.
+Overskrift (h1): Jeg bygger AI-agenter, der overtager jeres faste marketingopgaver ("faste marketingopgaver" står i kursiv serif)
+Underlinje: Til marketingteams uden en udvikler i huset. Vi starter med én opgave og en gratis prøveopgave på jeres egne data, så I ser den virke, før I beslutter noget.
+Knap: Book 30 minutter
+
+Chatfeltet
+Tekst i feltet: Hey Kasper, byg os lige en annonce-agent (sidste del skifter: en SoMe-agent, en mail-agent, en annonce-agent, en lead-agent, en tekst-agent)
+Hjælpetekst under feltet: Tryk på et hoved eller stryg for at vælge en agent (mobil) / Vælg en agent i feltet for at se, hvad den kan (computer)
+
+Agenterne i bunden af chatfeltet, fra venstre. Den midterste er valgt, når siden åbner. Navn og tekst er memojiens svar under feltet.
 
 SoMe-agenten
 Agenten skriver jeres opslag i jeres egen tone, så næste uges indhold ligger klar, før I har tænkt på det.
@@ -76,41 +82,30 @@ Tekst: Jeg hedder Kasper Schrøder Asmussen og har en kandidat i Marketing & Bra
 Tekst: Fordi jeg kommer fra marketing, starter jeg med jeres kunder og jeres tal og først bagefter med teknikken. Jeg begynder altid med noget lille, som I kan se virke, og bygger kun videre, når I kan mærke, at det hjælper.
 Figur: den pegende og blinkende memoji. Alt-tekst: Kasper som memoji i sort t-shirt og lyse jeans, der blinker og peger på jer
 
-## CV
+## Cases
 
-Overskrift: Mit CV
-Tekst: Her er de steder, jeg har arbejdet med marketing, og hvad arbejdet førte til. Hele profilen ligger på LinkedIn.
+Overskrift (arbejdstekst, to linjer): Det har mit arbejde / ført til
+Linje under: Tallene er fra mit CV. Hele profilen ligger på LinkedIn.
 
-Aug. 2026 til nu. AI Marketing Manager, Africa Tours ApS. Fuldtid.
+Seks kort. Emne, firma, tal og forklaring. Nederst på hvert kort står [KONTEKST].
+1. Account Based Marketing. VoiceArchive. 12x. ROI
+2. Google Ads. VoiceArchive. 17→40 %. søgevisningsandel
+3. AI-drevet SEO. VoiceArchive. 30→10. gennemsnitlig placering i Google
+4. Programmatisk SEO. VoiceArchive. 320. landingpages lavet automatisk med n8n
+5. Webinarer. Poetype. 600. deltagere på 5 webinarer
+6. Podcast. Poetype. Top 2. på marketinghitlisten med 12 episoder
 
-Aug. 2024 til aug. 2026. Marketing Koordinator, VoiceArchive. Fuldtid.
-- Fik flyttet fokus fra alle kunder til de få, der passer bedst (ICP).
-- Account Based Marketing, der gav 12 gange ROI.
-- LinkedIn Ads til thought leadership og leadgenerering.
-- Google Ads, hvor søgevisningsandelen steg fra 17 til 40 %.
-- Et AI-drevet SEO-flow, der flyttede den gennemsnitlige placering fra 30 til 10.
-- 320 landingpages produceret automatisk med n8n og programmatisk SEO.
+## Udtalelse
 
-Nov. 2023 til aug. 2024. Marketing Koordinator, Poetype. Fuldtid.
-- 5 fysiske events med 260 deltagere i alt.
-- 5 webinarer med 600 deltagere.
-- 12 podcastepisoder, der nåede top 2 på marketinghitlisten.
-
-Maj 2021 til jul. 2023. Konsulent, Cand. Deltid.
-- Hjalp virksomheder på projektbasis med brandstrategi og udvikling af webshops.
-
-Uddannelse. Kandidat i Marketing & Brand Management.
-
-## Workshops og oplæring
-
-Overskrift: Skal resten af teamet også med?
-Tekst: Ud over at bygge løsningerne holder jeg workshops for teams og giver individuel oplæring. Så kan hele marketingafdelingen bruge AI i sin egen hverdag og behøver ikke vente på, at jeg har tid.
+Citat: ”[UDTALELSE]”
+Under citatet: [NAVN], [TITEL], [VIRKSOMHED]
+Billeder: memojiens overkrop til venstre og selfie-agenten til højre (dekorative, ingen alt-tekst)
 
 ## Book et møde
 
 Overskrift: Hvilke opgaver skal I slippe for først?
 Figur: den mediterende memoji. Alt-tekst: Kasper som memoji i beige t-shirt, der sidder med krydsede ben og mediterer med lukkede øjne og et lille smil
-Skift mellem to muligheder: Send en forespørgsel, Book en tid
+Skift mellem to muligheder: Book en tid (valgt fra start), Send en forespørgsel
 
 Send en forespørgsel
 Tekst: Skriv kort, hvad der tager tid hos jer i dag, så vender jeg tilbage inden for en arbejdsdag.
@@ -118,11 +113,9 @@ Felter: Navn, Virksomhed, E-mail, Telefon (valgfrit), Hey Kasper, hjælp os med 
 Knap: Send forespørgsel
 
 Book en tid
-Tekst: Vælg selv et tidspunkt i min kalender, så har vi en aftale med det samme.
-Overskrift i boksen: Et møde på 30 minutter
-Tekst i boksen: Når I har valgt et tidspunkt, får I en bekræftelse på mail, og mødet ligger i begge vores kalendere.
-Knap: Åbn min kalender
-Lille tekst: Kalenderen åbner i en ny fane hos Google.
+Tekst: Vælg selv et tidspunkt i min kalender, så har vi en aftale med det samme. Når I har valgt, får I en bekræftelse på mail.
+Rammen: Googles bookingside, indlejret. Titel til skærmlæsere: Book en snak på 30 minutter i Kaspers Google-kalender
+Under rammen: Vises kalenderen ikke, kan I åbne den hos Google. (link til bookingsiden)
 
 ## Automatisk svar på forespørgsler
 
@@ -156,5 +149,5 @@ Teksten står direkte i site/privatliv.html og site/vilkaar.html. Linje under fo
 Etiket: Fejl 404
 Overskrift: Den side kunne jeg ikke finde
 Tekst: Linket virker ikke længere, eller adressen er skrevet forkert. Her er de steder, de fleste leder efter, eller I kan gå direkte til forsiden.
-Genveje: Sådan foregår det, Mit CV, Book en snak
+Genveje: Sådan foregår det, Resultater, Book en snak
 Knap: Gå til forsiden

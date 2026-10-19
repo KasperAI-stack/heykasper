@@ -1,7 +1,7 @@
 Billederne til siden. Kasper optræder kun som memoji, aldrig på rigtige fotos.
 
 - logo.svg: "hey Kasper" som vektorgrafik med gennemsigtig baggrund
-- kasper-memoji.webp og kasper-memoji-360.webp: memojiens overkrop med gennemsigtig baggrund (bruges ikke længere, den gamle hero er fjernet)
+- kasper-memoji.webp: memojiens overkrop med gennemsigtig baggrund (venstre billede i udtalelsen). kasper-memoji-360.webp bruges ikke.
 - kasper-memoji-hel.webp: hele memojien med gennemsigtig baggrund (tak-siden og 404-siden)
 - kasper-hoved.webp: memojiens hoved (bruges ikke længere, chatvinduet er fjernet)
 - kasper-meditation.svg: den mediterende memoji i bookingsektionen (SVG med indlejret WebP, 734x800, gennemsigtig baggrund)
@@ -11,4 +11,4 @@ Billederne til siden. Kasper optræder kun som memoji, aldrig på rigtige fotos.
 - og-image.jpg: delingsbillede til LinkedIn og andre (1200x630) med logo, overskrift og memoji
 - jer.svg: neutral avatar for virksomheden (bruges ikke længere, chatvinduet er fjernet)
 - stack.svg og tools/: figuren og værktøjslogoerne i værktøjssektionen
-- memoji/: memojien i fem situationer til agenterne i toppen, hver med et lille hoved til baren. landingpage.webp er Lead-agenten med faldskærmen.
+- memoji/: memojien i fem situationer til agenterne i toppen, hver med et lille hoved til valgene i chatfeltet. some.webp står også til højre i udtalelsen. landingpage.webp er Lead-agenten med faldskærmen.

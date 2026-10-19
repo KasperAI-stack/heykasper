@@ -28,5 +28,7 @@ Værktøjer oprettes på virksomhedens egne konti, så den ejer det hele.
 
 ## Derudover
 
+Vises ikke på siden efter 19. oktober 2026 (workshop-sektionen er fjernet).
+
 - AI-workshops for teams
 - Individuel oplæring
