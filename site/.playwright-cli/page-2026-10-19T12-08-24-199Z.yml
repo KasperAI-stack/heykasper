@@ -1,0 +1,232 @@
+- generic [active] [ref=e1]:
+  - link "Gå til indholdet" [ref=e2] [cursor=pointer]:
+    - /url: "#indhold"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link "Hey Kasper, til forsiden" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e6]:
+        - button "Skift til mørkt tema" [ref=e7] [cursor=pointer]
+        - link "Book en snak" [ref=e15] [cursor=pointer]:
+          - /url: "#book"
+    - main [ref=e16]:
+      - generic [ref=e17]:
+        - heading [level=1] [ref=e18]:
+          - text: Jeg bygger AI-agenter, der overtager jeres
+          - emphasis [ref=e19]: faste marketingopgaver
+        - paragraph [ref=e20]: Til marketingteams uden en udvikler i huset. Vi starter med én opgave og en gratis prøveopgave på jeres egne data, så I ser den virke, før I beslutter noget.
+        - link "Book 30 minutter" [ref=e21] [cursor=pointer]:
+          - /url: "#book"
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - paragraph [ref=e24]:
+              - generic [ref=e25]: Hey Kasper, byg os lige en annonce-agent
+            - group "Vælg en agent" [ref=e28]:
+              - button "SoMe-agenten" [ref=e29] [cursor=pointer]
+              - button "Mail-agenten" [ref=e30] [cursor=pointer]
+              - button "Annonce-agenten" [pressed] [ref=e31] [cursor=pointer]
+              - button "Lead-agenten" [ref=e32] [cursor=pointer]
+              - button "Tekst-agenten" [ref=e33] [cursor=pointer]
+          - paragraph [ref=e40]: Vælg en agent i feltet for at se, hvad den kan
+          - generic [ref=e41]:
+            - generic [ref=e43]:
+              - img "Kasper som memoji med detektivhat, der kigger gennem en stor lup" [ref=e45]
+              - paragraph [ref=e46]:
+                - generic [ref=e47]: Annonce-agenten
+                - generic [ref=e49]:
+                  - generic [ref=e50]: A
+                  - generic [ref=e51]: "n"
+                  - generic [ref=e52]: "n"
+                  - generic [ref=e53]: o
+                  - generic [ref=e54]: "n"
+                  - generic [ref=e55]: c
+                  - generic [ref=e56]: e
+                  - generic [ref=e57]: "-"
+                  - generic [ref=e58]: a
+                  - generic [ref=e59]: g
+                  - generic [ref=e60]: e
+                  - generic [ref=e61]: "n"
+                  - generic [ref=e62]: t
+                  - generic [ref=e63]: e
+                  - generic [ref=e64]: "n"
+              - paragraph [ref=e65]:
+                - generic [ref=e66]:
+                  - generic [ref=e67]: Hver
+                  - generic [ref=e68]: uge
+                  - generic [ref=e69]: får
+                  - generic [ref=e70]: I
+                  - generic [ref=e71]: at
+                  - generic [ref=e72]: vide,
+                  - generic [ref=e73]: hvilke
+                  - generic [ref=e74]: Meta-annoncer
+                  - generic [ref=e75]: der
+                  - generic [ref=e76]: tjener
+                  - generic [ref=e77]: penge,
+                  - generic [ref=e78]: og
+                  - generic [ref=e79]: hvilke
+                  - generic [ref=e80]: der
+                  - generic [ref=e81]: brænder
+                  - generic [ref=e82]: dem
+                  - generic [ref=e83]: af.
+            - paragraph [ref=e84]
+      - region [ref=e85]:
+        - heading "I ved godt, at AI kan klare mere af jeres marketing" [level=2] [ref=e86]
+        - generic [ref=e87]:
+          - paragraph [ref=e88]: Men der sidder ingen i huset, som både kender marketingen og kan bygge løsningerne. Så tallene til mandagsrapporten bliver stadig samlet i hånden, og henvendelsen fra hjemmesiden ligger og venter, til nogen får tid.
+          - paragraph [ref=e89]: Den rolle vil jeg gerne tage hos jer.
+      - region [ref=e90]:
+        - heading "Værktøjer, som I selv ejer" [level=2] [ref=e91]
+        - paragraph [ref=e92]: Jeg vælger værktøjerne efter opgaven, og alt bliver oprettet på jeres egne konti. Hvis I en dag stopper samarbejdet, beholder I løsningerne og skal ikke starte forfra.
+        - list [ref=e94]:
+          - listitem [ref=e95]:
+            - generic [ref=e97]: Claude
+          - listitem [ref=e98]:
+            - generic [ref=e100]: n8n
+          - listitem [ref=e101]:
+            - generic [ref=e103]: VS Code
+          - listitem [ref=e104]:
+            - generic [ref=e106]: Lovable
+          - listitem [ref=e107]:
+            - generic [ref=e109]: Google Cloud
+          - listitem [ref=e110]:
+            - generic [ref=e112]: GitHub
+          - listitem [ref=e113]:
+            - generic [ref=e115]: Netlify
+          - listitem [ref=e116]:
+            - generic [ref=e118]: Google Sheets
+      - region [ref=e119]:
+        - heading "Sådan foregår det" [level=2] [ref=e120]
+        - paragraph [ref=e121]: Vælg, hvordan I helst vil arbejde sammen. De to første trin er de samme, uanset hvad I vælger, så I kan altid se en løsning virke på jeres egne data, før I beslutter noget.
+        - radiogroup "Samarbejdsform" [ref=e122]:
+          - radio "Fastansat" [checked] [ref=e123] [cursor=pointer]
+          - radio "Konsulent" [ref=e124] [cursor=pointer]
+          - radio "Projekt" [ref=e125] [cursor=pointer]
+        - list [ref=e126]:
+          - listitem [ref=e127]:
+            - heading [level=3] [ref=e131]:
+              - strong [ref=e132]: Afklaring
+              - text: ", 30 minutter."
+            - paragraph [ref=e133]: Vi tager en snak om jeres marketingplan og finder den opgave på listen, hvor AI gør størst forskel. I får samtidig et indtryk af, hvordan jeg tænker og arbejder.
+          - listitem [ref=e134]:
+            - heading [level=3] [ref=e139]:
+              - strong [ref=e140]: Prøveopgave
+              - text: ", gratis."
+            - paragraph [ref=e141]: Jeg bygger en fungerende løsning på en lille del af jeres egne data, så I kan se den virke, før I beslutter noget. Så har I en reel case fra jeres egen hverdag at vurdere mig på, før I ansætter.
+          - listitem [ref=e142]:
+            - generic [ref=e147]:
+              - heading [level=3] [ref=e148]:
+                - strong [ref=e149]: Opstart
+                - text: ", de første måneder."
+              - paragraph [ref=e150]: Jeg starter i teamet, bygger prøveopgaven færdig og kobler den på jeres systemer. De første faste opgaver forsvinder fra listen, mens jeg lærer jeres kunder, data og plan at kende indefra.
+          - listitem [ref=e151]:
+            - generic [ref=e156]:
+              - heading [level=3] [ref=e157]:
+                - strong [ref=e158]: Hverdag
+                - text: ", hver dag."
+              - paragraph [ref=e159]: Jeg sidder med til jeres møder og bygger løbende de systemer, planen kræver. Så bliver AI en fast del af måden, I laver marketing på, og I har én i huset, der kan både marketingen og teknikken.
+        - generic [ref=e161]:
+          - paragraph [ref=e162]: Passer til jer, der vil have AI ind i marketingen for alvor og hellere vil have en kollega end en leverandør. Som fastansat arbejder jeg kun for jer.
+          - link "Tal med mig om en fast stilling" [ref=e163] [cursor=pointer]:
+            - /url: "#book"
+        - paragraph [ref=e164]: Værktøjerne oprettes på jeres egne konti, så I ejer det hele.
+      - region [ref=e165]:
+        - img "Kasper som memoji i sort t-shirt og lyse jeans, der blinker og peger på jer" [ref=e167]
+        - generic [ref=e168]:
+          - heading "Hvem bygger det?" [level=2] [ref=e169]
+          - paragraph [ref=e170]: Jeg hedder Kasper Schrøder Asmussen og har en kandidat i Marketing & Brand Management. Jeg har arbejdet med marketing i både B2B og B2C, og i dag bygger jeg AI-drevne marketingsystemer, SEO og automatiseringer.
+          - paragraph [ref=e171]: Fordi jeg kommer fra marketing, starter jeg med jeres kunder og jeres tal og først bagefter med teknikken. Jeg begynder altid med noget lille, som I kan se virke, og bygger kun videre, når I kan mærke, at det hjælper.
+      - region [ref=e172]:
+        - generic [ref=e173]:
+          - heading "Det har mit arbejde ført til" [level=2] [ref=e174]
+          - paragraph [ref=e175]:
+            - text: Tallene er fra mit CV. Hele profilen ligger på
+            - link "LinkedIn" [ref=e176] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/kasperasmussen/
+            - text: .
+        - list [ref=e177]:
+          - listitem [ref=e178]:
+            - heading "Account Based Marketing" [level=3] [ref=e179]
+            - paragraph [ref=e180]: VoiceArchive
+            - generic [ref=e181]:
+              - paragraph [ref=e182]: 12x
+              - paragraph [ref=e183]: ROI
+            - paragraph [ref=e184]: "[KONTEKST]"
+          - listitem [ref=e185]:
+            - heading "Google Ads" [level=3] [ref=e186]
+            - paragraph [ref=e187]: VoiceArchive
+            - generic [ref=e188]:
+              - paragraph [ref=e189]:
+                - text: 17→40 %
+                - generic [ref=e190]: Fra 17 til 40 %
+              - paragraph [ref=e191]: søgevisningsandel
+            - paragraph [ref=e195]: "[KONTEKST]"
+          - listitem [ref=e196]:
+            - heading "AI-drevet SEO" [level=3] [ref=e197]
+            - paragraph [ref=e198]: VoiceArchive
+            - generic [ref=e199]:
+              - paragraph [ref=e200]:
+                - text: 30→10
+                - generic [ref=e201]: Fra 30 til 10
+              - paragraph [ref=e202]: gennemsnitlig placering i Google
+            - paragraph [ref=e203]: "[KONTEKST]"
+          - listitem [ref=e204]:
+            - heading "Programmatisk SEO" [level=3] [ref=e205]
+            - paragraph [ref=e206]: VoiceArchive
+            - generic [ref=e207]:
+              - paragraph [ref=e208]: "320"
+              - paragraph [ref=e209]: landingpages lavet automatisk med n8n
+            - paragraph [ref=e210]: "[KONTEKST]"
+          - listitem [ref=e211]:
+            - heading "Webinarer" [level=3] [ref=e212]
+            - paragraph [ref=e213]: Poetype
+            - generic [ref=e214]:
+              - paragraph [ref=e215]: "600"
+              - paragraph [ref=e216]: deltagere på 5 webinarer
+            - paragraph [ref=e217]: "[KONTEKST]"
+          - listitem [ref=e218]:
+            - heading "Podcast" [level=3] [ref=e219]
+            - paragraph [ref=e220]: Poetype
+            - generic [ref=e221]:
+              - list [aria-hidden] [ref=e222]:
+                - listitem [ref=e223]: "1"
+                - listitem [ref=e224]: "2"
+                - listitem [ref=e225]: "3"
+              - paragraph [ref=e226]: Top 2
+              - paragraph [ref=e227]: på marketinghitlisten med 12 episoder
+            - paragraph [ref=e228]: "[KONTEKST]"
+      - region "Udtalelse" [ref=e229]:
+        - figure "[NAVN], [TITEL], [VIRKSOMHED]" [ref=e231]:
+          - blockquote [ref=e232]:
+            - paragraph [ref=e233]: ”[UDTALELSE]”
+      - region [ref=e236]:
+        - img "Kasper som memoji i beige t-shirt, der sidder med krydsede ben og mediterer med lukkede øjne og et lille smil" [ref=e237]
+        - heading "Hvilke opgaver skal I slippe for først?" [level=2] [ref=e238]
+        - generic [ref=e239]:
+          - button "Book en tid" [pressed] [ref=e240] [cursor=pointer]
+          - button "Send en forespørgsel" [ref=e241] [cursor=pointer]
+        - generic [ref=e242]:
+          - paragraph [ref=e243]: Vælg selv et tidspunkt i min kalender, så har vi en aftale med det samme. Når I har valgt, får I en bekræftelse på mail.
+          - iframe [ref=e246]
+          - paragraph [ref=e247]:
+            - text: Vises kalenderen ikke, kan I
+            - link "åbne den hos Google" [ref=e248] [cursor=pointer]:
+              - /url: https://calendar.google.com/calendar/appointments/schedules/AcZssZ3MViM8rz10NnRz3-VbJuZ231pkGropG5vH6Q_wX3aKAZgnltTjzKpcPQnqLo_ya82ZmCmgYgiA
+            - text: .
+    - contentinfo [ref=e249]:
+      - paragraph [ref=e250]:
+        - img "Hey Kasper" [ref=e251]
+        - generic [ref=e252]: v/ Kasper Schrøder Asmussen
+      - paragraph [ref=e253]:
+        - link "kasper@heyotto.dk" [ref=e254] [cursor=pointer]:
+          - /url: mailto:kasper@heyotto.dk
+        - text: ","
+        - link "+45 22 46 38 40" [ref=e255] [cursor=pointer]:
+          - /url: tel:+4522463840
+        - text: ","
+        - link "LinkedIn" [ref=e256] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/kasperasmussen/
+      - paragraph [ref=e257]:
+        - link "Privatlivspolitik" [ref=e258] [cursor=pointer]:
+          - /url: /privatliv
+        - link "Vilkår for brug" [ref=e259] [cursor=pointer]:
+          - /url: /vilkaar
