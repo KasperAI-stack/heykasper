@@ -10,6 +10,24 @@
   src: url("/fonts/geist-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+/* Instrument Serif: den tynde serif til fremhævningen i overskriften og citatet. Den minder om "hey" i logoet.
+   Ligger selv på siden. Licens: SIL Open Font License, se /fonts/OFL-instrument-serif.txt. */
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 :root {
   /* Neutrale: Onyx, Grafit, Skifer, Sølvgrå og Tåge. Lyst tema er standard. */
   --bg: #FFFFFF;
@@ -50,6 +68,7 @@
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
   --font: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --max: 72rem;
   --read: 40rem;
   --gutter: clamp(1.25rem, 4vw, 3rem);
@@ -258,26 +277,59 @@ h1 {
   -webkit-mask: radial-gradient(ellipse 60% 55% at 50% 45%, #000 15%, transparent 80%);
   mask: radial-gradient(ellipse 60% 55% at 50% 45%, #000 15%, transparent 80%);
 }
-/* Den lille linje står inde i h1, så Google kan se, hvad siden handler om */
-.hero-eyebrow {
-  display: block; margin: 0 0 .35rem; color: var(--muted);
-  font-size: .95rem; font-weight: 500; letter-spacing: normal; line-height: 1.6;
+/* Overskriften: tilbuddet i Geist, med slutningen fremhævet i en tynd kursiv serif som "hey" i logoet.
+   Fremhævningen tager agentens farve, så den skifter med det, I vælger i chatfeltet. */
+.hero-title {
+  --tint: color-mix(in srgb, var(--glow) 78%, var(--ink));
+  font-size: clamp(2.25rem, 6.2vw, 4.6rem); max-width: 19ch; margin: 0 0 1.25rem;
 }
+.hero-title .accent {
+  font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em;
+  font-size: 1.1em; line-height: .9; color: var(--tint); transition: color 400ms ease;
+}
+.hero-lede { max-width: 38rem; margin-bottom: 1.75rem; }
+.nowrap, .composer-typed { white-space: nowrap; }
 
-/* "Hey Kasper, byg os lige" med prikker, der lytter, og som taler, når Kasper svarer.
-   To linjer på mobil og én linje på computer. */
-.hey {
-  max-width: none; margin: 0;
-  font-size: clamp(2.5rem, 10.5vw, 4.25rem); font-weight: 600; letter-spacing: -.045em; line-height: 1.04;
+/* Chatfeltet: H1, underlinje og knap fører ned i feltet, og svaret står under det */
+.chat { position: relative; width: 100%; max-width: 40rem; margin-top: 3rem; display: flex; flex-direction: column; align-items: center; }
+/* Den originale glød i agentens farve bag feltet og svaret */
+.chat::before {
+  content: ""; position: absolute; z-index: -1; left: 50%; top: 4rem; width: min(140%, 52rem); height: 70%;
+  translate: -50% 0; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--glow) 16%, transparent), transparent);
+  transition: background 400ms ease;
 }
-.hey-line { display: block; }
-@media (min-width: 56rem) { .hey-line { display: inline; } }
-.hey-soft { font-weight: 400; color: var(--muted); }
-.hey-text { display: inline-block; animation: hey-in 500ms var(--ease-out) both; }
-.hey-voice {
-  display: inline-flex; align-items: center; gap: .09em; height: .5em; margin-left: .22em; vertical-align: -.02em;
-  animation: hey-in 400ms 300ms var(--ease-out) both;
+.composer {
+  width: 100%; text-align: left;
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgb(15 14 19 / .04), 0 14px 36px rgb(15 14 19 / .08);
+  padding: 1rem 1rem .7rem 1.25rem;
 }
+.composer-input {
+  margin: 0; min-height: 3.6em; color: var(--ink);
+  font-size: clamp(1.05rem, 2.6vw, 1.3rem); line-height: 1.45; letter-spacing: -.01em;
+}
+.composer-caret {
+  display: inline-block; width: 2px; height: 1.15em; margin-left: 2px; vertical-align: -.2em;
+  background: var(--accent); opacity: 0;
+}
+.composer.is-typing .composer-caret { opacity: 1; }
+.composer.is-typing:not(.is-busy) .composer-caret { animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+.composer-bar { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-top: .5rem; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .composer { border-color: var(--rail); box-shadow: 0 14px 36px rgb(0 0 0 / .5); }
+}
+:root[data-theme="dark"] .composer { border-color: var(--rail); box-shadow: 0 14px 36px rgb(0 0 0 / .5); }
+/* Prikkerne er "skriver"-indikatoren i højre side, ligesom lydknappen i en chat */
+.composer-voice {
+  flex: none; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; margin-left: auto;
+  border-radius: 50%; background: var(--soft); font-size: 1.6rem;
+}
+.composer-voice .hey-voice { margin: 0; }
+
+/* De fire prikker lytter og taler (scaleY, ikke height) i agenternes farver */
+.hey-voice { display: inline-flex; align-items: center; gap: .09em; height: .5em; }
 .hey-voice i {
   display: block; width: .13em; height: .13em; border-radius: 99px;
   animation: hey-listen 1.8s ease-in-out infinite;
@@ -290,14 +342,42 @@ h1 {
 .hey.is-talking .hey-voice i:nth-child(2) { animation-delay: -.12s; }
 .hey.is-talking .hey-voice i:nth-child(3) { animation-delay: -.24s; }
 .hey.is-talking .hey-voice i:nth-child(4) { animation-delay: -.06s; }
-@keyframes hey-in { from { opacity: 0; filter: blur(4px); transform: translateY(.1em); } to { opacity: 1; filter: none; transform: none; } }
 @keyframes hey-listen { 0%, 55%, 100% { transform: translateY(0); } 25% { transform: translateY(-.14em); } }
 @keyframes hey-talk { from { transform: scaleY(1); } to { transform: scaleY(3.5); } }
 
-/* Scenen: memojien, agentens navn og beskrivelse */
+/* Agenterne sidder som valg i bunden af feltet, ligesom værktøjsrækken i en chat */
+.picker { display: flex; gap: .25rem; touch-action: pan-y; }
+.pick {
+  flex: none; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; cursor: pointer;
+  background: transparent; border: 0; border-radius: 12px;
+  transition: background-color 150ms ease, box-shadow 150ms ease;
+}
+@media (min-width: 40rem) { .pick { width: 3rem; height: 3rem; } }
+.pick img {
+  width: 82%; height: 82%;
+  opacity: .62; filter: saturate(.4); scale: .9;
+  transition: opacity 200ms ease, filter 200ms ease, scale 200ms var(--ease-out), translate 200ms var(--ease-out), rotate 200ms var(--ease-out);
+}
+.pick[aria-pressed="true"] { background: var(--pill-bg); box-shadow: var(--pill-shadow); }
+.pick[aria-pressed="true"] img { opacity: 1; filter: none; scale: 1.06; }
+@media (hover: hover) and (pointer: fine) {
+  .pick:hover img { opacity: 1; filter: none; scale: 1.12; translate: 0 -3px; rotate: -5deg; }
+  .pick[aria-pressed="true"]:hover img { scale: 1.1; translate: 0 -2px; rotate: 4deg; }
+}
+.pick:active img { scale: .95; translate: 0; transition-duration: 100ms; }
+
+/* Hjælpetekst under feltet. Mobil viser "tryk", computer viser "vælg". */
+.picker-hint { margin: .85rem 0 0; color: var(--muted); font-size: .9rem; }
+.hint-mouse { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .hint-touch { display: none; }
+  .hint-mouse { display: inline; }
+}
+
+/* Svaret: memojien, agentens navn og beskrivelse */
 .scene {
-  --fig: min(60vw, 21rem, 32svh);
-  position: relative; width: 100%; max-width: 34rem; margin-top: .75rem;
+  --fig: min(52vw, 17rem, 30svh);
+  position: relative; width: 100%; max-width: 34rem; margin-top: 1.25rem;
 }
 
 /* Alle agenter ligger oven på hinanden, så højden ikke hopper, når man skifter */
@@ -315,7 +395,7 @@ h1 {
 .scene-title {
   --tint: color-mix(in srgb, var(--glow) 78%, var(--ink));
   margin: .35rem 0 .35rem; color: var(--tint);
-  font-size: clamp(2.1rem, 9vw, 3.4rem); font-weight: 700; line-height: 1.05; letter-spacing: -.045em;
+  font-size: clamp(2rem, 8vw, 3rem); font-weight: 700; line-height: 1.05; letter-spacing: -.045em;
 }
 .scene-text { margin: 0 auto; max-width: 25rem; color: var(--muted); font-size: 1rem; line-height: 1.5; }
 @media (min-width: 40rem) { .scene-text { font-size: 1.1rem; max-width: 29rem; } }
@@ -337,62 +417,6 @@ h1 {
 @keyframes ch-in { from { opacity: 0; transform: translateY(.3em); } to { opacity: 1; transform: none; } }
 @keyframes wd-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 @keyframes scene-out { to { opacity: 0; transform: scale(.97); } }
-
-/* Hjælpetekst over baren. Mobil viser "stryg", computer viser "vælg". */
-.picker-hint {
-  display: inline-flex; align-items: center; gap: .4rem; margin: 1.25rem 0 0;
-  color: var(--muted); font-size: .9rem;
-}
-.hint-mouse { display: none; }
-@media (hover: hover) and (pointer: fine) {
-  .hint-touch { display: none; }
-  .hint-mouse { display: inline; }
-}
-
-/* Den buede bar. Knapperne følger buen (JavaScript regner deres plads ud), og den hvide pude glider hen til den valgte. */
-.picker {
-  --bw: 3.9rem; --bh: 3.15rem; --gap: .3rem; --band: 70px; --ro: 470px;
-  position: relative; display: flex; justify-content: center; gap: var(--gap);
-  width: calc(100% + 2 * var(--gutter)); margin: .4rem calc(var(--gutter) * -1) 0;
-  height: calc(var(--band) + 3rem); padding-top: calc((var(--band) - var(--bh)) / 2);
-  touch-action: pan-y;
-}
-@media (min-width: 40rem) { .picker { --bw: 5rem; --bh: 3.6rem; --gap: .6rem; --band: 84px; --ro: 640px; } }
-.picker-band {
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(circle var(--ro) at 50% var(--ro),
-    transparent calc(var(--ro) - var(--band) - 1px), var(--band-bg) calc(var(--ro) - var(--band)),
-    var(--band-bg) calc(var(--ro) - 1px), transparent var(--ro));
-  /* Buen toner ud mod siderne og i bunden, så den aldrig bliver skåret skarpt af */
-  -webkit-mask: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent), linear-gradient(#000 55%, transparent);
-  -webkit-mask-composite: source-in;
-  mask: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent) intersect, linear-gradient(#000 55%, transparent);
-}
-@media (min-width: 40rem) { .picker-band { left: 50%; right: auto; width: min(100%, 46rem); translate: -50% 0; } }
-.picker-pill {
-  position: absolute; z-index: 0; left: 0; top: 0; width: var(--bw); height: var(--bh);
-  transform: translate(var(--px, 0), var(--py, 0)) rotate(var(--prot, 0deg));
-  background: var(--pill-bg); border-radius: 1.5rem; box-shadow: var(--pill-shadow);
-  transition: transform 280ms var(--ease-in-out);
-}
-
-.pick {
-  position: relative; z-index: 1; flex: none; width: var(--bw); height: var(--bh);
-  display: grid; place-items: center; padding: 0; border: 0; border-radius: 1.5rem; background: none; cursor: pointer;
-  transform: translateY(var(--dy, 0)) rotate(var(--rot, 0deg));
-}
-.pick img {
-  width: calc(var(--bh) - .5rem); height: calc(var(--bh) - .5rem);
-  opacity: .62; filter: saturate(.4); scale: .9;
-  transition: opacity 200ms ease, filter 200ms ease, scale 200ms var(--ease-out), translate 200ms var(--ease-out), rotate 200ms var(--ease-out);
-}
-.pick[aria-pressed="true"] img { opacity: 1; filter: none; scale: 1.06; }
-/* Hover: hovedet hopper op, vipper og får farve */
-@media (hover: hover) and (pointer: fine) {
-  .pick:hover img { opacity: 1; filter: none; scale: 1.12; translate: 0 -4px; rotate: -5deg; }
-  .pick[aria-pressed="true"]:hover img { scale: 1.1; translate: 0 -3px; rotate: 4deg; }
-}
-.pick:active img { scale: .95; translate: 0; transition-duration: 100ms; }
 
 /* Afsløring ved scroll: overskrifter og grupper glider stille ind første gang, de ses. Kun når JavaScript kører. */
 .js-reveal [data-reveal] { opacity: 0; transform: translateY(12px); }
@@ -642,11 +666,11 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   /* Det, der bevæger sig, står stille. Farver og fades bliver, fordi de hjælper med at forstå skiftet. */
-  .hey-voice i, .scene-fig { animation: none; }
-  .hey-text, .hey-voice { animation: fade 200ms ease both; }
+  .hey-voice i, .hey.is-talking .hey-voice i, .scene-fig { animation: none; }
+  .composer-caret, .composer.is-typing .composer-caret { animation: none; opacity: 0; }
+  .hero-title .accent, .chat::before { transition: none; }
   .scene-item.is-in .scene-img, .scene-item.is-in .ch, .scene-item.is-in .scene-text .wd { animation: fade 200ms ease both; animation-delay: 0ms; }
   .scene-item.is-out .scene-img, .scene-item.is-out .scene-title, .scene-item.is-out .scene-text { animation: fade-out 150ms ease both; }
-  .picker-pill { transition: none; }
   .pick img { transition: opacity 200ms ease, filter 200ms ease; }
   .pick:hover img, .pick[aria-pressed="true"]:hover img, .pick:active img { scale: 1.06; translate: none; rotate: none; }
   .pick:not([aria-pressed="true"]):hover img { scale: .9; }

@@ -16,8 +16,9 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
   });
 });
 
-// Hero: "Hey Kasper, byg os lige …" og agent-vælgeren i den buede bar.
-// Uden JavaScript vises den midterste agent, og baren er skjult.
+// Hero: chatfeltet. Når I vælger en agent i feltets bund, bliver "Hey Kasper, byg os lige …" skrevet færdigt,
+// prikkerne skriver, og memojien svarer med agentens navn og beskrivelse.
+// Uden JavaScript står "Hey Kasper, byg os lige en annonce-agent" i feltet, Annonce-agenten vises, og valgene er skjult.
 
 (function () {
   var hero = document.querySelector(".hero-pick");
@@ -25,9 +26,9 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
   if (!picker) return;
 
   var picks = Array.prototype.slice.call(picker.querySelectorAll(".pick"));
-  var pill = picker.querySelector(".picker-pill");
   var hint = hero.querySelector("[data-picker-hint]");
   var hey = hero.querySelector(".hey");
+  var typed = hero.querySelector("[data-typed]");
   var live = hero.querySelector("[data-scene-live]");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   var current = picks.filter(function (p) { return p.getAttribute("aria-pressed") === "true"; })[0] || picks[0];
@@ -77,52 +78,53 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     split(item.querySelector(".scene-text"), false);
   });
 
-  // Prikkerne efter "byg os lige" taler, mens svaret kommer frem.
+  // Prikkerne taler, mens Kasper "skriver" sit svar.
   var talkTimer;
-  var talk = function () {
+  var talk = function (ms) {
     if (reduce.matches) return;
     hey.classList.add("is-talking");
     clearTimeout(talkTimer);
-    talkTimer = setTimeout(function () { hey.classList.remove("is-talking"); }, 1400);
+    talkTimer = setTimeout(function () { hey.classList.remove("is-talking"); }, ms || 1400);
   };
 
-  // Knapperne placeres langs buen i baren.
-  var layout = function () {
-    var css = getComputedStyle(picker);
-    var ro = parseFloat(css.getPropertyValue("--ro"));
-    var band = parseFloat(css.getPropertyValue("--band"));
-    var r = ro - band / 2;
-    var mid = picker.clientWidth / 2;
-    picks.forEach(function (btn) {
-      var x = btn.offsetLeft + btn.offsetWidth / 2 - mid;
-      var dy = r - Math.sqrt(Math.max(r * r - x * x, 0));
-      var rot = Math.asin(Math.max(-1, Math.min(1, x / r))) * 180 / Math.PI * 0.6;
-      btn.style.setProperty("--dy", dy.toFixed(1) + "px");
-      btn.style.setProperty("--rot", rot.toFixed(2) + "deg");
-      btn.arc = { x: btn.offsetLeft, y: btn.offsetTop + dy, rot: rot };
-    });
-  };
-
-  // Den hvide pude glider hen bag den valgte agent.
-  var movePill = function (animate) {
-    var a = current.arc;
-    if (!animate) pill.style.transition = "none";
-    picker.style.setProperty("--px", a.x + "px");
-    picker.style.setProperty("--py", a.y + "px");
-    picker.style.setProperty("--prot", a.rot + "deg");
-    if (!animate) {
-      void pill.offsetWidth;
-      pill.style.transition = "";
+  // Teksten i feltet bliver slettet og skrevet igen, bogstav for bogstav. Ved reduceret bevægelse skiftes den bare.
+  var typeTimer;
+  var type = function (text, done) {
+    clearTimeout(typeTimer);
+    if (reduce.matches) {
+      typed.textContent = text;
+      hey.classList.remove("is-typing", "is-busy");
+      if (done) done();
+      return;
     }
+    hey.classList.add("is-typing", "is-busy");
+    var erase = function () {
+      var t = typed.textContent;
+      // Det fælles "en " bliver stående, så kun agentens navn skrives om
+      if (t.length > 3) {
+        typed.textContent = t.slice(0, -1);
+        typeTimer = setTimeout(erase, 14);
+      } else {
+        write(t.length);
+      }
+    };
+    var write = function (i) {
+      if (i <= text.length) {
+        typed.textContent = text.slice(0, i);
+        typeTimer = setTimeout(function () { write(i + 1); }, 28);
+      } else {
+        hey.classList.remove("is-busy");
+        typeTimer = setTimeout(function () { hey.classList.remove("is-typing"); }, 900);
+        if (done) done();
+      }
+    };
+    erase();
   };
 
-  var select = function (btn) {
-    if (btn === current) return;
+  var show = function (btn) {
     var prev = panel(current);
     var next = panel(btn);
-
-    picks.forEach(function (p) { p.setAttribute("aria-pressed", p === btn ? "true" : "false"); });
-    hero.setAttribute("data-glow", btn.getAttribute("data-glow"));
+    if (prev === next) return;
 
     prev.classList.remove("is-in");
     prev.classList.add("is-out");
@@ -136,20 +138,26 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     next.classList.remove("is-off", "is-out", "is-in");
     void next.offsetWidth; // starter animationen forfra
     next.classList.add("is-in"); // ved reduceret bevægelse bliver det en stille fade (se CSS)
-
     current = btn;
-    movePill(true);
-    talk();
-    if (live) live.textContent = btn.getAttribute("aria-label") + ". " + next.querySelector(".scene-text").textContent;
+  };
+
+  var select = function (btn) {
+    if (btn === current && !hey.classList.contains("is-busy")) return;
+    picks.forEach(function (p) { p.setAttribute("aria-pressed", p === btn ? "true" : "false"); });
+    hero.setAttribute("data-glow", btn.getAttribute("data-glow"));
+    if (live) live.textContent = btn.getAttribute("aria-label") + ". " + panel(btn).querySelector(".scene-text").textContent;
+    talk(1600);
+    // Først bliver prompten skrevet færdig, så kommer svaret
+    type(btn.getAttribute("data-prompt"), function () { show(btn); });
   };
 
   picks.forEach(function (btn) {
     btn.addEventListener("click", function () { select(btn); });
   });
 
-  // Piletasterne skifter agent, når baren har fokus.
+  // Piletasterne skifter agent, når valgene har fokus.
   picker.addEventListener("keydown", function (e) {
-    var i = picks.indexOf(current);
+    var i = picks.indexOf(picks.filter(function (p) { return p.getAttribute("aria-pressed") === "true"; })[0]);
     var to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: picks.length - 1 }[e.key];
     if (to === undefined) return;
     e.preventDefault();
@@ -158,7 +166,7 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
     btn.focus();
   });
 
-  // På mobil kan man stryge til siden på memojien eller baren for at skifte.
+  // På mobil kan man stryge til siden på svaret eller valgene for at skifte.
   var swipe = function (el) {
     var start = null;
     el.addEventListener("pointerdown", function (e) {
@@ -170,7 +178,8 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
       var dy = e.clientY - start.y;
       start = null;
       if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-      var i = picks.indexOf(current) + (dx < 0 ? 1 : -1);
+      var pressed = picks.filter(function (p) { return p.getAttribute("aria-pressed") === "true"; })[0];
+      var i = picks.indexOf(pressed) + (dx < 0 ? 1 : -1);
       if (i >= 0 && i < picks.length) select(picks[i]);
     });
     el.addEventListener("pointercancel", function () { start = null; });
@@ -180,12 +189,14 @@ document.querySelectorAll('form[name="kontakt"]').forEach(function (form) {
 
   picker.hidden = false;
   if (hint) hint.hidden = false;
-  layout();
-  movePill(false);
   panel(current).classList.add("is-in");
-  if (!reduce.matches) setTimeout(talk, 400);
-  window.addEventListener("resize", function () { layout(); movePill(false); });
-  if (document.fonts) document.fonts.ready.then(function () { layout(); movePill(false); });
+  // Når siden åbner, bliver prompten skrevet én gang, og prikkerne svarer
+  if (!reduce.matches) {
+    setTimeout(function () {
+      talk(1400);
+      type(current.getAttribute("data-prompt"));
+    }, 500);
+  }
 })();
 
 // Knappen i toppen skifter mellem lyst og mørkt tema og husker valget i browseren.
