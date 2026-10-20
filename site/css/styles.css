@@ -496,13 +496,9 @@ h1 {
 
 /* Om */
 .about { display: grid; gap: 2.5rem; align-items: center; }
-/* Den pegende memoji står på en rolig flade med en blød lysning bag figuren, så den står frem i begge temaer */
-.about-figure {
-  width: min(100%, 18rem); margin-inline: auto; padding: 2rem 1.5rem 1.5rem;
-  border: 1px solid var(--line); border-radius: var(--radius);
-  background: radial-gradient(circle at 50% 42%, var(--figure-glow) 0%, var(--soft) 68%);
-}
-.memoji-about { display: block; width: auto; height: 20rem; margin-inline: auto; }
+/* Den pegende memoji står frit uden flade, ligesom ved citatet. I mørkt tema har den samme bløde lysning bag sig. */
+.about-figure { width: min(100%, 18rem); margin-inline: auto; }
+.memoji-about { display: block; width: auto; height: 20rem; margin-inline: auto; filter: var(--figure-shadow); }
 @media (min-width: 52rem) { .about-figure { width: 22rem; margin-inline: 0; } }
 .about-text { max-width: var(--read); min-width: 0; }
 .about-text p { color: var(--muted); }
