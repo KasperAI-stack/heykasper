@@ -544,33 +544,31 @@ h1 {
 .cv-label { fill: var(--muted); font-family: var(--font); font-size: 10px; font-weight: 600; text-anchor: middle; }
 .cv-text { fill: var(--ink); font-family: var(--font); font-size: 11px; font-weight: 600; }
 
-/* Udtalelse: stort citat i serif og memojien på en lilla flade på hver side, forskudt i højden */
-.quote { display: grid; gap: 2.5rem 2rem; align-items: center; justify-items: center; padding-block: 6rem; }
-.quote-body { margin: 0; text-align: center; max-width: 34rem; }
+/* Citat: stort citat i serif og memojien frit på hver side. Billederne er beskåret til overkroppen og fader ud forneden,
+   så de står på samme grundlinje under citatet. */
+.quote { display: grid; gap: 2.5rem 2rem; align-items: end; justify-items: center; padding-block: 6rem; }
+.quote-body { margin: 0; text-align: center; max-width: 36rem; align-self: center; }
 .quote-body blockquote { margin: 0; }
 .quote-body blockquote p {
   margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -.01em;
-  font-size: clamp(2rem, 4.2vw, 3rem); line-height: 1.15; text-wrap: balance;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem); line-height: 1.18; text-wrap: balance;
 }
 .quote-body figcaption { margin-top: 1.25rem; color: var(--muted); font-size: .95rem; }
 .quote-name { color: var(--ink); font-weight: 600; }
-.quote-img { background: color-mix(in srgb, var(--p-violet) 16%, var(--bg)); border-radius: 18px; overflow: hidden; aspect-ratio: 1; }
-.quote-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.quote-img-left { width: min(100%, 8.5rem); }
-.quote-img-left img { object-position: 50% 15%; }
-.quote-img-right { width: min(100%, 11rem); }
-.quote-img-right img { object-fit: contain; padding: 6% 4% 0; }
+.quote-img img { display: block; width: 100%; height: auto; filter: var(--figure-shadow); }
+.quote-img-left { width: min(100%, 9rem); }
+.quote-img-right { width: min(100%, 7rem); }
 /* På mobil står citatet øverst og billederne side om side under det */
 @media (max-width: 55.99rem) {
   .quote { grid-template-columns: 1fr 1fr; }
   .quote-body { grid-column: 1 / -1; grid-row: 1; }
-  .quote-img-left { justify-self: end; align-self: end; }
-  .quote-img-right { justify-self: start; align-self: start; margin-top: 2rem; }
+  .quote-img-left { justify-self: end; }
+  .quote-img-right { justify-self: start; }
 }
 @media (min-width: 56rem) {
-  .quote { grid-template-columns: 1fr minmax(0, 34rem) 1fr; }
-  .quote-img-left { width: clamp(9rem, 15vw, 14rem); justify-self: start; align-self: end; margin-bottom: -2rem; }
-  .quote-img-right { width: clamp(12rem, 22vw, 20rem); justify-self: end; align-self: start; margin-top: -3rem; }
+  .quote { grid-template-columns: 1fr minmax(0, 36rem) 1fr; }
+  .quote-img-left { width: clamp(10rem, 16vw, 15rem); justify-self: start; }
+  .quote-img-right { width: clamp(7.5rem, 11vw, 10.5rem); justify-self: end; }
 }
 
 /* Værktøjer: prikket flade med en stablet flise i midten og værktøjerne spredt rundt om */
