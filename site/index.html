@@ -546,14 +546,72 @@
         </div>
       </div>
 
+      <!-- Booking: egen kalender (js/booking.js). Ledige tider og bookinger går gennem Netlify Functions til Apps Scriptet,
+           som opretter mødet med Google Meet i Kaspers kalender. Uden JavaScript vises linket til Googles bookingside. -->
       <div class="contact-mode" data-panel="booking">
-        <p class="center lede-small">Vælg et tidspunkt, der passer jer. I får en bekræftelse på mail.</p>
+        <p class="center lede-small">30 minutter på Google Meet. Invitationen lander i jeres indbakke med det samme.</p>
         <div class="frame frame-form frame-booking">
-          <div class="booking-frame">
-            <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3MViM8rz10NnRz3-VbJuZ231pkGropG5vH6Q_wX3aKAZgnltTjzKpcPQnqLo_ya82ZmCmgYgiA?gv=true" title="Book en snak på 30 minutter i Kaspers Google-kalender" loading="lazy"></iframe>
+          <div class="booker" data-booker data-step="dato" hidden>
+            <div class="booker-info">
+              <img class="booker-avatar" src="/assets/favicon-512.png" alt="" width="512" height="512" loading="lazy" decoding="async">
+              <p class="booker-host">Kasper Schrøder Asmussen</p>
+              <h3 class="booker-title">Afklaring, 30 minutter</h3>
+              <ul class="booker-facts">
+                <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>30 minutter</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6.5" width="12.5" height="11" rx="2.5"/><path d="M15.5 10.5l5-3v9l-5-3"/></svg>Google Meet</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.5 5.2 3.5 8.5s-1.2 6.1-3.5 8.5c-2.3-2.4-3.5-5.2-3.5-8.5s1.2-6.1 3.5-8.5z"/></svg>Dansk tid</li>
+              </ul>
+              <p class="booker-picked" data-booker-picked hidden></p>
+              <p class="booker-demo" data-booker-demo hidden>Demo: tiderne er eksempler, og der bliver ikke booket noget.</p>
+            </div>
+
+            <div class="booker-cal">
+              <div class="booker-cal-head">
+                <h3 class="booker-month" id="booker-maaned" data-booker-month>Henter ledige tider</h3>
+                <div class="booker-nav">
+                  <button class="booker-arrow" type="button" data-booker-prev aria-label="Forrige måned"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                  <button class="booker-arrow" type="button" data-booker-next aria-label="Næste måned"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+                </div>
+              </div>
+              <div class="booker-weekdays" aria-hidden="true"><span>man</span><span>tir</span><span>ons</span><span>tor</span><span>fre</span><span>lør</span><span>søn</span></div>
+              <div class="booker-grid" role="grid" aria-labelledby="booker-maaned" data-booker-grid></div>
+            </div>
+
+            <div class="booker-times">
+              <h3 class="booker-day" data-booker-day tabindex="-1">Vælg en dag</h3>
+              <div class="booker-slots" data-booker-slots></div>
+            </div>
+
+            <form class="form booker-form" data-booker-form novalidate>
+              <div class="booker-form-head">
+                <h3 class="booker-step-title" tabindex="-1" data-booker-form-title>Næsten booket</h3>
+                <button class="booker-back" type="button" data-booker-back><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Vælg en anden tid</button>
+              </div>
+              <p class="hidden"><label>Udfyld ikke dette felt <input name="website" tabindex="-1" autocomplete="off"></label></p>
+              <div class="form-row">
+                <label for="b-navn">Navn<input id="b-navn" type="text" name="navn" autocomplete="name" required></label>
+                <label for="b-virksomhed">Virksomhed<input id="b-virksomhed" type="text" name="virksomhed" autocomplete="organization"></label>
+              </div>
+              <label for="b-email">E-mail<input id="b-email" type="email" name="email" autocomplete="email" spellcheck="false" required></label>
+              <label for="b-emne">Hvad skal vi kigge på? (valgfrit)<textarea id="b-emne" name="emne" rows="3" placeholder="Hey Kasper, hjælp os med …"></textarea></label>
+              <p class="booker-error" data-booker-error role="alert" hidden></p>
+              <button class="btn" type="submit" data-booker-submit>Book mødet</button>
+              <p class="form-note">Jeg bruger kun jeres oplysninger til mødet. Læs mere i <a href="/privatliv">privatlivspolitikken</a>.</p>
+            </form>
+
+            <div class="booker-done" data-booker-done>
+              <img class="booker-done-img" src="/assets/kasper-meditation.svg" alt="" width="734" height="800" loading="lazy" decoding="async">
+              <h3 class="booker-step-title" tabindex="-1" data-booker-done-title>Mødet står i jeres kalender</h3>
+              <p class="booker-done-text" data-booker-done-text></p>
+              <div class="booker-done-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener" data-booker-meet hidden>Åbn Google Meet</a>
+                <button class="btn btn-ghost" type="button" data-booker-ics>Tilføj til kalender</button>
+              </div>
+            </div>
+            <p class="visually-hidden" aria-live="polite" data-booker-live></p>
           </div>
+          <p class="booker-fallback" data-booker-fallback>Book via <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3MViM8rz10NnRz3-VbJuZ231pkGropG5vH6Q_wX3aKAZgnltTjzKpcPQnqLo_ya82ZmCmgYgiA" target="_blank" rel="noopener" data-track="booking">min Google-kalender</a>.</p>
         </div>
-        <p class="center booking-note">Vises kalenderen ikke, kan I <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3MViM8rz10NnRz3-VbJuZ231pkGropG5vH6Q_wX3aKAZgnltTjzKpcPQnqLo_ya82ZmCmgYgiA" target="_blank" rel="noopener" data-track="booking">åbne den hos Google</a>.</p>
       </div>
     </section>
   </main>
@@ -582,5 +640,6 @@
   </div>
 
   <script src="/js/main.js" defer></script>
+  <script src="/js/booking.js" defer></script>
 </body>
 </html>

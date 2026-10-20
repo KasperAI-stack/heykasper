@@ -743,13 +743,108 @@ h1 {
 .contact-mode + .contact-mode { margin-top: 3rem; }
 .js-switch .contact-mode + .contact-mode { margin-top: 0; }
 
-/* Booking: Googles bookingside indlejret i rammen. Google-siden er altid lys, så den står på hvid i begge temaer. */
-.frame-booking { max-width: 52rem; background: #FFFFFF; }
-.booking-frame { background: #FFFFFF; }
-/* Høj nok til hele Googles side, så der ikke kommer en scrollbar inde i rammen (målt: ca. 1405 px på mobil, 763 px fra 48rem) */
-.booking-frame iframe { display: block; width: 100%; height: 1440px; border: 0; }
-@media (min-width: 48rem) { .booking-frame iframe { height: 790px; } }
-.booking-note { font-size: .9rem; color: var(--muted); margin: 1rem auto 0; }
+/* Booking: vores egen kalender (js/booking.js). Mødet, måneden og tiderne står side om side på brede skærme
+   og under hinanden på mobil. Når en tid er valgt, tager formularen månedens og tidernes plads, og bekræftelsen fylder hele boksen. */
+.frame-booking { max-width: 60rem; }
+.booker { display: grid; }
+.booker-info, .booker-cal, .booker-times, .booker-form, .booker-done { min-width: 0; padding: 1.5rem 1.25rem; }
+.booker-info { border-bottom: 1px solid var(--line); }
+.booker-times { border-top: 1px solid var(--line); }
+@media (min-width: 56rem) {
+  .booker { grid-template-columns: 15rem minmax(0, 1fr) 14rem; min-height: 30rem; }
+  .booker-info, .booker-cal, .booker-times, .booker-form, .booker-done { padding: 2rem 1.75rem; }
+  .booker-info { border-bottom: 0; border-right: 1px solid var(--line); }
+  .booker-times { border-top: 0; border-left: 1px solid var(--line); }
+  .booker-form { grid-column: 2 / -1; }
+  .booker-done { grid-column: 1 / -1; }
+}
+.booker[data-step="dato"] .booker-form, .booker[data-step="dato"] .booker-done,
+.booker[data-step="form"] .booker-cal, .booker[data-step="form"] .booker-times, .booker[data-step="form"] .booker-done,
+.booker[data-step="done"] > :not(.booker-done):not([aria-live]) { display: none; }
+
+/* Mødet */
+.booker-avatar { display: block; width: 3rem; height: 3rem; margin-bottom: .75rem; }
+.booker-host { margin: 0; font-size: .9rem; color: var(--muted); }
+.booker-title { margin: .15rem 0 1rem; font-size: 1.3rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
+.booker-facts { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; font-size: .925rem; color: var(--muted); }
+.booker-facts li { display: flex; align-items: center; gap: .55rem; }
+.booker-picked { margin: 1.25rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--line); font-weight: 600; }
+.booker-picked::first-letter { text-transform: uppercase; }
+.booker-demo { margin: 1.25rem 0 0; font-size: .85rem; color: var(--muted); }
+
+/* Måneden: dage med ledige tider står på en lys flade med en prik i accent, den valgte er fyldt med tekstfarven */
+.booker-cal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.booker-month { margin: 0; font-size: 1.05rem; font-weight: 600; }
+.booker-month::first-letter { text-transform: uppercase; }
+.booker-nav { display: flex; gap: .35rem; }
+.booker-arrow {
+  display: grid; place-items: center; width: 2.25rem; height: 2.25rem; padding: 0; border-radius: 999px; cursor: pointer;
+  color: var(--ink); background: transparent; border: 1.5px solid var(--field-border); transition: background-color .15s, opacity .15s;
+}
+.booker-arrow:disabled { opacity: .35; cursor: default; }
+.booker-weekdays, .booker-row { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .35rem; }
+.booker-weekdays { margin-bottom: .5rem; font-size: .75rem; font-weight: 600; color: var(--muted); text-align: center; text-transform: uppercase; letter-spacing: .04em; }
+.booker-grid { display: grid; gap: .35rem; }
+.booker-row > [role="gridcell"] { display: grid; place-items: center; }
+.booker-date {
+  position: relative; width: 100%; max-width: 3rem; aspect-ratio: 1; padding: 0; border: 0; border-radius: 12px;
+  font: inherit; font-size: .95rem; font-variant-numeric: tabular-nums; color: var(--muted); background: transparent;
+  transition: background-color .15s, color .15s, box-shadow .15s, transform 160ms var(--ease-out);
+}
+.booker-date:disabled { opacity: .45; cursor: default; }
+.booker-date.is-open { color: var(--ink); font-weight: 600; background: var(--soft); cursor: pointer; }
+.booker-date.is-open::after {
+  content: ""; position: absolute; left: 50%; bottom: 18%; width: 4px; height: 4px; margin-left: -2px;
+  border-radius: 50%; background: var(--accent);
+}
+.booker-date[aria-pressed="true"] { color: var(--bg); background: var(--ink); }
+.booker-date[aria-pressed="true"]::after { background: var(--bg); }
+.booker-date.is-open:active { transform: scale(.94); }
+.booker.is-loading .booker-date { background: var(--soft); animation: booker-pulse 1.2s var(--ease-in-out) infinite alternate; }
+@keyframes booker-pulse { from { opacity: .35; } to { opacity: .8; } }
+
+/* Tiderne */
+.booker-day { margin: 0 0 1rem; font-size: .95rem; font-weight: 600; outline: none; }
+.booker-day::first-letter { text-transform: uppercase; }
+.booker-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+@media (min-width: 56rem) { .booker-slots { grid-template-columns: 1fr; max-height: 24rem; overflow-y: auto; padding: 3px; margin: -3px; } }
+.booker-slot {
+  min-height: 2.75rem; padding: .65rem 1rem; border-radius: 999px; cursor: pointer;
+  font: inherit; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink);
+  background: var(--bg); border: 1.5px solid var(--field-border);
+  transition: border-color .15s, background-color .15s, color .15s, transform 160ms var(--ease-out);
+}
+.booker-slot:active { transform: scale(.97); }
+.booker-slots.is-in .booker-slot { animation: booker-in 220ms var(--ease-out) both; }
+@keyframes booker-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.booker-hint { grid-column: 1 / -1; margin: 0; font-size: .925rem; color: var(--muted); }
+
+/* Formularen og bekræftelsen */
+.booker-form { padding-top: 1.5rem; }
+.booker-form-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+.booker-step-title { margin: 0; font-size: 1.3rem; font-weight: 600; letter-spacing: -.02em; outline: none; }
+.booker-back {
+  display: inline-flex; align-items: center; gap: .25rem; padding: .4rem .2rem; border: 0; cursor: pointer;
+  font: inherit; font-size: .925rem; font-weight: 500; color: var(--muted); background: transparent;
+}
+.booker-error { margin: 0; font-size: .925rem; font-weight: 500; color: var(--ink); padding: .75rem 1rem; border-radius: 10px; background: var(--soft); border-left: 3px solid var(--accent); }
+.booker-done { display: flex; flex-direction: column; align-items: center; text-align: center; padding-block: 3rem; }
+.booker-done-img { width: 7rem; height: auto; margin-bottom: 1.25rem; filter: var(--figure-shadow); }
+.booker-done-text { max-width: 28rem; margin: .5rem 0 1.5rem; color: var(--muted); }
+.booker-done-text::first-letter { text-transform: uppercase; }
+.booker-done-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+.booker-fallback { margin: 0; padding: 1.5rem; text-align: center; color: var(--muted); }
+.booker:not([hidden]) + .booker-fallback { display: none; }
+.booker .booker-done .booker-done-text a, .booker-fallback a { color: var(--ink); }
+
+/* Fokus og hover i kalenderen: ring i focus og kant i tekstfarven under musen */
+.booker-date:focus-visible, .booker-slot:focus-visible, .booker-arrow:focus-visible, .booker-back:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .booker-date.is-open:not([aria-pressed="true"]):hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .booker-slot:hover { border-color: var(--ink); }
+  .booker-arrow:not(:disabled):hover { background: var(--hover); }
+  .booker-back:hover { color: var(--ink); }
+}
 
 /* Footer: mørk violet flade helt ud til kanterne. En tynd linje med navn, genveje og kontakt,
    og under den memojien og logoet skaleret op, så de fylder hele bredden. Logoet er samme SVG, farvet med en maske. */
@@ -811,7 +906,7 @@ h1 {
 .thanks { min-height: 75vh; justify-content: center; padding-bottom: 5rem; }
 .thanks .mascot { width: 140px; height: auto; margin: 0 0 1.5rem; }
 .actions-404 { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
-.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--rail); }
+.btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--field-border); }
 .btn-ghost:hover { color: var(--ink); background: var(--hover); }
 .thanks h1 { font-size: clamp(2.25rem, 6vw, 4rem); }
 
@@ -830,6 +925,9 @@ h1 {
   .tool-tile { transition: none; }
   .js-reveal [data-reveal] { transform: none; }
   .js-reveal [data-reveal].is-visible { transition: opacity 300ms ease; transition-delay: 0ms; }
+  .booker-slots.is-in .booker-slot { animation: fade 200ms ease both; }
+  .booker-date, .booker-slot { transition: background-color .15s, color .15s, border-color .15s; }
+  .booker-date.is-open:active, .booker-slot:active { transform: none; }
 }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fade-out { to { opacity: 0; } }

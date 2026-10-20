@@ -13,11 +13,15 @@ Status 9. oktober 2026: Google Tag Manager er installeret på alle sider. Der er
 | Event | Hvornår | Hvor i koden |
 |---|---|---|
 | `henvendelse_sendt` | Når tak-siden vises, altså efter en sendt formular | site/tak.html |
-| `booking_klik` | Når man klikker på et link til Google Kalender (`data-track="booking"`): linket under den indlejrede kalender og linket på tak-siden | site/js/main.js |
+| `booking_klik` | Når man klikker på et link med `data-track="booking"`: reservelinket til Googles bookingside og linket på tak-siden | site/js/main.js |
+| `booking_dato_valgt` | Når man vælger en dag i bookingkalenderen | site/js/booking.js |
+| `booking_tid_valgt` | Når man vælger et tidspunkt | site/js/booking.js |
+| `booking_bekraeftet` | Når mødet står i Kaspers kalender (Apps Scriptet har svaret "ok"). Den rigtige konvertering, og den bør være primær i Google Ads | site/js/booking.js |
+| `booking_fejl` | Når hentning eller booking fejler. Parameteren `booking_fejl` er `hent`, `optaget`, `netvaerk` eller HTTP-status | site/js/booking.js |
 
-Signalerne afhænger ikke af sidernes adresser, så målingen virker, selv om en URL ændrer sig. Et booking-klik er ikke en bekræftet booking, fordi Google Kalender ikke kan sende besked tilbage til siden.
+Signalerne afhænger ikke af sidernes adresser, så målingen virker, selv om en URL ændrer sig.
 
-Siden 19. oktober 2026 er bookingkalenderen indlejret i en iframe i bookingsektionen. Klik og bookinger inde i iframen kan siden ikke se, fordi rammen ligger hos Google. `booking_klik` fanger derfor kun dem, der bruger linkene. En bekræftet booking kan kun måles i Google Kalender, fx ved at sende Googles bekræftelsesmails videre til Apps Scriptet og tælle dem dér.
+Siden 20. oktober 2026 er bookingkalenderen vores egen (se docs/plan-booking.md), så bookinger kan måles direkte med `booking_bekraeftet`. På testsiden kører kalenderen med eksempeltider, og `booking_bekraeftet` bliver også sendt dér, når man prøver demoen.
 
 ## Google Tag Manager
 

@@ -4,7 +4,7 @@ Alt her er gratis. Det kræver kun din Google-konto (Gmail) og Netlify.
 
 Når det er sat op, sker dette:
 
-- **Book en tid:** Kunden vælger selv et tidspunkt i din Google Kalender. Google sender en bekræftelse til jer begge, og mødet lægges i begge kalendere.
+- **Book en tid:** Kunden vælger et tidspunkt i bookingkalenderen på siden. Siden henter ledige tider fra din Google Kalender og opretter mødet med Google Meet gennem to Netlify Functions og det samme script (se del 4). Google sender invitationen til kunden, mødet står i begge kalendere, og bookingen kommer i arket med status "Møde booket".
 - **Send en forespørgsel:** Netlify modtager formularen og sender den videre til et lille script i din Google-konto. Scriptet
   1. gemmer henvendelsen i et Google Sheet med status "Ny",
   2. sender dig en mail, som du kan svare direkte på,
@@ -69,6 +69,26 @@ Det kræver, at siden allerede er deployet på Netlify.
 
 ---
 
+---
+
+## Del 4: Bookingkalenderen på siden (ca. 10 minutter)
+
+Bookingkalenderen bruger scriptet fra del 2 gennem to Netlify Functions (`netlify/functions/ledige-tider.mjs` og `book.mjs`). Reglerne for, hvornår man kan booke, står under `BOOKING` i `INDSTILLINGER` øverst i scriptet: hverdage kl. 9 til 16, møder på 30 minutter, 15 minutters buffer til andre aftaler, mindst 12 timers varsel og 21 dage frem. Ret dem dér.
+
+1. Åbn scriptet på **script.google.com**, og indsæt den nyeste version af `automatisering/henvendelser.gs`.
+2. Klik **+** ud for **Tjenester** i menuen til venstre, vælg **Google Calendar API**, og klik **Tilføj**. Den skal hedde `Calendar`.
+3. Vælg funktionen **testBooking**, og klik **Kør**. Google spørger om lov til kalenderen, så klik **Tillad** som i del 2. Under **Udførelseslog** står, hvor mange ledige tider der er, og at der er booket et testmøde i din kalender med dig selv som gæst. Slet testmødet bagefter.
+4. Lav en ny version af implementeringen: **Implementer**, **Administrer implementeringer**, blyanten, **Ny version**, **Implementer**. URL'en er den samme som før.
+5. I Netlify: **Project configuration**, **Environment variables**, **Add a variable**. Tilføj to variabler med scope **Functions**:
+   - `APPS_SCRIPT_URL`: webapp-URL'en, der ender på `/exec` (uden `?token=`)
+   - `APPS_SCRIPT_TOKEN`: din `HEMMELIG_NOEGLE`
+6. Deploy siden igen, så funktionerne får variablerne.
+7. Åbn `https://hey-kasper.dk/api/ledige-tider` i browseren. Der skal stå `"status":"ok"` og en liste af tider.
+
+Funktionen `/api/book` tillader 5 bookinger i minuttet pr. IP-adresse, og et skjult felt fanger robotter.
+
+---
+
 ## Test det
 
 1. Åbn den rigtige side (din `.netlify.app`-adresse), og send formularen med din egen e-mail.
@@ -76,7 +96,7 @@ Det kræver, at siden allerede er deployet på Netlify.
    - en mail med emnet "Ny henvendelse: ..."
    - en mail med emnet "Tak for jeres henvendelse"
    - en ny række i Google Sheet'et med status "Ny"
-3. Klik **Book en tid** på siden, og tjek, at din bookingside åbner.
+3. Klik **Book en tid** på siden, book et møde med din egen e-mail, og tjek, at mødet står i kalenderen med et Meet-link, at invitationen kom, og at der er en ny række med "Møde booket" i arket.
 
 Virker det ikke, så åbn scriptet og kig under **Udførelser** i menuen til venstre. Der står, om Netlify har ramt scriptet, og hvad der eventuelt gik galt.
 
@@ -99,4 +119,5 @@ Tag trinene i rækkefølge, og stop, når du finder fejlen.
 
 - Netlify Forms: 100 henvendelser om måneden.
 - Google Apps Script med en almindelig Gmail: op til 100 mails om dagen.
-- Google Kalenders gratis bookingside kan ikke sende påmindelser inden mødet. Det kræver et betalt Google Workspace-abonnement.
+- Google Apps Script med en almindelig Gmail kan oprette 5.000 kalenderbegivenheder om dagen. Invitationerne sendes af Google Kalender og tæller ikke med i de 100 mails.
+- Bookingkalenderen sender endnu ingen påmindelse inden mødet ud over Google Kalenders egen påmindelse i gæstens kalender (se docs/plan-booking.md, fase 7).
