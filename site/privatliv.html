@@ -17,12 +17,11 @@
       wait_for_update: 500
     });
   </script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-K7W77X5Z');</script>
+  <!-- Google Tag Manager: hentes først efter load, så det ikke konkurrerer med overskriften om båndbredden. Køen i dataLayer (samtykke, events) læses, når GTM starter. -->
+  <script>(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  function g(){var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}
+  if(d.readyState==='complete')g();else w.addEventListener('load',g);
+  })(window,document,'dataLayer','GTM-K7W77X5Z');</script>
   <!-- End Google Tag Manager -->
   <title>Privatlivspolitik | Hey Kasper</title>
   <meta name="description" content="Sådan behandler Kasper Schrøder Asmussen de oplysninger, I sender gennem hey-kasper.dk. Ingen måling uden samtykke.">

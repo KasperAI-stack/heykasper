@@ -17,23 +17,22 @@
       wait_for_update: 500
     });
   </script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-K7W77X5Z');</script>
+  <!-- Google Tag Manager: hentes først efter load, så det ikke konkurrerer med overskriften om båndbredden. Køen i dataLayer (samtykke, events) læses, når GTM starter. -->
+  <script>(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  function g(){var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}
+  if(d.readyState==='complete')g();else w.addEventListener('load',g);
+  })(window,document,'dataLayer','GTM-K7W77X5Z');</script>
   <!-- End Google Tag Manager -->
   <meta name="google-site-verification" content="lTNoFoLnO_X4oPJ0lE1W8n97fP3PQ7NGPv2_HDsCT_c">
-  <title>Hey Kasper | AI-agenter til jeres marketingteam</title>
-  <meta name="description" content="AI-agenter, der klarer det i jeres marketing, I ikke når. Ét møde på 30 minutter, og I har jeres første agent inden for 7 dage, gratis.">
+  <title>Få jeres marketing gjort med AI-agenter | Hey Kasper</title>
+  <meta name="description" content="Rapporter, SoMe-opslag, nyhedsbreve og opfølgning på leads klarer AI-agenter for jer. Book 30 minutter, og se en gratis prøveopgave på jeres egne data.">
   <link rel="canonical" href="https://hey-kasper.dk/">
   <meta property="og:url" content="https://hey-kasper.dk/">
   <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0F0E13" media="(prefers-color-scheme: dark)">
   <script>try { var t = localStorage.getItem("tema"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
-  <meta property="og:title" content="Hey Kasper | AI-agenter til jeres marketingteam">
-  <meta property="og:description" content="AI-agenter, der klarer det i jeres marketing, I ikke når. Ét møde på 30 minutter, og I har jeres første agent inden for 7 dage, gratis.">
+  <meta property="og:title" content="Få jeres marketing gjort med AI-agenter | Hey Kasper">
+  <meta property="og:description" content="Rapporter, SoMe-opslag, nyhedsbreve og opfølgning på leads klarer AI-agenter for jer. Book 30 minutter, og se en gratis prøveopgave på jeres egne data.">
   <meta property="og:site_name" content="Hey Kasper">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://hey-kasper.dk/assets/og-image.jpg">
@@ -42,8 +41,8 @@
   <meta property="og:image:alt" content="Kasper som memoji ved siden af overskriften: Jeres nye AI marketing manager.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://hey-kasper.dk/assets/og-image.jpg">
-  <meta name="twitter:title" content="Hey Kasper | AI-agenter til jeres marketingteam">
-  <meta name="twitter:description" content="AI-agenter, der klarer det i jeres marketing, I ikke når. Ét møde på 30 minutter, og I har jeres første agent inden for 7 dage, gratis.">
+  <meta name="twitter:title" content="Få jeres marketing gjort med AI-agenter | Hey Kasper">
+  <meta name="twitter:description" content="Rapporter, SoMe-opslag, nyhedsbreve og opfølgning på leads klarer AI-agenter for jer. Book 30 minutter, og se en gratis prøveopgave på jeres egne data.">
   <meta property="og:locale" content="da_DK">
   <link rel="icon" href="/assets/favicon.svg?v=3" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-32.png?v=3" type="image/png" sizes="32x32">
@@ -94,7 +93,7 @@
         "@id": "https://hey-kasper.dk/#service",
         "name": "Hey Kasper",
         "url": "https://hey-kasper.dk/",
-        "description": "AI-agenter, der klarer det i jeres marketing, I ikke når. Ét møde på 30 minutter, og I har jeres første agent inden for 7 dage, gratis.",
+        "description": "Rapporter, SoMe-opslag, nyhedsbreve og opfølgning på leads klarer AI-agenter for jer. Book 30 minutter, og se en gratis prøveopgave på jeres egne data.",
         "logo": "https://hey-kasper.dk/assets/favicon-512.png?v=3",
         "image": "https://hey-kasper.dk/assets/og-image.jpg",
         "email": "mailto:kasper@heyotto.dk",
