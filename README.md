@@ -4,14 +4,18 @@ En enkel landingpage i ren HTML og CSS, der publiceres gratis via Netlify.
 
 ## Mappen
 
-- CLAUDE.md: briefen til Claude Code. Brand, tone, design og regler.
+- CLAUDE.md: Claude Codes rolle som Kaspers assistent og holdleder, holdet og reglerne for samarbejde.
+- .claude/agents/: agentteamet (strateg, copywriter, redaktoer, linkedin, ads, webudvikler, systemudvikler, karriere).
+- docs/brief-landingpage.md: briefen til hjemmesiden. Brand, design, opbygning og teknik.
+- docs/stemme.md: Kaspers stemme, sprog og tone.
+- arbejde/: kladder og resultater fra holdet (LinkedIn, annoncer, idéer, job).
 - docs/tilbud.md: produkter, proces og priser.
 - docs/copy.md: teksten til hver sektion.
 - site/: selve hjemmesiden. Det er kun denne mappe, der kommer online.
 - docs/automatisering.md: sådan sætter du booking og automatiske svar op (gratis).
 - automatisering/: scriptet til Google Apps Script. Kommer ikke online.
 - netlify.toml: fortæller Netlify, at site/ skal publiceres.
-- .claude/commands/copy-review.md: kommandoen /copy-review, der tjekker teksten mod dine regler.
+- .claude/commands/copy-review.md: kommandoen /copy-review, hvor redaktøren tjekker teksten mod docs/stemme.md.
 
 ## Kom i gang
 

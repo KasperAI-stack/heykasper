@@ -65,7 +65,7 @@ draft: true
 
 ## Skriveregler for indlæg (SEO og GEO)
 
-Reglerne i CLAUDE.md om sprog og tone gælder også her: I-form, Kasper skriver "jeg", ingen tankestreger og ingen AI-klingende vendinger.
+Reglerne i docs/stemme.md gælder også her: I-form, Kasper skriver "jeg", ingen tankestreger og ingen AI-klingende vendinger.
 
 - Ét emne pr. indlæg, formuleret som et spørgsmål, en virksomhed faktisk søger på.
 - Første afsnit svarer direkte på spørgsmålet i to til tre sætninger, så det kan citeres alene.

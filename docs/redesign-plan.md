@@ -4,7 +4,7 @@ Plan fra 19. oktober 2026, bygget i heykasper-test. Version 1 (nyt farvesystem, 
 
 ## 1. Grundlag: det originale designsystem
 
-Alt fra originalen er bevaret: Geist, farverne (Onyx, Grafit, Skifer, Sølvgrå, Tåge og de lilla accenter), lyst og mørkt tema med temaknappen, rammen af tynde linjer med plus-mærker, gitteret og gløden i toppen, de runde sorte knapper, scroll-reveals og værktøjssektionen med den isometriske stak, de svævende fliser og den prikkede flade. Farver og regler står i CLAUDE.md under "Design".
+Alt fra originalen er bevaret: Geist, farverne (Onyx, Grafit, Skifer, Sølvgrå, Tåge og de lilla accenter), lyst og mørkt tema med temaknappen, rammen af tynde linjer med plus-mærker, gitteret og gløden i toppen, de runde sorte knapper, scroll-reveals og værktøjssektionen med den isometriske stak, de svævende fliser og den prikkede flade. Farver og regler står i docs/brief-landingpage.md under "Design".
 
 Usynlige tilgængelighedsfixes, der ikke ændrer udtrykket:
 
